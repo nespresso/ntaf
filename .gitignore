@@ -1,0 +1,13 @@
+# IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+.idea
+
+# Eclipse
+.classpath
+.project
+.settings
+
+node_modules
+nano.save
