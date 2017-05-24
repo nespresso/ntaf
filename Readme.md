@@ -24,7 +24,7 @@ https-proxy=http://localhost:3128
     },
     "scripts": {
       "clean": "grunt clean",
-      "post-install": "scripts/post-install.js",
+      "generate-local-conf": "grunt copy:generateLocalConf",
       "prepare": "grunt prepare",
       "test": "grunt test-functional",
       "test-local": "grunt test-functional-local",
@@ -36,20 +36,19 @@ https-proxy=http://localhost:3128
 }    
 ```
 3. Install the project dependencies by running the following command from <AUTOMATED_TESTS>: `npm install`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
-4. From <AUTOMATED_TESTS>, run `./node_modules/ntaf/bin/ntaf.js install` to generate the skeleton of your test project.
+4. From <AUTOMATED_TESTS>, run `./node_modules/.bin/ntaf install` to generate the skeleton of your test project.
 
 
 ## Running Tests
-
-### Setting Configuration
-The global configuration is set in the `wdio.conf.js` file in the root folder of your project.
-To run the tests on your development machine, create your local configuration file (`wdio.local.conf.js`) by running `npm run post-install`.
-
-### Running Tests
 Run `npm run test` to launch the tests as they would be played remotely.
 By default it runs all the tests tagged as `@nrt`.
 
 Run command line `npm run test-local` to run the tests with your local configuration.
+
+### Configuration
+The global configuration is set in the `wdio.conf.js` file in the root folder of your project.
+
+The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running `npm run generate-local-conf`.
 
 ### Parameters
 To pass parameters to the command, add `--`: `npm run test -- --parameter1=value1`
