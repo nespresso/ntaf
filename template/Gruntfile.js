@@ -13,6 +13,15 @@ module.exports = function (grunt) {
       },
     },
 
+    copy: {
+      generateLocalConf: {
+        expand: true,
+        flatten: true,
+        src: 'node_modules/ntaf/template/wdio.*.conf.js',
+        dest: '.',
+      },
+    },
+
     mochaTest: {
       test: {
         options: {
@@ -53,7 +62,7 @@ module.exports = function (grunt) {
    * @returns {Object}
    */
   function getTestConfig() {
-    //Get parameters for test-functional-*
+    // Get parameters for test-functional-*
     const baseUrl = grunt.option('baseUrl');
     const tags = grunt.option('tags');
     const timeout = grunt.option('timeout');
@@ -76,6 +85,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mkdir');
+  grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-webdriver');
