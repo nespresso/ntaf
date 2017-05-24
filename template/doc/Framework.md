@@ -1,6 +1,4 @@
-# Testing Framework
-
-Find below guidelines and tips on how to use and contribute to the framework.
+# Nestle Test Automation Framework
 
 ## Project structure
 
