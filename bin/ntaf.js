@@ -20,9 +20,9 @@ let allPromises = [
   fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
 ];
 
-for (let i in emptyDirectories) {
-  allPromises.push(fs.mkdirs(emptyDirectories[i]));
-}
+emptyDirectories.forEach(directory => {
+  allPromises.push(fs.mkdirs(directory));
+});
 
 Promise.all(allPromises)
   .then(
