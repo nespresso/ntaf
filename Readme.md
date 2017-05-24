@@ -1,18 +1,12 @@
 # Nestle Test Automation Framework (NTAF)
 
-## Integrating the NTAF Framework to Your Project
+## Integrating NTAF to Your Project
 
 ### Prerequisites
-1. Install Node.js v4.4.7 (make sure npm comes with it).
-2. Set the npm configuration by editing the `.npmrc` file in your home directory as follow:
-```
-strict-ssl=false
-registry=http://registry.npmjs.org/
-proxy=http://localhost:3128
-https-proxy=http://localhost:3128
-```
+1. Install Node.js v4.4.7 or greater (make sure npm comes with it).
 
-### Adding the Module to Your Project
+
+### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
 2. Add a `package.json` file into <AUTOMATED_TESTS> based on the below model:
 ```
@@ -37,6 +31,13 @@ https-proxy=http://localhost:3128
 ```
 3. Install the project dependencies by running the following command from <AUTOMATED_TESTS>: `npm install`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
 4. From <AUTOMATED_TESTS>, run `./node_modules/ntaf/bin/ntaf.js install` to generate the skeleton of your test project.
+
+### Behind a Proxy
+Set the configuration of your proxy by editing the `.npmrc` file in your home directory:
+```
+proxy=http://localhost:3128
+https-proxy=http://localhost:3128
+```
 
 
 ## Running Tests
@@ -79,7 +80,7 @@ For example, to run NRT tests from the catalog domain on www.mywebsite.com:
 #### Setting Configuration in IntelliJ
 1. Go to Run > Edit Configurations...
 1. Add New Configuration > Node.js Remote Debug and fill in details as follows:
-![alt tag](doc/resources/intellij-debug-configuration.png)
+![alt text](https://github.com/nespresso/ntaf/blob/master/template/doc/resources/intellij-debug-configuration.png)
 
 ### Running Tests
 1. In a terminal, run `node-inspector`. The following should be printed:
@@ -93,4 +94,4 @@ For example, to run NRT tests from the catalog domain on www.mywebsite.com:
 
 
 ## Writing Automated Tests
-Read detailed explanations in [Framework.md](doc/Framework.md).
+Read detailed explanations in [Framework.md](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md).
