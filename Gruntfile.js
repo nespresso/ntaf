@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         options: {
           coverageFolder: 'output/coverage',
           reportFormats: ['html', 'lcovonly'],
-          root: './src',
+          root: './lib',
           require: ['test/test-common'],
         },
       },

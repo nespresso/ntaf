@@ -20,5 +20,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "4" ]; t
                 -Dsonar.login=$SONARQUBE_TOKEN
 
 elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_NODE_VERSION" == "4" ]; then
-  sonar-scanner -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN
+  sonar-scanner -Dsonar.host.url=https://sonarqube.com \
+                -Dsonar.login=$SONARQUBE_TOKEN \
+                -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info
 fi

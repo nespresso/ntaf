@@ -10,4 +10,5 @@
 .settings
 
 node_modules
+output
 nano.save
