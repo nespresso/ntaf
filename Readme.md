@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/nespresso/ntaf.svg?branch=master)](https://travis-ci.org/nespresso/ntaf)
+[![Quality Gate status](https://sonarqube.com/api/badges/gate?key=ntaf)](https://sonarqube.com/overview?id=ntaf)
+[![npm version](https://badge.fury.io/js/ntaf.svg)](https://badge.fury.io/js/ntaf)
+
 # Nestle Test Automation Framework (NTAF)
 
 ## Integrating NTAF to Your Project
@@ -65,7 +69,7 @@ Add command line parameter `--tags='@tag'`.
 You can add several tags separated by commas such as `--tags='@tag1,@tag2'`. It will run tests with tags `@tag1` and `@tag2`.
 You can also add negation with `~` such as`--tags='@tag1,~@tag2'`. It will tests with tag `@tag1` but not `@tag2`.
 
-For example, to run NRT tests from the catalog domain on www.mywebsite.com:
+For example, to run NRT tests from the catalog domain on mywebsite.com:
 `npm run test -- --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
 
 

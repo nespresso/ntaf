@@ -1,7 +1,31 @@
+dist: trusty
+sudo: required
+
+env:
+  global:
+  - secure: fcQ0jJuCgCi79X69qotQKihZCNXf0KuPvePKyvFdP7T2DlTXY9IdMlc0eqgegH1t4vcF7REYKZew270veyGRtQjcSnQuTV/FkviK2wryRNCXYlgbRCozOubbsLAC30Xgnb0Nb6Hdnjyut1e8XueJOpH3BLQ6efu1EQYDBUxlLOZlr7RXqQLu0tbF9rhVkWn0S0lvNy3V5Td+SYT1tHwW3sh+ZZC1lvUjJ3TCqKUoG4OwRUDi+K0xe2RtmzUGVToQgYgvrbYPDfkl4fk+hnnEjpFNV/WUeYsFNRuyUc47Tip5hhIBYNngmqwAO8Fq3K3f7bR/429uuCwl1sFsL6UNZ9DmcetutCR7k9m6jxh3P+xZPqOxgWg296D8Aye+2q9K1+jjex3q+yZ6bcBEVAcAHXrx4V1mgmwyoQBCzu3HatjSktK+yb16xWSLQ2ilASRAv/QGX5FRDTq8LYuKUa7i5Sq0Q1AZwMSdNYSjRdblCZhFqdPh9QLb094VxVtDO8LNV0Oawi29qugEEP5otitqvK8KWIBF1TMHyrr9arfpCLraKgWsscEbNW0LRmMDso8AgeOVl8iE5LI14PbqUXQgwNwKn3JodmCw4MAy5phjRuGYQuI0A7iEMUR8QQ0z/XA5zMWamLSWF0K9bbDjCeuzkRxNCTWqv0DZ8HAvAI0RytI=
+  - secure: OfnFbcJcpVaUw1mkSYBZMiBFk0GIlWYgvNYCt9gldyHL5/exLV6hlJd6nssOgumcZNBcEEI0/Q9qcrCVNBUI1c8IRFrvrcBdNTTGT1NWwdR4NscUrM3PLzFxOgy4P8va3/It7leg+aATIFQ62CIT9/7LKttvrTJNsXRsNzgMKCA/MzI+0M6c6WHpoMtwqRfDU8YuGRas6Mcc593/7SL6gZWq/4wyKYuivkdi+XEId7sihJkL8EMvXV9UrM/G6ncewVcTCMMYrBox84SBUNjMkqcFivAAiDKRbYr8xliNm6ubNAS20F1NUrGGkqvT1TZFyxyIKgkTkTg0urHNhNbknfpylfh0bvE6WgJj1wqFGC9xW2osesx2YiAlznvlCfxWTzKf9YNE7E98mpsVwDLE1UNcyeDKIqc8SEgu/a2H2nrUjZL6QN/LArTK5ORtO8WHVHYQO1C/PQshA4LSDV3+ZCFOZ1lnnY1NVPUotcv2FDAyNfruCVyfkw0cX7GAyDh19O3+CCHXXqqYptoX8FRkP3Rohd/9skJESzX9bsmGoXZ1IYCjqbRurvZTl4z4N8z6rvqwmsDi+5OyFe6T5YlS195RQvR7Kp8PEh16nWyoxS/714lZtEO1xbH1uKT37Lmhi1sHDjM6vtjcHMFQ/qKAScse3Lm089foOafAUvKV8Tk=
+
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
-  - "6"
-  - "5"
-  - "4"
+  - '7'
+  - '6'
+  - '5'
+  - '4'
+
+addons:
+  sonarqube:
+    organization: nespresso
+    token:
+      secure: ...
+    github_token:
+      secure: ...
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - "$HOME/.sonar/cache"
+
+script: "./travis.sh"
