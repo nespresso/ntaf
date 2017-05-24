@@ -19,6 +19,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "4" ]; t
                 -Dsonar.github.oauth=$GITHUB_TOKEN \
                 -Dsonar.login=$SONARQUBE_TOKEN
 
-elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && ["$TRAVIS_NODE_VERSION" == "4"]; then
+elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_NODE_VERSION" == "4" ]; then
   sonar-scanner -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN
 fi
