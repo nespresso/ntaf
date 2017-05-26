@@ -9,9 +9,7 @@ const config = {
     timeout: 30 * 1000 * 4,
   },
 
-  // --harmony_rest_parameters important to have rest parameters
-  // function(...args)
-  execArgv: ['--expose_debug_as=v8debug', '--harmony_rest_parameters'],
+  execArgv: ['--expose_debug_as=v8debug'],
 };
 
 exports.config = merge.recursive(true, require('./wdio.local.conf').config, config);
