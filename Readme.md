@@ -83,7 +83,7 @@ For example, to run NRT tests from the catalog domain on mywebsite.com:
 #### Setting Configuration in IntelliJ
 1. Go to Run > Edit Configurations...
 1. Add New Configuration > Node.js Remote Debug and fill in details as follows:
-![alt text](https://github.com/nespresso/ntaf/blob/master/template/doc/resources/intellij-debug-configuration.png "Name: My Node.js Remote Debug / Host: 127.0.0.1 / Port: 5859")
+![alt text](https://raw.githubusercontent.com/nespresso/ntaf/master/template/doc/resources/intellij-debug-configuration.png "Name: My Node.js Remote Debug / Host: 127.0.0.1 / Port: 5859")
 
 ### Running Tests
 1. In a terminal, run `node-inspector`. The following should be printed:
