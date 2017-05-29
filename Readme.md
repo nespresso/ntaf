@@ -7,8 +7,7 @@
 ## Integrating NTAF to Your Project
 
 ### Prerequisites
-1. Install Node.js v4.4.7 or greater (make sure npm comes with it).
-
+* Install Node.js v6.10.3 or greater.
 
 ### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
@@ -27,8 +26,8 @@
       "test": "grunt test-functional",
       "test-local": "grunt test-functional-local",
       "test-debug": "grunt test-functional-debug",
-      "test-unit": "node --harmony_rest_parameters ./node_modules/.bin/grunt test-unit",
-      "test-unit-with-coverage": "node --harmony_rest_parameters ./node_modules/.bin/grunt test-unit-with-coverage"
+      "test-unit": "grunt test-unit",
+      "test-unit-with-coverage": "grunt test-unit-with-coverage"
     },
     ...
 }    
@@ -57,9 +56,6 @@ The local configuration is set in the `wdio.local.conf.js`. This local configura
 
 ### Parameters
 To pass parameters to the command, add `--`: `npm run test -- --parameter1=value1`
-
-If you are running Node.js 6 or greater, you might need to remove occurrences of `--harmony_rest_parameters` from 
-`wdio.conf.js` and `package.json`.
 
 #### URL of the Website to Test
 Add command line parameter `--baseUrl="https://base.url"` or update the wdio configuration file accordingly.
