@@ -28,11 +28,16 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
+/**
+ * @module browser-command/generic-browser-commands
+ * @desc Defines custom browser commands that are made available through the global WebdriverIO browser object.
+ */
 const genericBrowserCommands = {
 
   /**
    * @function waitForVisible
    * @desc waitForVisible on multiple elements
+   * @since 1.0.0
    * @param {string[]} elements - Array of elements that are CSS selectors
    * @returns {Promise}
    */
@@ -41,7 +46,7 @@ const genericBrowserCommands = {
 
     for (const i in elements) {
       if (elements.hasOwnProperty(i)) {
-        promises.push(this.waitForVisible(elements[i]));
+        promises.push(browser.waitForVisible(elements[i]));
       }
     }
 
@@ -51,6 +56,7 @@ const genericBrowserCommands = {
   /**
    * @function getNumberOfElements
    * @desc Get the number of elements matching a specific CSS selector
+   * @since 1.0.0
    * @param {string} selector - CSS selector to identify the elements
    * @returns {Promise}
    */
@@ -65,6 +71,7 @@ const genericBrowserCommands = {
   /**
    * @function clickNthElement
    * @desc Click on the nth element of the list of elements matching the CSS selector
+   * @since 1.0.0
    * @param {string} selector - CSS selector to identify the elements
    * @param {number} nth - Element to click on. First element is at rank 1.
    * @returns {Promise}
@@ -80,6 +87,7 @@ const genericBrowserCommands = {
   /**
    * @function clickFirstElement
    * @desc Click on the first element of the list of elements matching the CSS selector
+   * @since 1.0.0
    * @param {string} selector - CSS selector to identify the elements
    * @returns {Promise}
    */
@@ -94,6 +102,7 @@ const genericBrowserCommands = {
   /**
    * @function clickLastElement
    * @desc Click on the last element of the list of elements matching the CSS selector
+   * @since 1.0.0
    * @param {string} selector - CSS selector to identify the elements
    * @returns {Promise}
    */
@@ -102,6 +111,41 @@ const genericBrowserCommands = {
       .elements(selector)
       .then(function (elements) {
         return browser.elementIdClick(elements.value[elements.value.length - 1].ELEMENT);
+      });
+  },
+
+  /**
+   * @desc Scroll vertically and horizontally before clicking. Can be used for instance when there is a floating object that hides the
+   * button to click on. A scroll would allow to make the button move out of the floating object and thus be clickable.
+   * @since 1.1.0
+   * @param {string} selector CSS selector to match
+   * @param {int} hOffset Offset for the horizontal scroll
+   * @param {int} vOffset Offset for the vertical scroll
+   * @param {int} [pause = 200] Pause in ms after scrolling (for the floating element to disappear for instance)
+   */
+  scrollAndClick(selector, hOffset, vOffset, pause = 200) {
+    return browser.getElementSize('body')
+      .then(function (documentHeight) {
+        return browser.getLocation(selector)
+          .then(function (currentOffset) {
+            let vOffsetToApply = currentOffset.y;
+            if (documentHeight - currentOffset.y > vOffset) {
+              vOffsetToApply = currentOffset.y - vOffset;
+            }
+
+            let hOffsetToApply = currentOffset.x;
+            if (documentHeight - currentOffset.x > hOffset) {
+              hOffsetToApply = currentOffset.x - hOffset;
+            }
+
+            return browser.scroll(hOffsetToApply, vOffsetToApply).pause(pause);
+          });
+      })
+      .then(function () {
+        return browser.element(selector)
+          .then(function (elementId) {
+            return browser.elementIdClick(elementId.value.ELEMENT);
+          });
       });
   },
 
@@ -142,6 +186,13 @@ browser.addCommand(
   }
 );
 
+browser.addCommand(
+  'scrollAndClick',
+  function (selector, hOffset, vOffset) {
+    return genericBrowserCommands.scrollAndClick(selector, hOffset, vOffset);
+  }
+);
+
 module.exports = genericBrowserCommands;
 </code></pre>
         </article>
@@ -153,13 +204,13 @@ module.exports = genericBrowserCommands;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Helper.html">Helper</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clickFirstElement">clickFirstElement</a></li><li><a href="global.html#clickLastElement">clickLastElement</a></li><li><a href="global.html#clickNthElement">clickNthElement</a></li><li><a href="global.html#fillInForm">fillInForm</a></li><li><a href="global.html#getNumberOfElements">getNumberOfElements</a></li><li><a href="global.html#selectRadioButton">selectRadioButton</a></li><li><a href="global.html#selectRadioButtonFromLabel">selectRadioButtonFromLabel</a></li><li><a href="global.html#setValueToField">setValueToField</a></li><li><a href="global.html#setValueToInputField">setValueToInputField</a></li><li><a href="global.html#tickCheckbox">tickCheckbox</a></li><li><a href="global.html#untickCheckbox">untickCheckbox</a></li><li><a href="global.html#waitForVisible">waitForVisible</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-browser-command_form-browser-commands.html">browser-command/form-browser-commands</a></li><li><a href="module-browser-command_generic-browser-commands.html">browser-command/generic-browser-commands</a></li></ul><h3>Classes</h3><ul><li><a href="Helper.html">Helper</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 29 2017 14:19:42 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 29 2017 17:00:37 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

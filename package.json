@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "grunt test",
-    "test-with-coverage": "grunt test-with-coverage"
+    "test-with-coverage": "grunt test-with-coverage",
+    "doc": "grunt doc"
   },
   "author": "Cheutin,Nicolas,NNSA LAUSANNE,GLOBE-DSU-Sol Delivery-Dev Mgmt <Nicolas.Cheutin@nestle.com>",
   "contributors": [
@@ -34,6 +35,7 @@
     "grunt-cli": "1.2.0",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-copy": "1.0.0",
+    "grunt-jsdoc": "2.1.0",
     "grunt-mkdir": "1.0.0",
     "grunt-mocha-istanbul": "5.0.2",
     "grunt-mocha-test": "0.13.2",
