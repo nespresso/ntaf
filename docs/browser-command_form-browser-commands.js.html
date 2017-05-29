@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: browser-command/form-browser-commands.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: browser-command/form-browser-commands.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+const formBrowserCommands = {
+
+  /**
+   * @function fillInForm
+   * @desc Fill in a form with data
+   * @param {Object} fieldsToID - Object whose property values are CSS selectors matching HTML fields
+   * &lt;pre>
+   * For example:
+   *   {
+   *     firstName: 'input[id="editPersoInfoDTO.information.firstName"]',
+   *     newPassword: '#password',
+   *     confirmPassword: '#confirmPassword',
+   *   }
+   * &lt;/pre>
+   * @param {Object} data - Object whose property values are data to be inserted into related HTML fields
+   * &lt;pre>
+   *   {
+   *     firstName: 'John',
+   *     newPassword: 'my_password',
+   *     confirmPassword: 'my_password',
+   *   }
+   * &lt;/pre>
+   * @return {Object} Promise
+   */
+  fillInForm(fieldsToID, data) {
+    const promisesArray = [];
+    for (const property in data) {
+      // Avoid if element not available on the page
+      if (fieldsToID[property]) {
+        promisesArray.push(this.setValueToField(fieldsToID[property], data[property]));
+      }
+    }
+
+    return Promise.all(promisesArray);
+  },
+
+  /**
+   *  @function selectRadioButton
+   *  @desc Select a radio button identified with a CSS selector by clicking on it.
+   *  @param {String} selector - CSS selector to identify the radio button
+   *  @returns {Object} Promise
+   */
+  selectRadioButton(selector) {
+    return browser.click(selector);
+  },
+
+  /**
+   *  @function selectRadioButtonFromLabel
+   *  @desc Select a radio button identified with a CSS selector by clicking on its associated label.
+   *  @param {String} selector - CSS ID selector to identify the radio button
+   *  @returns {Object} Promise
+   */
+  selectRadioButtonFromLabel(selector) {
+    return browser
+      .getAttribute(selector, 'id')
+      .then(function (id) {
+        return browser.click('label[for="' + id + '"]');
+      });
+  },
+
+  /**
+   * @function setValueToField
+   * @desc Set a value to a field. Supports all types of HTML field.
+   * @param {String} selector - CSS selector to identify the field
+   * @param {String} value - Value
+   * @returns {Object} Promise
+   */
+  setValueToField(selector, value) {
+    const _this = this;
+    let tagName;
+
+    return browser
+      .getTagName(selector)
+      .then(function (ret) {
+        tagName = ret;
+      })
+      .then(function () {
+        switch (tagName) {
+          case 'select':
+            return browser.selectByVisibleText(selector, value);
+          case 'input':
+            return _this.setValueToInputField(selector, value);
+          default:
+            return browser.setValue(selector);
+        }
+      });
+  },
+
+  /**
+   * @function setValueToInputField
+   * @desc Set a value to the first input field matching the CSS selector
+   * @param {String} selector - CSS selector to identify the input field
+   * @param {String} value - Value
+   * @returns {Object} Promise
+   */
+  setValueToInputField(selector, value) {
+    let inputType;
+    const _this = this;
+
+    return browser
+      .getAttribute(selector, 'type')
+      .then(function (type) {
+        inputType = type;
+      })
+      .then(function () {
+        if (inputType === 'radio') {
+          return _this.selectRadioButton(selector);
+        } else if (inputType === 'checkbox') {
+          if (value === true) {
+            return _this.tickCheckbox(selector);
+          } else {
+            return _this.untickCheckbox(selector);
+          }
+        } else {
+          return browser.setValue(selector, value);
+        }
+      });
+  },
+
+  /**
+   * @function tickCheckbox
+   * @desc Tick a checkbox
+   * @param {String} selector - CSS selector to identify the checkbox
+   * @returns {Object} Promise
+   */
+  tickCheckbox(selector) {
+    return browser
+      .isSelected(selector)
+      .then(function (isSelected) {
+        if (isSelected) {
+          return Promise.resolve();
+        } else {
+          return browser.click(selector);
+        }
+      });
+  },
+
+  /**
+   * @function untickCheckbox
+   * @desc Untick a checkbox
+   * @param {String} selector - CSS selector to identify the checkbox
+   * @returns {Object} Promise
+   */
+  untickCheckbox(selector) {
+    return browser
+      .isSelected(selector)
+      .then(function (isSelected) {
+        if (isSelected) {
+          return browser.click(selector);
+        } else {
+          return Promise.resolve();
+        }
+      });
+  },
+
+};
+
+browser.addCommand(
+  'fillInForm',
+  function (fieldsToID, data) {
+    return formBrowserCommands.fillInForm(fieldsToID, data);
+  }
+);
+
+browser.addCommand(
+  'selectRadioButton',
+  function (selector) {
+    return formBrowserCommands.selectRadioButton(selector);
+  }
+);
+
+browser.addCommand(
+  'selectRadioButtonFromLabel',
+  function (selector) {
+    return formBrowserCommands.selectRadioButtonFromLabel(selector);
+  }
+);
+
+browser.addCommand(
+  'tickCheckbox',
+  function (selector) {
+    return formBrowserCommands.tickCheckbox(selector);
+  }
+);
+
+browser.addCommand(
+  'untickCheckbox',
+  function (selector) {
+    return formBrowserCommands.untickCheckbox(selector);
+  }
+);
+
+module.exports = formBrowserCommands;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Helper.html">Helper</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clickFirstElement">clickFirstElement</a></li><li><a href="global.html#clickLastElement">clickLastElement</a></li><li><a href="global.html#clickNthElement">clickNthElement</a></li><li><a href="global.html#fillInForm">fillInForm</a></li><li><a href="global.html#getNumberOfElements">getNumberOfElements</a></li><li><a href="global.html#selectRadioButton">selectRadioButton</a></li><li><a href="global.html#selectRadioButtonFromLabel">selectRadioButtonFromLabel</a></li><li><a href="global.html#setValueToField">setValueToField</a></li><li><a href="global.html#setValueToInputField">setValueToInputField</a></li><li><a href="global.html#tickCheckbox">tickCheckbox</a></li><li><a href="global.html#untickCheckbox">untickCheckbox</a></li><li><a href="global.html#waitForVisible">waitForVisible</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 29 2017 14:19:42 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

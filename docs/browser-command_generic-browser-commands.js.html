@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: browser-command/generic-browser-commands.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: browser-command/generic-browser-commands.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+const genericBrowserCommands = {
+
+  /**
+   * @function waitForVisible
+   * @desc waitForVisible on multiple elements
+   * @param {string[]} elements - Array of elements that are CSS selectors
+   * @returns {Promise}
+   */
+  waitForAllVisible(elements) {
+    const promises = [];
+
+    for (const i in elements) {
+      if (elements.hasOwnProperty(i)) {
+        promises.push(this.waitForVisible(elements[i]));
+      }
+    }
+
+    return Promise.all(promises);
+  },
+
+  /**
+   * @function getNumberOfElements
+   * @desc Get the number of elements matching a specific CSS selector
+   * @param {string} selector - CSS selector to identify the elements
+   * @returns {Promise}
+   */
+  getNumberOfElements(selector) {
+    return browser
+      .elements(selector)
+      .then(function (elements) {
+        return Promise.resolve(elements.value.length);
+      });
+  },
+
+  /**
+   * @function clickNthElement
+   * @desc Click on the nth element of the list of elements matching the CSS selector
+   * @param {string} selector - CSS selector to identify the elements
+   * @param {number} nth - Element to click on. First element is at rank 1.
+   * @returns {Promise}
+   */
+  clickNthElement(selector, nth) {
+    return browser
+      .elements(selector)
+      .then(function (elements) {
+        return browser.elementIdClick(elements.value[nth - 1].ELEMENT);
+      });
+  },
+
+  /**
+   * @function clickFirstElement
+   * @desc Click on the first element of the list of elements matching the CSS selector
+   * @param {string} selector - CSS selector to identify the elements
+   * @returns {Promise}
+   */
+  clickFirstElement(selector) {
+    return browser
+      .elements(selector)
+      .then(function (elements) {
+        return browser.elementIdClick(elements.value[0].ELEMENT);
+      });
+  },
+
+  /**
+   * @function clickLastElement
+   * @desc Click on the last element of the list of elements matching the CSS selector
+   * @param {string} selector - CSS selector to identify the elements
+   * @returns {Promise}
+   */
+  clickLastElement(selector) {
+    return browser
+      .elements(selector)
+      .then(function (elements) {
+        return browser.elementIdClick(elements.value[elements.value.length - 1].ELEMENT);
+      });
+  },
+
+};
+
+browser.addCommand(
+  'waitForAllVisible',
+  function (elements) {
+    return genericBrowserCommands.waitForAllVisible(elements);
+  }
+);
+
+browser.addCommand(
+  'getNumberOfElements',
+  function (selector) {
+    return genericBrowserCommands.getNumberOfElements(selector);
+  }
+);
+
+browser.addCommand(
+  'clickNthElement',
+  function (selector, nth) {
+    return genericBrowserCommands.clickNthElement(selector, nth);
+  }
+);
+
+browser.addCommand(
+  'clickFirstElement',
+  function (selector) {
+    return genericBrowserCommands.clickFirstElement(selector);
+  }
+);
+
+browser.addCommand(
+  'clickLastElement',
+  function (selector) {
+    return genericBrowserCommands.clickLastElement(selector);
+  }
+);
+
+module.exports = genericBrowserCommands;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Helper.html">Helper</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clickFirstElement">clickFirstElement</a></li><li><a href="global.html#clickLastElement">clickLastElement</a></li><li><a href="global.html#clickNthElement">clickNthElement</a></li><li><a href="global.html#fillInForm">fillInForm</a></li><li><a href="global.html#getNumberOfElements">getNumberOfElements</a></li><li><a href="global.html#selectRadioButton">selectRadioButton</a></li><li><a href="global.html#selectRadioButtonFromLabel">selectRadioButtonFromLabel</a></li><li><a href="global.html#setValueToField">setValueToField</a></li><li><a href="global.html#setValueToInputField">setValueToInputField</a></li><li><a href="global.html#tickCheckbox">tickCheckbox</a></li><li><a href="global.html#untickCheckbox">untickCheckbox</a></li><li><a href="global.html#waitForVisible">waitForVisible</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 29 2017 14:19:42 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
