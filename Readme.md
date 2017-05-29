@@ -10,7 +10,7 @@ Integrating this module provides:
 * The necessary npm dependencies to write automated tests
 * A template to generate your test automation project so that you don't start from a blank page
 * Some common configuration to be shared within a Nestlé environment
-* Some useful [custom browser commands](http://webdriver.io/guide/usage/customcommands.html) such as `fillInForm` to ease and accelerate test automation writing
+* Some useful [custom browser commands](http://webdriver.io/guide/usage/customcommands.html) such as `fillInForm` to ease and accelerate test automation writing. See related [JSDoc](https://nespresso.github.io/ntaf/) for more details.
 * A [detailed documentation](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md) on how to write Gherkin scenarios and their translation to JavaScript following Nestlé guidelines
 
 ## Integrating NTAF to Your Project
