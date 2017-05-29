@@ -26,8 +26,8 @@
       "test": "grunt test-functional",
       "test-local": "grunt test-functional-local",
       "test-debug": "grunt test-functional-debug",
-      "test-unit": "node ./node_modules/.bin/grunt test-unit",
-      "test-unit-with-coverage": "node ./node_modules/.bin/grunt test-unit-with-coverage"
+      "test-unit": "grunt test-unit",
+      "test-unit-with-coverage": "grunt test-unit-with-coverage"
     },
     ...
 }    

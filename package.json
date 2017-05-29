@@ -7,8 +7,8 @@
     "ntaf": "bin/ntaf.js"
   },
   "scripts": {
-    "test": "node ./node_modules/.bin/grunt test",
-    "test-with-coverage": "node ./node_modules/.bin/grunt test-with-coverage"
+    "test": "grunt test",
+    "test-with-coverage": "grunt test-with-coverage"
   },
   "author": "Cheutin,Nicolas,NNSA LAUSANNE,GLOBE-DSU-Sol Delivery-Dev Mgmt <Nicolas.Cheutin@nestle.com>",
   "contributors": [
