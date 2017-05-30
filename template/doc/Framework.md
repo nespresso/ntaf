@@ -8,6 +8,11 @@ The structure mainly follow [Cucumber.js](https://github.com/cucumber/cucumber-j
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **Framework.md** this documentation  
 **<font color="#6A76FC">src/</font>** all source code  
 +-- **<font color="#6A76FC">features/</font>** Scenarios written in Gherkin  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">all-realms/</font>** Gherkin scenarios to be executed for all realms  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">some-realms/</font>** Gherkin scenarios to be executed for some realms. Use symbolic links in realm-X directories to reference those scenarios.  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">realm-1/</font>** Gherkin scenarios to be executed for realm #1 only  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">realm-2/</font>** Gherkin scenarios to be executed for realm #2 only  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">...</font>**  
 +-- **<font color="#6A76FC">step-definitions/</font>** code matching feature definitions  
 +-- **<font color="#6A76FC">support/</font>** all source code supporting feature definitions, basically: the framework  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">browser-command/</font>** Definition of the custom commands added to the browser (`fillInForm`, `selectRadioButton`, etc.)

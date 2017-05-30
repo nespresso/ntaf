@@ -45,7 +45,6 @@ https-proxy=http://localhost:3128
 
 ## Running Tests
 Run `npm run test` to launch the tests as they would be played remotely.
-By default it runs all the tests tagged as `@nrt`.
 
 Run command line `npm run test-local` to run the tests with your local configuration.
 
@@ -62,6 +61,10 @@ Add command line parameter `--baseUrl="https://base.url"` or update the wdio con
 
 #### Realm (market, brand, ...)
 Add command line parameter `--realm="us"` or update the wdio configuration file accordingly.
+
+If `specs` is not set, all the tests matching `src/features/all-relams/**/*.features` and `src/features/<realm>/**/*.features` will be executed.
+
+If both `specs` and `realm` are not set, all the tests matching `src/features/all-realms/**/*.features` will be executed.
 
 #### Locale
 Add command line parameter `--locale="en"` or update the wdio configuration file accordingly.

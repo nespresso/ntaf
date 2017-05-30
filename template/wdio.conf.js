@@ -6,7 +6,6 @@ const config = {
   maxInstances: 1,
   baseUrl: 'https://to_be_defined',
 
-  realm: 'to_be_defined',
   locale: 'en',
 
   // capabilities: [{
