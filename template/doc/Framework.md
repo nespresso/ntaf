@@ -202,15 +202,6 @@ Feature: Login / Logout from the user menu
 
 ###### Given
 Always set the context in the following order:
- * Set the market (mandatory). In most cases, it should be set in the `Background` section.
-   * `I am in France`
-   * `I am in Switzerland`
-   * `I am in US`
-   * ...
- * Set the language (optional).
-   * `I speak English`
-   * `I speak French`
-   * ...
  * Set the page from where to start the test case (mandatory).
    * `I am on the homepage`
    * `I am on the registration page`
