@@ -4,14 +4,18 @@
 
 # Nestle Test Automation Framework (NTAF)
 
-This framework is designed to help you get quickly started with test automation in a Nestlé environment.
-It is based on [WebdriverIO](http://webdriver.io/) and [cucumber](https://cucumber.io/).
-Integrating this module provides:
-* The necessary npm dependencies to write automated tests
+This framework is designed to help you get quickly started with test automation on any project.
+It is based on [WebdriverIO](http://webdriver.io/) and [cucumber](https://cucumber.io/) ([cucumberJS](https://github.com/cucumber/cucumber-js) to be exact).
+Integrating this module provides a ready-to-go environment to write and execute functional test scenarios.
+It includes:
 * A template to generate your test automation project so that you don't start from a blank page
-* Some common configuration to be shared within a Nestlé environment
+* The necessary packages pre-configured to be able to run your scenarios without requiring any other setup. Selenium, PhantomJS browser already coming with it.
+* [Guidelines and good practices](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md) to ensure great maintainability of test scenarios
+* A decoupled architecture between scenarios and datasets to allow high execution scalability
 * Some useful [custom browser commands](http://webdriver.io/guide/usage/customcommands.html) such as `fillInForm` to ease and accelerate test automation writing. See related [JSDoc](https://nespresso.github.io/ntaf/) for more details.
-* A [detailed documentation](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md) on how to write Gherkin scenarios and their translation to JavaScript following Nestlé guidelines
+
+This framework is suitable for big solutions that will be covered by an important number of scenarios.
+Note that it requires good development skills as well as good knowledge and understanding of javascript.
 
 ## Integrating NTAF to Your Project
 
