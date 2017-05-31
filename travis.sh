@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
-  node ./node_modules/.bin/grunt test
-  node ./node_modules/.bin/grunt test-with-coverage
+npm run test
+npm run test-with-coverage
+npm run doc
+npm run e2e-test
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
   sonar-scanner -Dsonar.host.url=https://sonarqube.com \
