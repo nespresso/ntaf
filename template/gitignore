@@ -15,4 +15,5 @@ wdio.debug.conf.js
 .settings
 
 node_modules
+npm-debug.log
 nano.save

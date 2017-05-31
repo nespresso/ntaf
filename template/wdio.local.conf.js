@@ -16,9 +16,9 @@ const config = {
     // http://phantomjs.org/api/command-line.html
     browserName: 'phantomjs',
     'phantomjs.cli.args': [
-      '--proxy-type=http',
-      '--proxy=localhost:3128',
-      '--ignore-ssl-errors=true',
+      // '--proxy-type=http',
+      // '--proxy=localhost:3128',
+       '--ignore-ssl-errors=true',
       // '--load-images=false', // Do not load images for tests to run faster
     ],
     'phantomjs.page.settings.userAgent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
@@ -44,7 +44,7 @@ const config = {
 
   seleniumInstallArgs: {
     // Used by selenium-standalone to download dependencies
-    proxy: 'http://localhost:3128',
+    // proxy: 'http://localhost:3128',
   },
 };
 
