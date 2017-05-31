@@ -2,26 +2,34 @@
   "name": "ntaf",
   "version": "1.1.0",
   "description": "Nestle Test Automation Framework",
+  "keywords": [
+    "test-automation",
+    "automated-testing",
+    "gherkin",
+    "cucumber",
+    "wdio"
+  ],
+  "homepage": "https://github.com/nespresso/ntaf",
+  "bugs": {
+    "url": "https://github.com/nespresso/ntaf/issues"
+  },
+  "author": "Cheutin,Nicolas,NNSA LAUSANNE,GLOBE-DSU-Sol Delivery-Dev Mgmt <Nicolas.Cheutin@nestle.com>",
+  "contributors": [
+    "racodond <david.racodon@gmail.com>"
+  ],
+  "license": "MIT",
   "main": "lib/world.js",
   "bin": {
     "ntaf": "bin/ntaf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:nespresso/ntaf.git"
   },
   "scripts": {
     "test": "grunt test",
     "test-with-coverage": "grunt test-with-coverage",
     "doc": "grunt doc"
-  },
-  "author": "Cheutin,Nicolas,NNSA LAUSANNE,GLOBE-DSU-Sol Delivery-Dev Mgmt <Nicolas.Cheutin@nestle.com>",
-  "contributors": [
-    "Racodon,David,LAUSANNE,Contractor for GLOBE-DSU-Sol Delivery-Dev QA <David.Racodon@nestle.com>"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com:nespresso/ntaf.git"
-  },
-  "engines": {
-    "node": ">= 4.4.7"
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
@@ -56,5 +64,8 @@
     "wdio-spec-reporter": "0.1.0",
     "webdriverio": "4.8.0",
     "winston": "2.3.1"
+  },
+  "engines": {
+    "node": ">= 6.10.3"
   }
 }
