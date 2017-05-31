@@ -25,6 +25,19 @@ module.exports = function (grunt) {
       },
     },
 
+    shell: {
+      e2eTest: {
+        command: [
+          'rm -rf e2e-test',
+          'mkdir e2e-test',
+          'cd e2e-test',
+          'cp ../test/e2e/package.json .',
+          'npm install',
+          'node ./node_modules/.bin/ntaf install',
+        ].join('&&'),
+      },
+    },
+
     jsdoc: {
       dist: {
         src: ['lib/browser-command/*.js', 'lib/helper/helper.js'],
@@ -38,8 +51,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('test', 'Run unit tests', 'mochaTest');
   grunt.registerTask('test-with-coverage', 'Run unit tests with code coverage computation', 'mocha_istanbul');
   grunt.registerTask('doc', 'Generate JSDoc', 'jsdoc');
+  grunt.registerTask('e2e-test', 'Run end-to-end tests', 'shell:e2eTest');
 };

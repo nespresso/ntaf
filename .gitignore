@@ -12,3 +12,5 @@
 node_modules
 output
 nano.save
+
+e2e-test
