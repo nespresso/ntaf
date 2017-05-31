@@ -15,7 +15,7 @@ It includes:
 * Some useful [custom browser commands](http://webdriver.io/guide/usage/customcommands.html) such as `fillInForm` to ease and accelerate test automation writing. See related [JSDoc](https://nespresso.github.io/ntaf/) for more details.
 
 This framework is suitable for big solutions that will be covered by an important number of scenarios.
-Note that it requires good development skills as well as good knowledge and understanding of javascript.
+Note that it requires good development skills as well as good knowledge and understanding of JavaScript.
 
 ## Integrating NTAF to Your Project
 
