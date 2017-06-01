@@ -4,7 +4,8 @@
 const fs = require('fs-extra');
 
 const emptyDirectories = [
-  'src/features',
+  'src/features/all-realms',
+  'src/features/some-realms',
   'src/step-definitions',
   'src/support/business-object',
   'src/support/component-object',
