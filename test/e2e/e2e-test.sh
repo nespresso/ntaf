@@ -11,6 +11,9 @@ node ./node_modules/.bin/ntaf install
 
 cp ../test/e2e/src/features/* src/features/.
 cp ../test/e2e/src/step-definitions/* src/step-definitions/.
+cp ../test/e2e/src/support/business-object/* src/support/business-object/.
+cp ../test/e2e/src/support/page-object/* src/support/page-object/.
+cp ../test/e2e/src/support/helper/* src/support/helper/.
 
 pwd
 npm install http-server -g
