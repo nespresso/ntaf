@@ -31,6 +31,7 @@ Note that it requires good development skills as well as good knowledge and unde
     "version": "1.0.0",
     "dependencies": {
       "ntaf": "X.X.X",
+      "grunt": "1.0.1"
     },
     "scripts": {
       "clean": "grunt clean",
