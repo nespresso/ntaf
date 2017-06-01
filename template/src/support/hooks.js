@@ -3,6 +3,9 @@
 const hooks = function () {
   this.Before(function () {
     browser.deleteCookie();
+    faker.locale = browser.options.locale;
+    console.log('Realm: ' + browser.options.realm);
+    console.log('Locale: ' + browser.options.locale);
   });
 
   this.After(function (scenario, callback) {

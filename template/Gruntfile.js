@@ -62,30 +62,26 @@ module.exports = function (grunt) {
    * @returns {Object}
    */
   function getTestConfig() {
-    // Get parameters for test-functional-*
     const baseUrl = grunt.option('baseUrl');
     const tags = grunt.option('tags');
     const timeout = grunt.option('timeout');
+    const realm = grunt.option('realm');
+    const locale = grunt.option('locale');
+
     let config = { webdriver: { options: { cucumberOpts: {} } } };
 
-    if (baseUrl) {
-      config.webdriver.options.baseUrl = baseUrl;
-    }
-
-    if (tags) {
-      config.webdriver.options.cucumberOpts.tags = tags.split(',');
-    }
-
-    if (timeout) {
-      config.webdriver.options.cucumberOpts.timeout = timeout;
-    }
+    if (baseUrl) config.webdriver.options.baseUrl = baseUrl;
+    if (tags) config.webdriver.options.cucumberOpts.tags = tags.split(',');
+    if (timeout) config.webdriver.options.cucumberOpts.timeout = timeout;
+    if (realm) config.webdriver.options.realm = realm;
+    if (locale) config.webdriver.options.locale = locale;
 
     return config;
   }
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mkdir');
-  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-webdriver');

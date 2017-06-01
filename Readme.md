@@ -73,6 +73,12 @@ To pass parameters to the command, add `--`: `npm run test -- --parameter1=value
 #### URL of the Website to Test
 Add command line parameter `--baseUrl="https://base.url"` or update the wdio configuration file accordingly.
 
+#### Realm (market, brand, ...)
+Add command line parameter `--realm="us"` or update the wdio configuration file accordingly.
+
+#### Locale
+Add command line parameter `--locale="en"` or update the wdio configuration file accordingly.
+
 #### Running a Subset of Tests Using Tags
 Add command line parameter `--tags='@tag'`.
 You can add several tags separated by commas such as `--tags='@tag1,@tag2'`. It will run tests with tags `@tag1` and `@tag2`.
