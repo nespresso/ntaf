@@ -27,15 +27,7 @@ module.exports = function (grunt) {
 
     shell: {
       e2eTest: {
-        command: [
-          'echo "Creating test project directory..."',
-          'rm -rf e2e-test',
-          'mkdir e2e-test',
-          'cd e2e-test',
-          'echo "Test project directory created."',
-          'cp ../test/e2e/e2e-test.sh .',
-          './e2e-test.sh',
-        ].join('&&'),
+        command: './test/e2e/e2e-test.sh',
       },
     },
 

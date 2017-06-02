@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+echo "Creating test project directory..."
+rm -rf e2e-test
+mkdir e2e-test
+cd e2e-test
+echo "Test project directory created."
+
 echo "Copying package.json to test project..."
 cp ../test/e2e/package.json .
 echo "package.json copied to test project."
