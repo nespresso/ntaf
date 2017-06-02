@@ -1,5 +1,7 @@
 'use strict';
 
+const merge = require('merge');
+
 module.exports = function (grunt) {
 
   grunt.initConfig({
@@ -62,22 +64,24 @@ module.exports = function (grunt) {
    * @returns {Object}
    */
   function getTestConfig() {
-    // Get parameters for test-functional-*
     const baseUrl = grunt.option('baseUrl');
     const tags = grunt.option('tags');
     const timeout = grunt.option('timeout');
+    const realm = grunt.option('realm');
     let config = { webdriver: { options: { cucumberOpts: {} } } };
 
-    if (baseUrl) {
-      config.webdriver.options.baseUrl = baseUrl;
-    }
+    if (baseUrl) config.webdriver.options.baseUrl = baseUrl;
+    if (tags) config.webdriver.options.cucumberOpts.tags = tags.split(',');
+    if (timeout) config.webdriver.options.cucumberOpts.timeout = timeout;
 
-    if (tags) {
-      config.webdriver.options.cucumberOpts.tags = tags.split(',');
-    }
-
-    if (timeout) {
-      config.webdriver.options.cucumberOpts.timeout = timeout;
+    if (realm) {
+      const realmConfig = {
+        webdriver: {
+          options: require('./conf/realm/' + realm),
+        },
+      };
+      config = merge.recursive(true, realmConfig, config);
+      console.log('Realm: ' + realm);
     }
 
     return config;
@@ -85,7 +89,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mkdir');
-  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-webdriver');

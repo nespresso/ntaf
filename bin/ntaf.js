@@ -11,6 +11,7 @@ const emptyDirectories = [
   'src/support/data',
   'src/support/helper',
   'src/support/page-object',
+  'conf/realm',
 ];
 
 console.log('Creating test project structure...');

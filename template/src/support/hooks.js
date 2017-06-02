@@ -3,6 +3,7 @@
 const hooks = function () {
   this.Before(function () {
     browser.deleteCookie();
+    faker.locale = browser.options.locale;
   });
 
   this.After(function (scenario, callback) {

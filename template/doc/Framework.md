@@ -4,6 +4,8 @@
 
 The structure mainly follow [Cucumber.js](https://github.com/cucumber/cucumber-js) structure.
 
+**<font color="#6A76FC">conf/</font>** Configuration  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **realm/** Realm configuration files  
 **<font color="#6A76FC">doc/</font>** Documentation  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **Framework.md** this documentation  
 **<font color="#6A76FC">src/</font>** all source code  
@@ -202,15 +204,6 @@ Feature: Login / Logout from the user menu
 
 ###### Given
 Always set the context in the following order:
- * Set the market (mandatory). In most cases, it should be set in the `Background` section.
-   * `I am in France`
-   * `I am in Switzerland`
-   * `I am in US`
-   * ...
- * Set the language (optional).
-   * `I speak English`
-   * `I speak French`
-   * ...
  * Set the page from where to start the test case (mandatory).
    * `I am on the homepage`
    * `I am on the registration page`

@@ -60,6 +60,7 @@
     "sinon-chai": "2.8.0",
     "wdio-cucumber-framework": "0.3.1",
     "wdio-cucumber-reporter": "0.0.2",
+    "wdio-json-reporter": "0.2.1",
     "wdio-junit-reporter": "0.2.0",
     "wdio-mocha-framework": "0.5.10",
     "wdio-selenium-standalone-service": "0.0.8",
