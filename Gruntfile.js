@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 
     mocha_istanbul: {
       coverage: {
-        src: ['test/**/*test.js'],
+        src: ['test/**/*.test.js'],
         options: {
           coverageFolder: 'output/coverage',
           reportFormats: ['html', 'lcovonly'],
