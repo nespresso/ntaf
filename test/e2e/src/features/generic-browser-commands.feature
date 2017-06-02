@@ -1,6 +1,6 @@
 Feature: Generic browser commands
 
-  Scenario: numberOfElements
+  Scenario: getNumberOfElements
     Given I am on the home page
     When I go to the generic browser commands page
     Then I should see 3 commands
