@@ -33,8 +33,8 @@
     "e2e-test": "grunt e2e-test"
   },
   "dependencies": {
-    "app-module-path": "^2.2.0",
-    "bluebird": "^3.5.0",
+    "app-module-path": "2.2.0",
+    "bluebird": "3.5.0",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
     "cucumber": "2.2.0",
@@ -49,7 +49,7 @@
     "grunt-mocha-istanbul": "5.0.2",
     "grunt-mocha-test": "0.13.2",
     "grunt-shell": "2.1.0",
-    "grunt-webdriver": "2.0.3",
+    "grunt-webdriver": "2.0.2",
     "istanbul": "0.4.5",
     "jscs": "3.0.7",
     "merge": "1.2.0",
