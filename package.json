@@ -29,14 +29,15 @@
   "scripts": {
     "test": "grunt test",
     "test-with-coverage": "grunt test-with-coverage",
-    "doc": "grunt doc"
+    "doc": "grunt doc",
+    "e2e-test": "grunt e2e-test"
   },
   "dependencies": {
-    "app-module-path": "^2.2.0",
-    "bluebird": "^3.5.0",
+    "app-module-path": "2.2.0",
+    "bluebird": "3.5.0",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
-    "cucumber": "2.2.0",
+    "cucumber": "2.3.0",
     "faker": "4.1.0",
     "fs-extra": "3.0.1",
     "grunt": "1.0.1",
@@ -47,6 +48,7 @@
     "grunt-mkdir": "1.0.0",
     "grunt-mocha-istanbul": "5.0.2",
     "grunt-mocha-test": "0.13.2",
+    "grunt-shell": "2.1.0",
     "grunt-webdriver": "2.0.3",
     "istanbul": "0.4.5",
     "jscs": "3.0.7",
@@ -58,7 +60,7 @@
     "sinon-chai": "2.8.0",
     "wdio-cucumber-framework": "0.3.1",
     "wdio-cucumber-reporter": "0.0.2",
-    "wdio-junit-reporter": "0.3.0",
+    "wdio-junit-reporter": "0.2.0",
     "wdio-mocha-framework": "0.5.10",
     "wdio-selenium-standalone-service": "0.0.8",
     "wdio-spec-reporter": "0.1.0",

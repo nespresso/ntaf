@@ -12,3 +12,6 @@
 node_modules
 output
 nano.save
+npm-debug.log
+
+e2e-test

@@ -15,13 +15,19 @@ module.exports = function (grunt) {
 
     mocha_istanbul: {
       coverage: {
-        src: ['test/**/*.js'],
+        src: ['test/**/*.test.js'],
         options: {
           coverageFolder: 'output/coverage',
           reportFormats: ['html', 'lcovonly'],
           root: './lib',
           require: ['test/test-common'],
         },
+      },
+    },
+
+    shell: {
+      e2eTest: {
+        command: './test/e2e/e2e-test.sh',
       },
     },
 
@@ -38,8 +44,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('test', 'Run unit tests', 'mochaTest');
   grunt.registerTask('test-with-coverage', 'Run unit tests with code coverage computation', 'mocha_istanbul');
   grunt.registerTask('doc', 'Generate JSDoc', 'jsdoc');
+  grunt.registerTask('e2e-test', 'Run end-to-end tests', 'shell:e2eTest');
 };
