@@ -9,7 +9,7 @@ class GenericBrowserCommandPage {
   }
 
   getCommandTitle() {
-    return browser.getHTML(this.pageElements.commandTitle);
+    return browser.getHTML(this.pageElements.commandTitle, false);
   }
 
   waitForAllDetailsToBeDisplayed() {

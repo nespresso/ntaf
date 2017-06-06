@@ -7,24 +7,24 @@ class GenericBrowserCommands {
     this.genericBrowserCommandPage = genericBrowserCommandPage;
   }
 
-  checkNumberOfCommands(expectedNumberOfCommands) {
+  seeNumberOfCommands(expectedNumberOfCommands) {
     return expect(this.genericBrowserCommandsPage.getNumberOfCommands()).to.eventually.equal(parseInt(expectedNumberOfCommands, 10));
   }
 
-  gotToFirstCommand() {
+  goToFirstCommand() {
     return this.genericBrowserCommandsPage.clickOnFirstCommandTitleLink();
   }
 
-  gotToSecondCommand() {
+  goToSecondCommand() {
     return this.genericBrowserCommandsPage.clickOnSecondCommandTitleLink();
   }
 
-  gotToLastCommand() {
+  goToLastCommand() {
     return this.genericBrowserCommandsPage.clickOnLastCommandTitleLink();
   }
 
-  getCommandTitle() {
-    return this.genericBrowserCommandPage.getCommandTitle();
+  seeCommandTitle(commandTitle) {
+    return this.genericBrowserCommandPage.getCommandTitle().should.eventually.equals(commandTitle);
   }
 
   seeAllCommandDetails() {
@@ -39,78 +39,78 @@ const genericBrowserCommands = new GenericBrowserCommands(
 );
 
 /**
- * @alias GenericBrowserCommands.checkNumberOfCommands
+ * @alias GenericBrowserCommands.seeNumberOfCommands
  * @memberOf browser
- * @method checkNumberOfCommands
+ * @method seeNumberOfCommands
  */
-browser.addCommand('checkNumberOfCommands', function (expectedNumberOfCommand) {
+browser.addCommand('seeNumberOfCommands', function (expectedNumberOfCommand) {
   logger.info('Check that the number of commands is equal to ' + expectedNumberOfCommand,
     {
       file: __filename,
-      method: 'browser.checkNumberOfCommands',
+      method: 'browser.seeNumberOfCommands',
     }
   );
-  return genericBrowserCommands.checkNumberOfCommands(expectedNumberOfCommand);
+  return genericBrowserCommands.seeNumberOfCommands(expectedNumberOfCommand);
 });
 
 /**
- * @alias GenericBrowserCommands.gotToFirstCommand
+ * @alias GenericBrowserCommands.goToFirstCommand
  * @memberOf browser
- * @method gotToFirstCommand
+ * @method goToFirstCommand
  */
-browser.addCommand('gotToFirstCommand', function () {
+browser.addCommand('goToFirstCommand', function () {
   logger.info('Click on first command title link',
     {
       file: __filename,
-      method: 'browser.gotToFirstCommand',
+      method: 'browser.goToFirstCommand',
     }
   );
-  return genericBrowserCommands.gotToFirstCommand();
+  return genericBrowserCommands.goToFirstCommand();
 });
 
 /**
- * @alias GenericBrowserCommands.gotToSecondCommand
+ * @alias GenericBrowserCommands.goToSecondCommand
  * @memberOf browser
- * @method gotToSecondCommand
+ * @method goToSecondCommand
  */
-browser.addCommand('gotToSecondCommand', function () {
+browser.addCommand('goToSecondCommand', function () {
   logger.info('Click on second command title link',
     {
       file: __filename,
-      method: 'browser.gotToSecondCommand',
+      method: 'browser.goToSecondCommand',
     }
   );
-  return genericBrowserCommands.gotToSecondCommand();
+  return genericBrowserCommands.goToSecondCommand();
 });
 
 /**
- * @alias GenericBrowserCommands.gotToLastCommand
+ * @alias GenericBrowserCommands.goToLastCommand
  * @memberOf browser
- * @method gotToLastCommand
+ * @method goToLastCommand
  */
-browser.addCommand('gotToLastCommand', function () {
+browser.addCommand('goToLastCommand', function () {
   logger.info('Click on last command title link',
     {
       file: __filename,
-      method: 'browser.gotToLastCommand',
+      method: 'browser.goToLastCommand',
     }
   );
-  return genericBrowserCommands.gotToLastCommand();
+  return genericBrowserCommands.goToLastCommand();
 });
 
 /**
- * @alias GenericBrowserCommands.getCommandTitle
+ * @alias GenericBrowserCommands.seeCommandTitle
  * @memberOf browser
- * @method getCommandTitle
+ * @method seeCommandTitle
  */
-browser.addCommand('getCommandTitle', function () {
-  logger.info('Get the command title from h1',
+browser.addCommand('seeCommandTitle', function (commandTitle) {
+  logger.info('Check that the command title is equal to "' + commandTitle + '".',
     {
       file: __filename,
-      method: 'browser.getCommandTitle',
+      method: 'browser.seeCommandTitle',
     }
   );
-  return genericBrowserCommands.getCommandTitle();
+  return genericBrowserCommands.seeCommandTitle(commandTitle);
 });
 
 /**

@@ -10,7 +10,7 @@ class FormBrowserCommands {
     return this.formBrowserCommandsPage.fillInSearchForm(data);
   }
 
-  checkSearchDetails() {
+  seeSearchDetails() {
     const _this = this;
 
     return _this.formBrowserCommandsPage.getCommand().should.eventually.equal('command...')
@@ -53,18 +53,18 @@ browser.addCommand('searchForCommands', function (data) {
 });
 
 /**
- * @alias FormBrowserCommands.checkSearchDetails
+ * @alias FormBrowserCommands.seeSearchDetails
  * @memberOf browser
- * @method checkSearchDetails
+ * @method seeSearchDetails
  */
-browser.addCommand('checkSearchDetails', function () {
+browser.addCommand('seeSearchDetails', function () {
   logger.info('Check search details',
     {
       file: __filename,
-      method: 'browser.checkSearchDetails',
+      method: 'browser.seeSearchDetails',
     }
   );
-  return formBrowserCommands.checkSearchDetails();
+  return formBrowserCommands.seeSearchDetails();
 });
 
 module.exports = formBrowserCommands;

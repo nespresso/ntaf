@@ -9,7 +9,7 @@ module.exports = function () {
   });
 
   this.Then(/^I should see filled in search details$/, function () {
-    return browser.checkSearchDetails();
+    return browser.seeSearchDetails();
   });
 
 };
