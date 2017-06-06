@@ -74,13 +74,29 @@ To pass parameters to the command, add `--`: `npm run test -- --parameter1=value
 #### URL of the Website to Test
 Add command line parameter `--baseUrl="https://base.url"` or update the wdio configuration file accordingly.
 
+#### Locale
+Add command line parameter `--locale="en"` or update the wdio configuration file accordingly.
+ 
 #### Running a Subset of Tests Using Tags
 Add command line parameter `--tags='@tag'`.
 You can add several tags separated by commas such as `--tags='@tag1,@tag2'`. It will run tests with tags `@tag1` and `@tag2`.
 You can also add negation with `~` such as`--tags='@tag1,~@tag2'`. It will tests with tag `@tag1` but not `@tag2`.
 
-For example, to run NRT tests from the catalog domain on mywebsite.com:
-`npm run test -- --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
+#### Realm (market, brand, environment, ...)
+A realm is a configuration file that defines some wdio properties specific to a realm. A realm can be seen as a market, 
+a brand, an environment (such as dev or staging), etc. or a combination of them. Realm files are stored in the
+`conf/realm` directory.
+
+Usually realms define at least the following properties:
+* `baseUrl`: website to test
+* `specs`: list of features to run
+
+Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/real` without the `.js` extension.
+ 
+ 
+For example:
+* To run NRT tests from the catalog domain on mywebsite.com: `npm run test -- --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
+* To run NRT tests on realm `us_dev`: `npm run test -- --realm="us_dev" --tags='@nrt'`
 
 
 ## Running Tests in Debug Mode

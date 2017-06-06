@@ -5,6 +5,7 @@ const merge = require('merge');
 const config = {
   maxInstances: 1,
   baseUrl: 'https://to_be_defined',
+  locale: 'en',
 
   // capabilities: [{
   //   // maxInstances can get overwritten per capability. So if you have an in-house Selenium

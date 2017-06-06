@@ -7,6 +7,9 @@ const config = {
     './src/features/**/*.feature',
   ],
 
+  baseUrl: 'https://to_be_defined',
+  locale: 'en',
+
   capabilities: [{
     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
     // grid with only 5 firefox instance available you can make sure that not more than
@@ -40,7 +43,6 @@ const config = {
   ],
 
   logLevel: 'verbose',
-  baseUrl: 'https://to_be_defined',
 
   seleniumInstallArgs: {
     // Used by selenium-standalone to download dependencies
