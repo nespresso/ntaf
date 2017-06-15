@@ -13,7 +13,7 @@
 Requirements:
 
 1. Check that the [latest build on master](https://travis-ci.org/nespresso/ntaf) is green
-2. Check that the [SonarQube quality gate](https://sonarqube.com/dashboard?id=natf) is green
+2. Check that the [SonarQube quality gate](https://sonarcloud.io/dashboard?id=natf) is green
 
 From your IDE:
 

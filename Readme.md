@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/nespresso/ntaf.svg?branch=master)](https://travis-ci.org/nespresso/ntaf)
-[![Quality Gate status](https://sonarqube.com/api/badges/gate?key=ntaf)](https://sonarqube.com/dashboard/index/ntaf)
+[![Quality Gate status](https://sonarcloud.io/api/badges/gate?key=ntaf)](https://sonarcloud.io/dashboard/index/ntaf)
 [![npm version](https://badge.fury.io/js/ntaf.svg)](https://badge.fury.io/js/ntaf)
 
 # Nestle Test Automation Framework (NTAF)

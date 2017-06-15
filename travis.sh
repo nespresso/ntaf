@@ -8,7 +8,7 @@ npm run doc
 npm run e2e-test
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
-  sonar-scanner -Dsonar.host.url=https://sonarqube.com \
+  sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
                 -Dsonar.analysis.mode=preview \
                 -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
                 -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
@@ -16,7 +16,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; t
                 -Dsonar.login=$SONARQUBE_TOKEN
 
 elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
-  sonar-scanner -Dsonar.host.url=https://sonarqube.com \
+  sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
                 -Dsonar.login=$SONARQUBE_TOKEN \
                 -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info
 fi
