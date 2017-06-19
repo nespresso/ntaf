@@ -19,7 +19,7 @@ const hooks = function () {
       const date = new Date();
       const formattedDate = date.getDay() + '-' + date.getMonth() +
         '-' + date.getYear() + ' ' + date.getHours() + date.getMinutes() + date.getSeconds();
-      browser.saveScreenshot('./output/errorShots/screenshot-error-' + formattedDate + '.png');
+      browser.saveScreenshot(`./output/errorShots/screenshot-error-${formattedDate}.png`);
       callback();
     } else {
       callback();

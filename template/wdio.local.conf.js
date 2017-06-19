@@ -24,7 +24,7 @@ const config = {
        '--ignore-ssl-errors=true',
       // '--load-images=false', // Do not load images for tests to run faster
     ],
-    'phantomjs.page.settings.userAgent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+    'phantomjs.page.settings.userAgent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
 
     // browserName: 'chrome',
     // chromeOptions: {

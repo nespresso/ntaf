@@ -14,9 +14,14 @@ const emptyDirectories = [
   'conf/realm',
 ];
 
+const onError = function (err) {
+  console.error(err);
+  process.exit(1);
+};
+
 console.log('Creating test project structure...');
 
-let allPromises = [
+const allPromises = [
   fs.copy('node_modules/ntaf/template/', '.'),
   fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
 ];
@@ -28,14 +33,9 @@ emptyDirectories.forEach(directory => {
 Promise.all(allPromises)
   .then(
     () => fs.move('gitignore', '.gitignore'),
-    (err) => onError(err)
+    err => onError(err)
   )
   .then(
     () => console.log('Test project structure successfully created.'),
-    (err) => onError(err)
+    err => onError(err)
   );
-
-function onError(err) {
-  console.error(err);
-  process.exit(1);
-}
