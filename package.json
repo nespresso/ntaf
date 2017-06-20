@@ -37,7 +37,7 @@
     "bluebird": "3.5.0",
     "chai": "4.0.2",
     "chai-as-promised": "7.0.0",
-    "cucumber": "2.3.0",
+    "cucumber": "2.3.1",
     "faker": "4.1.0",
     "fs-extra": "3.0.1",
     "grunt": "1.0.1",
@@ -63,7 +63,7 @@
     "wdio-json-reporter": "0.2.1",
     "wdio-junit-reporter": "0.2.0",
     "wdio-mocha-framework": "0.5.10",
-    "wdio-selenium-standalone-service": "0.0.8",
+    "wdio-selenium-standalone-service": "0.0.9",
     "wdio-spec-reporter": "0.1.0",
     "webdriverio": "4.8.0",
     "winston": "2.3.1"
