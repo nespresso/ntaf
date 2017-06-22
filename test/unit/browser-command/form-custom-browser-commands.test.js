@@ -39,10 +39,9 @@ describe('Custom Form Browser Commands', function () {
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
-    return browser.selectRadioButton('#fieldSelector')
-      .then(function () {
-        return stubBrowserClick.should.have.been.calledWith('#fieldSelector');
-      });
+    return browser
+      .selectRadioButton('#fieldSelector')
+      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
   });
 
   it('should select right radio button from label', function () {
@@ -52,10 +51,9 @@ describe('Custom Form Browser Commands', function () {
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
-    return browser.selectRadioButtonFromLabel('#fieldSelector')
-      .then(function () {
-        return stubBrowserClick.should.have.been.calledWith('label[for="radioButtonID"]');
-      });
+    return browser
+      .selectRadioButtonFromLabel('#fieldSelector')
+      .then(() => stubBrowserClick.should.have.been.calledWith('label[for="radioButtonID"]'));
   });
 
   it('should properly tick checkbox', function () {
@@ -66,16 +64,11 @@ describe('Custom Form Browser Commands', function () {
     stubBrowserIsSelected.onFirstCall().resolves(true);
     stubBrowserIsSelected.onSecondCall().resolves(false);
 
-    return browser.tickCheckbox('#fieldSelector')
-      .then(function () {
-        return stubBrowserClick.should.have.been.callCount(0);
-      })
-      .then(function () {
-        return browser.tickCheckbox('#fieldSelector');
-      })
-      .then(function () {
-        return stubBrowserClick.should.have.been.calledWith('#fieldSelector');
-      });
+    return browser
+      .tickCheckbox('#fieldSelector')
+      .then(() => stubBrowserClick.should.have.been.callCount(0))
+      .then(() => browser.tickCheckbox('#fieldSelector'))
+      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
   });
 
   it('should properly untick checkbox', function () {
@@ -86,16 +79,11 @@ describe('Custom Form Browser Commands', function () {
     stubBrowserIsSelected.onFirstCall().resolves(false);
     stubBrowserIsSelected.onSecondCall().resolves(true);
 
-    return browser.untickCheckbox('#fieldSelector')
-      .then(function () {
-        return stubBrowserClick.should.have.been.callCount(0);
-      })
-      .then(function () {
-        return browser.untickCheckbox('#fieldSelector');
-      })
-      .then(function () {
-        return stubBrowserClick.should.have.been.calledWith('#fieldSelector');
-      });
+    return browser
+      .untickCheckbox('#fieldSelector')
+      .then(() => stubBrowserClick.should.have.been.callCount(0))
+      .then(() => browser.untickCheckbox('#fieldSelector'))
+      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
   });
 
   it('should fill in form with given data', function () {
@@ -112,9 +100,9 @@ describe('Custom Form Browser Commands', function () {
     const stubSetValue = sandbox.stub(form, 'setValueToField');
     stubSetValue.onFirstCall().resolves('setValue');
 
-    return browser.fillInForm(stubFieldsToID, stubData).then(function () {
-      return stubSetValue.should.have.been.calledTwice;
-    });
+    return browser
+      .fillInForm(stubFieldsToID, stubData)
+      .then(() => stubSetValue.should.have.been.calledTwice);
   });
 
 });
