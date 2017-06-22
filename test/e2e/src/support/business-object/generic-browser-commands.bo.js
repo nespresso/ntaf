@@ -104,7 +104,7 @@ browser.addCommand('goToLastCommand', function () {
  * @method seeCommandTitle
  */
 browser.addCommand('seeCommandTitle', function (commandTitle) {
-  logger.info('Check that the command title is equal to "' + commandTitle + '".',
+  logger.info(`Check that the command title is equal to "${commandTitle}".`,
     {
       file: __filename,
       method: 'browser.seeCommandTitle',

@@ -1,6 +1,6 @@
 'use strict';
 
-require('app-module-path').addPath(__dirname + '/../');
+require('app-module-path').addPath(__dirname + '/../../');
 
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');

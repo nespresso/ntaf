@@ -42,6 +42,22 @@ class FormBrowserCommandsPage {
     return browser.getValue(this.pageElements.type);
   }
 
+  getSearchDetails() {
+    const searchDetails = {};
+
+    const addSearchDetailsAttribute = (attribute, element) =>
+      browser
+        .getValue(this.pageElements[element])
+        .then(value => searchDetails[attribute] = value);
+
+    const promises = [];
+    promises.push(addSearchDetailsAttribute('command', 'command'));
+    promises.push(addSearchDetailsAttribute('type', 'type'));
+
+    return Promise.all(promises)
+      .then(() => Promise.resolve(searchDetails));
+  }
+
 }
 
 module.exports = new FormBrowserCommandsPage();

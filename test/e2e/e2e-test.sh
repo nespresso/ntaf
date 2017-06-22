@@ -28,7 +28,16 @@ cp ../test/e2e/src/support/page-object/* src/support/page-object/.
 cp ../test/e2e/src/support/helper/* src/support/helper/.
 cp ../test/e2e/src/support/data/* src/support/data/.
 cp ../test/e2e/conf/realm/* conf/realm/.
+cp ../test/e2e/test/* test/.
 echo "Test scenarios copied to test project."
+
+echo "Running unit tests..."
+npm run test-unit
+echo "Unit tests run."
+
+echo "Running unit tests with coverage..."
+npm run test-unit-with-coverage
+echo "Unit tests with coverage run."
 
 echo "Starting web sever..."
 npm install http-server -g
@@ -43,9 +52,9 @@ echo "Running end-to-end tests on form_local realm..."
 npm run test -- --realm='form_local' || ( kill $! && exit 1 )
 echo "End-to-end tests run on form_local realm".
 
-echo "Checking test results..."
+echo "Checking end-to-end test results..."
 node check-test-results || ( kill $! && exit 1 )
-echo "Test results checked..."
+echo "End-to-end test results checked..."
 
 echo "Stopping web server..."
 kill $!

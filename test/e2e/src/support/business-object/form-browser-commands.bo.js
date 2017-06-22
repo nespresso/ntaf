@@ -19,6 +19,14 @@ class FormBrowserCommands {
       .then(() => this.formBrowserCommandsPage.getDeprecatedYes().should.eventually.equal(true));
   }
 
+  seeSearchDetailsWithParamater(expectedDetails) {
+    return this.formBrowserCommandsPage.getSearchDetails()
+      .then(actualDetails => Promise.all([
+        actualDetails.command.should.equal(expectedDetails.command),
+        actualDetails.type.should.equal(expectedDetails.type),
+      ]));
+  }
+
 }
 
 const formBrowserCommands = new FormBrowserCommands(
