@@ -8,7 +8,7 @@ class GenericBrowserCommands {
   }
 
   seeNumberOfCommands(expectedNumberOfCommands) {
-    return expect(this.genericBrowserCommandsPage.getNumberOfCommands()).to.eventually.equal(parseInt(expectedNumberOfCommands, 10));
+    return this.genericBrowserCommandsPage.getNumberOfCommands().should.eventually.equal(parseInt(expectedNumberOfCommands, 10));
   }
 
   goToFirstCommand() {
