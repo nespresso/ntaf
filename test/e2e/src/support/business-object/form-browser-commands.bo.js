@@ -11,24 +11,12 @@ class FormBrowserCommands {
   }
 
   seeSearchDetails() {
-    const _this = this;
-
-    return _this.formBrowserCommandsPage.getCommand().should.eventually.equal('command...')
-      .then(function () {
-        return _this.formBrowserCommandsPage.getUseful().should.eventually.equal(true);
-      })
-      .then(function () {
-        return _this.formBrowserCommandsPage.getNice().should.eventually.equal(false);
-      })
-      .then(function () {
-        return _this.formBrowserCommandsPage.getType().should.eventually.equal('t2');
-      })
-      .then(function () {
-        return _this.formBrowserCommandsPage.getDeprecatedNo().should.eventually.equal(false);
-      })
-      .then(function () {
-        return _this.formBrowserCommandsPage.getDeprecatedYes().should.eventually.equal(true);
-      });
+    return this.formBrowserCommandsPage.getCommand().should.eventually.equal('command...')
+      .then(() => this.formBrowserCommandsPage.getUseful().should.eventually.equal(true))
+      .then(() => this.formBrowserCommandsPage.getNice().should.eventually.equal(false))
+      .then(() => this.formBrowserCommandsPage.getType().should.eventually.equal('t2'))
+      .then(() => this.formBrowserCommandsPage.getDeprecatedNo().should.eventually.equal(false))
+      .then(() => this.formBrowserCommandsPage.getDeprecatedYes().should.eventually.equal(true));
   }
 
 }
