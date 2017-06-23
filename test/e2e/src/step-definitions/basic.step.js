@@ -2,6 +2,10 @@
 
 const urls = require('src/support/helper/urls');
 
+const goToPage = function(page) {
+  return browser.url('/' + urls[page]);
+};
+
 module.exports = function () {
 
   this.Given(/^I am on the (.+) page$/, function (page) {
@@ -13,7 +17,3 @@ module.exports = function () {
   });
 
 };
-
-function goToPage(page) {
-  return browser.url('/' + urls[page]);
-}

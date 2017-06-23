@@ -7,20 +7,20 @@ module.exports = function (grunt) {
       test: {
         options: {
           reporter: 'spec',
-          require: ['test/test-common'],
+          require: ['test/unit/test-common'],
         },
-        src: ['test/**/*.test.js'],
+        src: ['test/unit/**/*.test.js'],
       },
     },
 
     mocha_istanbul: {
       coverage: {
-        src: ['test/**/*.test.js'],
+        src: ['test/unit/**/*.test.js'],
         options: {
           coverageFolder: 'output/coverage',
           reportFormats: ['html', 'lcovonly'],
           root: './lib',
-          require: ['test/test-common'],
+          require: ['test/unit/test-common'],
         },
       },
     },
