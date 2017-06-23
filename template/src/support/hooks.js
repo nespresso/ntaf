@@ -17,8 +17,7 @@ const hooks = function () {
 
     if (scenario.isFailed()) {
       const date = new Date();
-      const formattedDate = date.getDay() + '-' + date.getMonth() +
-        '-' + date.getYear() + ' ' + date.getHours() + date.getMinutes() + date.getSeconds();
+      const formattedDate = `${date.getYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
       browser.saveScreenshot(`./output/errorShots/screenshot-error-${formattedDate}.png`);
       callback();
     } else {
