@@ -2,9 +2,10 @@
 
 class GenericBrowserCommands {
 
-  constructor(genericBrowserCommandsPage, genericBrowserCommandPage) {
+  constructor(genericBrowserCommandsPage, genericBrowserCommandPage, scrollAndClickPage) {
     this.genericBrowserCommandsPage = genericBrowserCommandsPage;
     this.genericBrowserCommandPage = genericBrowserCommandPage;
+    this.scrollAndClickPage = scrollAndClickPage;
   }
 
   seeNumberOfCommands(expectedNumberOfCommands) {
@@ -31,11 +32,20 @@ class GenericBrowserCommands {
     return this.genericBrowserCommandPage.waitForAllDetailsToBeDisplayed();
   }
 
+  fillInCommand() {
+    return this.scrollAndClickPage.fillInCommand();
+  }
+
+  saveCommand() {
+    return this.scrollAndClickPage.saveCommand();
+  }
+
 }
 
 const genericBrowserCommands = new GenericBrowserCommands(
   require('src/support/page-object/generic-browser-commands.page'),
-  require('src/support/page-object/generic-browser-command.page')
+  require('src/support/page-object/generic-browser-command.page'),
+  require('src/support/page-object/scroll-and-click.page')
 );
 
 /**
@@ -126,6 +136,36 @@ browser.addCommand('seeAllCommandDetails', function () {
     }
   );
   return genericBrowserCommands.seeAllCommandDetails();
+});
+
+/**
+ * @alias GenericBrowserCommands.fillInCommand
+ * @memberOf browser
+ * @method fillInCommand
+ */
+browser.addCommand('fillInCommand', function () {
+  logger.info('Fill in command',
+    {
+      file: __filename,
+      method: 'browser.fillInCommand',
+    }
+  );
+  return genericBrowserCommands.fillInCommand();
+});
+
+/**
+ * @alias GenericBrowserCommands.saveCommand
+ * @memberOf browser
+ * @method saveCommand
+ */
+browser.addCommand('saveCommand', function () {
+  logger.info('Save command',
+    {
+      file: __filename,
+      method: 'browser.saveCommand',
+    }
+  );
+  return genericBrowserCommands.saveCommand();
 });
 
 module.exports = genericBrowserCommands;

@@ -2,7 +2,7 @@
 
 const urls = require('src/support/helper/urls');
 
-const goToPage = function(page) {
+const goToPage = function (page) {
   return browser.url('/' + urls[page]);
 };
 
