@@ -9,5 +9,5 @@ const checkResults = function (realm, expectedPassedTests) {
   }
 };
 
-checkResults('all_local', 18);
+checkResults('all_local', 21);
 checkResults('form_local', 3);
