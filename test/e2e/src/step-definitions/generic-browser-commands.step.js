@@ -20,11 +20,19 @@ module.exports = function () {
     }
   });
 
-  this.Then(/^I should see (\d+) command(s)/, function (expectedNumberOfCommands) {
+  this.Then(/^I fill in the command$/, function () {
+    return browser.fillInCommand();
+  });
+
+  this.Then(/^I save the command$/, function () {
+    return browser.saveCommand();
+  });
+
+  this.Then(/^I should see (\d+) command(s)$/, function (expectedNumberOfCommands) {
     return browser.seeNumberOfCommands(expectedNumberOfCommands);
   });
 
-  this.Then(/^I should see "(.+)" command title/, function (commandTitle) {
+  this.Then(/^I should see "(.+)" command title$/, function (commandTitle) {
     return browser.seeCommandTitle(commandTitle);
   });
 

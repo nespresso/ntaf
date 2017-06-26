@@ -24,3 +24,8 @@ Feature: Generic browser commands
     Given I am on the generic browser commands page
     When I go to the first command
     Then I should see all sections
+
+  Scenario: scrollAndClick
+    Given I am on the scroll and click page
+    When I fill in the command
+    And I save the command
