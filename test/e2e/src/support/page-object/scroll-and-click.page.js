@@ -14,7 +14,7 @@ class ScrollAndClickPage {
   }
 
   saveCommand() {
-    return browser.scrollAndClick(this.pageElements.save, 0, -100);
+    return browser.scrollAndClick(this.pageElements.save, 0, 100);
   }
 
 }
