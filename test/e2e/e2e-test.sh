@@ -41,7 +41,7 @@ echo "Unit tests with coverage run."
 
 echo "Starting web sever..."
 npm install http-server -g
-http-server website &
+http-server -p8080 website &
 echo "Web server started."
 
 echo "Running end-to-end tests on all_local realm..."

@@ -7,7 +7,7 @@ const config = {
     './src/features/**/*.feature',
   ],
 
-  baseUrl: 'https://to_be_defined',
+  baseUrl: 'http://localhost:8080',
   locale: 'en',
 
   capabilities: [{

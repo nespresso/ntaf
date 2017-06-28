@@ -4,7 +4,7 @@ const merge = require('merge');
 
 const config = {
   maxInstances: 1,
-  baseUrl: 'https://to_be_defined',
+  baseUrl: 'http://localhost:8080',
   locale: 'en',
 
   // capabilities: [{

@@ -6,8 +6,16 @@
 1. Create a PR
 1. Check that the builds are green
 1. Fix any SonarQube issues that would have pop up during the builds
-1. Assign aracodon and alcaneo as reviewers of the PR
+1. Assign racodond (David RACODON) and alcaneo (Nicolas CHEUTIN) as reviewers of the PR
 1. Once approved, merge the PR (prefer Squash and merge)
+
+## Building and Testing
+
+* To run unit tests: `npm run test`
+* To run end-to-end tests: `npm run e2e-test`
+  * If you are behind a proxy, uncomment (and update if necessary), lines about proxy settings in `lib/conf/wdio.conf.js`
+  * To get some visual feedback, use Chrome by uncommenting Chrome capability (and commenting out PhantomJS capability) in `lib/conf/wdio.conf` 
+
 
 ## Publishing a new version of the npm package
 Requirements:
