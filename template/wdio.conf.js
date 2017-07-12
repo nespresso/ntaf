@@ -25,6 +25,7 @@ const config = {
   //
   //   browserName: 'chrome',
   //   chromeOptions: {
+  //   // args: ['--headless'], // To run in headless mode
   //     prefs: {
   //       profile: {
   //         default_content_setting_values: { images: 2 }, // Do not load images for tests to run faster
@@ -33,6 +34,10 @@ const config = {
   //       credentials_enable_service: false, // Deactivate password manager
   //     }
   //   },
+  //
+  // browserName: 'firefox',
+  // acceptInsecureCerts: true,
+  //
   //   proxy: {
   //     proxyType: 'system',
   //   },
