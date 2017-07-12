@@ -14,7 +14,7 @@
 * To run unit tests: `npm run test`
 * To run end-to-end tests: `npm run e2e-test`
   * If you are behind a proxy, uncomment (and update if necessary), lines about proxy settings in `lib/conf/wdio.conf.js`
-  * To get some visual feedback, use Chrome by uncommenting Chrome capability (and commenting out PhantomJS capability) in `lib/conf/wdio.conf` 
+  * To get some visual feedback, use Chrome without headless mode by commenting-out `args: ['--headless'],` in `lib/conf/wdio.conf` 
 
 
 ## Publishing a new version of the npm package

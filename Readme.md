@@ -9,9 +9,9 @@ It is based on [WebdriverIO](http://webdriver.io/) and [cucumber](https://cucumb
 Integrating this module provides a ready-to-go environment to write and execute functional test scenarios.
 It includes:
 * A template to generate your test automation project so that you don't start from a blank page
-* The necessary packages pre-configured to be able to run your scenarios without requiring any other setup. Selenium, PhantomJS browser already coming with it.
+* The necessary packages pre-configured to be able to run your scenarios without requiring any other setup. The only requirement is to have a browser on the machine running the tests: either Chrome or Firefox.
 * [Guidelines and good practices](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md) to ensure great maintainability of test scenarios
-* A decoupled architecture between scenarios and datasets to allow high execution scalability
+* A decoupled architecture between scenarios and data sets to allow high execution scalability
 * Some useful [custom browser commands](http://webdriver.io/guide/usage/customcommands.html) such as `fillInForm` to ease and accelerate test automation writing. See related [JSDoc](https://nespresso.github.io/ntaf/) for more details.
 
 This framework is suitable for big solutions that will be covered by an important number of scenarios.
