@@ -37,6 +37,10 @@ const config = {
     //     credentials_enable_service: false, // Deactivate password manager
     //   }
     // },
+    //
+    // browserName: 'firefox',
+    // acceptInsecureCerts: true,
+    //
     // proxy: {
     //   proxyType: 'system',
     // },
