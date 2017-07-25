@@ -36,7 +36,6 @@ const config = {
   // ],
 
   // seleniumInstallArgs: {
-  //   // Used by selenium-standalone to download dependencies
   //   proxy: 'http://localhost:3128',
   // },
 
