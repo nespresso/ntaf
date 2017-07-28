@@ -1,13 +1,11 @@
-#!/usr/bin/env node
 'use strict';
 
-const checkResults = function (realm, expectedPassedTests) {
-  const actualPassedTests = parseFloat(require(`./output-${realm}/json/report.json`).state.passed, 10);
+function checkTestResults(tests, env, browser, expectedPassedTests) {
+  const actualPassedTests = parseFloat(require(`./output-json/${tests}-${env}-${browser}/report.json`).state.passed, 10);
   if (actualPassedTests !== expectedPassedTests) {
-    console.log(`[ERROR] Checking results for realm '${realm}': Passed tests = ${actualPassedTests}, expected = ${expectedPassedTests}.`);
+    console.log(`[ERROR] Checking test results for ${tests}/${env}/${browser}: Passed tests = ${actualPassedTests}, expected = ${expectedPassedTests}.`);
     process.exit(1);
   }
-};
+}
 
-checkResults('all_local', 21);
-checkResults('form_local', 3);
+module.exports = checkTestResults;

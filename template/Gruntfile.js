@@ -1,6 +1,5 @@
 'use strict';
 
-const merge = require('merge');
 const logger = require('ntaf/lib/helper/logger');
 
 module.exports = function (grunt) {
@@ -69,7 +68,7 @@ module.exports = function (grunt) {
     const tags = grunt.option('tags');
     const timeout = grunt.option('timeout');
     const realm = grunt.option('realm');
-    let config = { webdriver: { options: { cucumberOpts: {} } } };
+    const config = { webdriver: { options: { cucumberOpts: {} }, test: {} } };
 
     if (baseUrl) {
       config.webdriver.options.baseUrl = baseUrl;
@@ -84,12 +83,7 @@ module.exports = function (grunt) {
     }
 
     if (realm) {
-      const realmConfig = {
-        webdriver: {
-          options: require('./conf/realm/' + realm),
-        },
-      };
-      config = merge.recursive(true, realmConfig, config);
+      config.webdriver.test.configFile = './conf/realm/' + realm;
       logger.info('Realm: ' + realm);
     }
 

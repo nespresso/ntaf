@@ -30,7 +30,8 @@
     "test": "grunt test",
     "test-with-coverage": "grunt test-with-coverage",
     "doc": "grunt doc",
-    "e2e-test": "grunt e2e-test"
+    "e2e-test": "grunt e2e-test",
+    "e2e-test-docker": "grunt e2e-test-docker"
   },
   "dependencies": {
     "app-module-path": "2.2.0",

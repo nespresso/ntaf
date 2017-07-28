@@ -1,0 +1,47 @@
+version: '3'
+services:
+  website:
+    image: nginx:1.13.3
+    container_name: website
+    volumes:
+      - ./test/e2e/website:/usr/share/nginx/html
+    networks:
+      e2e_test:
+        ipv4_address: 172.16.238.10
+  chrome:
+    image: selenium/standalone-chrome:local
+    container_name: chrome
+    networks:
+      e2e_test:
+        ipv4_address: 172.16.238.11
+  firefox:
+    image: selenium/standalone-firefox:3.4.0
+    container_name: firefox
+    networks:
+      e2e_test:
+        ipv4_address: 172.16.238.12
+  e2e-test:
+    image: node:6.11.1
+    container_name: e2e_tests
+    command: /data/test/e2e/run-e2e-test-docker.sh
+    volumes:
+       - .:/data
+    environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=website,chrome,firefox
+    depends_on:
+      - firefox
+      - chrome
+      - website
+    networks:
+      e2e_test:
+        ipv4_address: 172.16.238.13
+
+networks:
+  e2e_test:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
