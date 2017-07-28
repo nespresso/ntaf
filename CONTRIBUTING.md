@@ -12,9 +12,8 @@
 ## Building and Testing
 
 * To run unit tests: `npm run test`
-* To run end-to-end tests: `npm run e2e-test`
-  * If you are behind a proxy, uncomment (and update if necessary), lines about proxy settings in `lib/conf/wdio.conf.js`
-  * To get some visual feedback, use Chrome without headless mode by commenting-out `args: ['--headless'],` in `lib/conf/wdio.conf` 
+* To run end-to-end tests: `npm run e2e-test`. If you are behind a proxy, uncomment (and update if necessary) line `seleniumInstallArgs: { // proxy: 'http://localhost:3128'`, in `lib/conf/wdio.conf.js`.
+* To run end-to-end tests in Docker containers: `npm run e2e-test-docker`. If you are behind a proxy, run `npm run e2e-test-docker -- --proxyPort=XXXX` instead.
 
 
 ## Publishing a new version of the npm package
