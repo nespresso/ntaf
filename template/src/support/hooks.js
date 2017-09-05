@@ -1,5 +1,7 @@
 'use strict';
 
+const dateFormat = require('dateformat');
+
 const hooks = function () {
   this.Before(function () {
     browser.deleteCookie();
@@ -16,8 +18,7 @@ const hooks = function () {
     }
 
     if (scenario.isFailed()) {
-      const date = new Date();
-      const errorDate = `${date.getYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
+      const errorDate = dateFormat(new Date(), 'yyyy-mm-dd-HHMMss');
       browser.saveScreenshot(`./output/errorShots/screenshot-error-${errorDate}.png`);
       callback();
     } else {
