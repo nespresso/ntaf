@@ -5,14 +5,6 @@ set -euo pipefail
 npm run test
 npm run test-with-coverage
 npm run doc
-
-# Begin workaround to build selenium-chrome image with ChromeDriver 2.31
-git clone https://github.com/SeleniumHQ/docker-selenium.git
-cd docker-selenium/
-VERSION=local make build
-cd ..
-# End workaround to build selenium-chrome image with ChromeDriver 2.31
-
 npm run e2e-test-docker
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
