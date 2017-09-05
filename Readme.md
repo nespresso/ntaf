@@ -62,6 +62,7 @@ Run `npm run test` to launch the tests as they would be played remotely.
 By default it runs all the tests tagged as `@nrt`.
 
 Run command line `npm run test-local` to run the tests with your local configuration.
+Note that the local configuration has to be generated first (see Configuration section).
 
 ### Configuration
 The global configuration is set in the `wdio.conf.js` file in the root folder of your project.
@@ -118,7 +119,7 @@ For example:
 `
 1. In IntelliJ, Run > Debug 'My Node.js Remote Debug'
 1. In IntelliJ, add breakpoints to your code
-1. In a terminal, run `npm run test-debug` (usually targeting a single test: `npm run test-debug -- --tags='@mytest'`)
+1. In a terminal, run `npm run test-debug` (usually targeting a single test: `npm run test-debug -- --tags='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
 1. Once the first breakpoint is reached, use standard IntelliJ Debug window to move forward and debug.
 
 
