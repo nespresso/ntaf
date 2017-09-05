@@ -9,13 +9,13 @@ services:
       e2e_test:
         ipv4_address: 172.16.238.10
   chrome:
-    image: selenium/standalone-chrome:local
+    image: selenium/standalone-chrome:3.5.2
     container_name: chrome
     networks:
       e2e_test:
         ipv4_address: 172.16.238.11
   firefox:
-    image: selenium/standalone-firefox:3.4.0
+    image: selenium/standalone-firefox:3.5.2
     container_name: firefox
     networks:
       e2e_test:
