@@ -2,6 +2,8 @@
 'use strict';
 
 const fs = require('fs-extra');
+const path = require('path');
+
 
 const emptyDirectories = [
   'src/features',
@@ -21,9 +23,11 @@ const onError = function (err) {
 
 console.log('Creating test project structure...');
 
+var moduleDir = path.join(__dirname, '/../');
+
 const allPromises = [
-  fs.copy('node_modules/ntaf/template/', '.'),
-  fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
+  fs.copy(moduleDir + '/template/', '.'),
+  fs.copy(moduleDir + '/Readme.md', 'Readme.md'),
 ];
 
 emptyDirectories.forEach(directory => {
