@@ -84,7 +84,6 @@ module.exports = function (grunt) {
 
     if (realm) {
       config.webdriver.test.configFile = './conf/realm/' + realm;
-      logger.info('Realm: ' + realm);
     }
 
     return config;
