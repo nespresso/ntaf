@@ -40,8 +40,12 @@
     "chai-as-promised": "7.0.0",
     "cucumber": "2.3.1",
     "dateformat": "2.0.0",
+    "del": "3.0.0",
     "faker": "4.1.0",
     "fs-extra": "3.0.1",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-mocha": "4.3.1",
+    "gulp-webdriver": "2.0.3",
     "grunt": "1.0.1",
     "grunt-cli": "1.2.0",
     "grunt-contrib-clean": "1.1.0",
@@ -67,7 +71,12 @@
     "wdio-selenium-standalone-service": "0.0.9",
     "wdio-spec-reporter": "0.1.0",
     "webdriverio": "4.8.0",
-    "winston": "2.3.1"
+    "winston": "2.3.1",
+    "yargs": "8.0.2"
+  },
+  "devDependencies": {
+    "gulp-debug": "3.1.0",
+    "gulp-debug-streams": "3.0.0"
   },
   "engines": {
     "node": ">= 6.10.3"
