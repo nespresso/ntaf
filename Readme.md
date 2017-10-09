@@ -25,29 +25,8 @@ Note that it requires good development skills as well as good knowledge and unde
 
 ### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
-2. Add a `package.json` file into <AUTOMATED_TESTS> based on the below model:
-```
-{
-    "name": "my-automated-tests",
-    "version": "1.0.0",
-    "dependencies": {
-      "ntaf": "X.X.X",
-      "grunt": "1.0.1"
-    },
-    "scripts": {
-      "clean": "grunt clean",
-      "generate-local-conf": "grunt copy:generateLocalConf",
-      "prepare": "grunt prepare",
-      "test": "grunt test-functional",
-      "test-local": "grunt test-functional-local",
-      "test-debug": "grunt test-functional-debug",
-      "test-unit": "grunt test-unit",
-      "test-unit-with-coverage": "grunt test-unit-with-coverage"
-    },
-    ...
-}    
-```
-3. Install the project dependencies by running the following command from <AUTOMATED_TESTS>: `npm install`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
+2. Create a new NPM project by executing `npm init`. More information about the different options [here](https://docs.npmjs.com/getting-started/using-a-package.json).
+3. Install NTAF package by running the following command from <AUTOMATED_TESTS>: `npm install --save ntaf`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
 4. From <AUTOMATED_TESTS>, run `./node_modules/.bin/ntaf install` to generate the skeleton of your test project.
 
 ### Behind a Proxy
@@ -59,19 +38,20 @@ https-proxy=http://localhost:3128
 
 
 ## Running Tests
-Run `npm run test` to launch the tests as they would be played remotely.
-By default it runs all the tests tagged as `@nrt`.
+Run `./node_modules/.bin/ntaf run` to launch the tests as they would be played remotely.
 
-Run command line `npm run test-local` to run the tests with your local configuration.
+Run command line `./node_modules/.bin/ntaf run WDIO_CONFIG_FILE` to run the tests with a different configuration.
+
+To run functional tests using your local configuration: `./node_modules/.bin/ntaf run wdio.local.conf.js`
 Note that the local configuration has to be generated first (see Configuration section).
 
 ### Configuration
 The global configuration is set in the `wdio.conf.js` file in the root folder of your project.
 
-The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running `npm run generate-local-conf`.
+The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running `./node_modules/.bin/ntaf generate-local-conf`.
 
 ### Parameters
-To pass parameters to the command, add `--`: `npm run test -- --parameter1=value1`
+To pass parameters to the command, add `--`: `./node_modules/.bin/ntaf run --parameter1=value1`
 
 #### URL of the Website to Test
 Add command line parameter `--baseUrl="https://base.url"` or update the wdio configuration file accordingly.
@@ -97,8 +77,8 @@ Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `con
  
  
 For example:
-* To run NRT tests from the catalog domain on mywebsite.com: `npm run test -- --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
-* To run NRT tests on realm `us_dev`: `npm run test -- --realm="us_dev" --tags='@nrt'`
+* To run NRT tests from the catalog domain on mywebsite.com: `./node_modules/.bin/ntaf run --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
+* To run NRT tests on realm `us_dev`: `./node_modules/.bin/ntaf run --realm="us_dev" --tags='@nrt'`
 
 
 ## Running Tests in Debug Mode
@@ -120,7 +100,7 @@ For example:
 `
 1. In IntelliJ, Run > Debug 'My Node.js Remote Debug'
 1. In IntelliJ, add breakpoints to your code
-1. In a terminal, run `npm run test-debug` (usually targeting a single test: `npm run test-debug -- --tags='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
+1. In a terminal, run `./node_modules/.bin/ntaf run wdio.debug.conf.js` (usually targeting a single test: `./node_modules/.bin/ntaf run wdio.debug.conf.js --tags='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
 1. Once the first breakpoint is reached, use standard IntelliJ Debug window to move forward and debug.
 
 

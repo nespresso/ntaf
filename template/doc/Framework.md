@@ -32,11 +32,11 @@ The structure mainly follow [Cucumber.js](https://github.com/cucumber/cucumber-j
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">errorShots/</font>** error screenshots  
 **<font color="#6A76FC">test/</font>** unit tests  
 **.npmrc** npm configuration specific to this project  
-**package.json** npm configuration for the project, including dependencies. Used by npm on `npm install` and `npm run`  
+**package.json** npm configuration for the project, including dependencies. Used by npm on `npm install`  
 **Readme.md** getting started documentation  
-**wdio.conf.js** webdriver.io configuration. Used by `npm run test`  
-**wdio.local.conf.js** webdriver.io configuration (inherit from wdio.conf.js) to run test locally. Used by `npm run test-local`  
-**wdio.debug.conf.js** webdriver.io configuration (inherit from wdio.local.conf.js) for debugging purposes. Used by `npm run test-debug`  
+**wdio.conf.js** webdriver.io configuration. Used by `./node_modules/.bin/ntaf run`  
+**wdio.local.conf.js** webdriver.io configuration (inherit from wdio.conf.js) to run test locally. Used by `./node_modules/.bin/ntaf run wdio.local.conf.js`  
+**wdio.debug.conf.js** webdriver.io configuration (inherit from wdio.local.conf.js) for debugging purposes. Used by `./node_modules/.bin/ntaf run wdio.debug.conf.js`
 
 ## Code structure
 
