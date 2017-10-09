@@ -10,8 +10,8 @@ const gulpMocha = require('gulp-mocha');
 const debug = require('gulp-debug');
 const webdriver = require('gulp-webdriver');
 const yargs = require('yargs');
+const wdioOptions = { cucumberOpts: {} };
 let configFile;
-let wdioOptions = { cucumberOpts: {} };
 
 gulp.task('clean', () => gulpDel(['output', 'log']));
 
@@ -39,11 +39,17 @@ gulp.task('test-unit-with-coverage', () => {
   //To follow coming updates
 });
 
+gulp.task('generate-local-conf', () => {
+  console.log('Copy configuration files.');
+  return gulp.src('./node_modules/ntaf/template/wdio.*.conf.js')
+    .pipe(gulp.dest('./'));
+});
+
 /**
  * Run functional tests with given configuration.
  * @param {String} config
  */
-const runProject = (config) => {
+const runProject = config => {
   if (!config.config_file) {
     configFile = 'wdio.conf.js';
   } else {
@@ -67,7 +73,7 @@ const runProject = (config) => {
   }
 
   if (config.realm.length) {
-    configFile = './conf/realm/' + config.realm + '.js';
+    configFile = `./conf/realm/${config.realm}.js`;
   }
 
   gulp.task('test-functional')();
@@ -116,34 +122,38 @@ const installProject = () => {
     );
 };
 
-yargs
-  .command({
+yargs.command({
     command: 'install',
     desc: 'Create project structure tree',
     handler: () => installProject(),
   })
   .command({
+    command: 'generate-local-conf',
+    desc: 'Generate or replace existing local configuration.',
+    handler: () => gulp.task('generate-local-conf')(),
+  })
+  .command({
     command: 'run [config_file]',
     desc: 'Run functional tests with given configuration.',
-    builder: (yargs) => {
-      yargs.option('baseUrl', {
+    handler: argv => runProject(argv),
+    builder: yargsObj => {
+      yargsObj.option('baseUrl', {
         describe: 'Base url to override wdio.conf.js',
         default: '',
       });
-      yargs.option('tags', {
+      yargsObj.option('tags', {
         describe: 'Tags to override wdio.conf.js',
         default: '',
       });
-      yargs.option('timeout', {
+      yargsObj.option('timeout', {
         describe: 'Cucumber timeout to override wdio.conf.js',
         default: '',
       });
-      yargs.option('realm', {
+      yargsObj.option('realm', {
         describe: 'Realm configuration to be used',
         default: '',
       });
     },
-    handler: argv => runProject(argv),
   })
   .command({
     command: 'test-unit',
@@ -155,5 +165,6 @@ yargs
     desc: 'Run unit tests with code coverage computation.',
     handler: () => gulp.task('test-unit-with-coverage')(),
   })
+  .demandCommand()
   .help()
   .argv;
