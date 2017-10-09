@@ -35,27 +35,27 @@ cp -R ../test/e2e/test/* test/.
 echo "Test scenarios copied to test project."
 
 echo "Running unit tests..."
-npm run test-unit
+./node_modules/.bin/ntaf test-unit
 echo "Unit tests run."
 
-echo "Running unit tests with coverage..."
-npm run test-unit-with-coverage
-echo "Unit tests with coverage run."
+#echo "Running unit tests with coverage..."
+#./node_modules/.bin/ntaf run test-unit-with-coverage
+#echo "Unit tests with coverage run."
 
 echo "Running end-to-end tests on all-docker-chrome realm..."
-npm run test -- --realm='all-docker-chrome'
+./node_modules/.bin/ntaf run --realm='all-docker-chrome'
 echo "End-to-end tests run on all-docker-chrome realm".
 
 echo "Running end-to-end tests on form-docker-chrome realm..."
-npm run test -- --realm='form-docker-chrome'
+./node_modules/.bin/ntaf run --realm='form-docker-chrome'
 echo "End-to-end tests run on form-docker-chrome realm".
 
 echo "Running end-to-end tests on all-docker-firefox realm..."
-npm run test -- --realm='all-docker-firefox'
+./node_modules/.bin/ntaf run --realm='all-docker-firefox'
 echo "End-to-end tests run on all-docker-firefox realm".
 
 echo "Running end-to-end tests on form-docker-firefox realm..."
-npm run test -- --realm='form-docker-firefox'
+./node_modules/.bin/ntaf run --realm='form-docker-firefox'
 echo "End-to-end tests run on form-docker-firefox realm".
 
 echo "Checking end-to-end test results..."
