@@ -12,7 +12,7 @@ const hooks = function () {
     // Delete cached data files
     const regexPathData = /src\/support\/data/;
     for (const key in require.cache) {
-      if (require.cache.hasOwnProperty(key) && key.match(regexPathData)) {
+      if (require.cache[key] && key.match(regexPathData)) {
         delete require.cache[key];
       }
     }

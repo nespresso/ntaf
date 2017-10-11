@@ -7,7 +7,7 @@ npm run test-with-coverage
 npm run doc
 npm run e2e-test-docker
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
                 -Dsonar.analysis.mode=preview \
                 -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
@@ -15,7 +15,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; t
                 -Dsonar.github.oauth=$GITHUB_TOKEN \
                 -Dsonar.login=$SONARQUBE_TOKEN
 
-elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_NODE_VERSION" == "6" ]; then
+elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
                 -Dsonar.login=$SONARQUBE_TOKEN \
                 -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info

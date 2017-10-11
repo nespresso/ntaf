@@ -20,7 +20,7 @@ npm install
 echo "Test project dependencies installed."
 
 echo "Generating test project canvas..."
-node ./node_modules/.bin/ntaf install
+npx ntaf install
 echo "Test project canvas generated..."
 
 echo "Copying test scenarios to test project..."
@@ -35,27 +35,27 @@ cp -R ../test/e2e/test/* test/.
 echo "Test scenarios copied to test project."
 
 echo "Running unit tests..."
-./node_modules/.bin/ntaf test-unit
+npx ntaf test-unit
 echo "Unit tests run."
 
 #echo "Running unit tests with coverage..."
-#./node_modules/.bin/ntaf run test-unit-with-coverage
+#npx ntaf run test-unit-with-coverage
 #echo "Unit tests with coverage run."
 
 echo "Running end-to-end tests on all-docker-chrome realm..."
-./node_modules/.bin/ntaf run --realm='all-docker-chrome'
+npx ntaf run --realm='all-docker-chrome'
 echo "End-to-end tests run on all-docker-chrome realm".
 
 echo "Running end-to-end tests on form-docker-chrome realm..."
-./node_modules/.bin/ntaf run --realm='form-docker-chrome'
+npx ntaf run --realm='form-docker-chrome'
 echo "End-to-end tests run on form-docker-chrome realm".
 
 echo "Running end-to-end tests on all-docker-firefox realm..."
-./node_modules/.bin/ntaf run --realm='all-docker-firefox'
+npx ntaf run --realm='all-docker-firefox'
 echo "End-to-end tests run on all-docker-firefox realm".
 
 echo "Running end-to-end tests on form-docker-firefox realm..."
-./node_modules/.bin/ntaf run --realm='form-docker-firefox'
+npx ntaf run --realm='form-docker-firefox'
 echo "End-to-end tests run on form-docker-firefox realm".
 
 echo "Checking end-to-end test results..."

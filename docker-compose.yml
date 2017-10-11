@@ -21,7 +21,7 @@ services:
       e2e_test:
         ipv4_address: 172.16.238.12
   e2e-test:
-    image: node:6.11.1
+    image: node:8.6.0
     container_name: e2e_tests
     command: /data/test/e2e/run-e2e-test-docker.sh
     volumes:
