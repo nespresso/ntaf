@@ -43,7 +43,7 @@
     "del": "3.0.0",
     "faker": "4.1.0",
     "fs-extra": "3.0.1",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "https://github.com/gulpjs/gulp#4.0",
     "gulp-mocha": "4.3.1",
     "gulp-webdriver": "2.0.3",
     "grunt": "1.0.1",
