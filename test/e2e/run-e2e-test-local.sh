@@ -20,7 +20,7 @@ npm install
 echo "Test project dependencies installed."
 
 echo "Generating test project canvas..."
-node ./node_modules/.bin/ntaf install
+npx ntaf install
 echo "Test project canvas generated..."
 
 echo "Copying test scenarios to test project..."
@@ -35,11 +35,11 @@ cp -R ../test/e2e/test/* test/.
 echo "Test scenarios copied to test project."
 
 echo "Running unit tests..."
-./node_modules/.bin/ntaf test-unit
+npx ntaf test-unit
 echo "Unit tests run."
 
 #echo "Running unit tests with coverage..."
-#./node_modules/.bin/ntaf test-unit-with-coverage
+#npx ntaf test-unit-with-coverage
 #echo "Unit tests with coverage run."
 
 echo "Starting web sever..."
@@ -48,19 +48,19 @@ http-server -p8080 website &
 echo "Web server started."
 
 echo "Running end-to-end tests on all-local-chrome realm..."
-./node_modules/.bin/ntaf run --realm='all-local-chrome' || ( kill $! && exit 1 )
+npx ntaf run --realm='all-local-chrome' || ( kill $! && exit 1 )
 echo "End-to-end tests run on all-local-chrome realm".
 
 echo "Running end-to-end tests on form-local-chrome realm..."
-./node_modules/.bin/ntaf run --realm='form-local-chrome' || ( kill $! && exit 1 )
+npx ntaf run --realm='form-local-chrome' || ( kill $! && exit 1 )
 echo "End-to-end tests run on form-local-chrome realm".
 
 echo "Running end-to-end tests on all-local-firefox realm..."
-./node_modules/.bin/ntaf run --realm='all-local-firefox' || ( kill $! && exit 1 )
+npx ntaf run --realm='all-local-firefox' || ( kill $! && exit 1 )
 echo "End-to-end tests run on all-local-firefox realm".
 
 echo "Running end-to-end tests on form-local-firefox realm..."
-./node_modules/.bin/ntaf run --realm='form-local-firefox' || ( kill $! && exit 1 )
+npx ntaf run --realm='form-local-firefox' || ( kill $! && exit 1 )
 echo "End-to-end tests run on form-local-firefox realm".
 
 echo "Checking end-to-end test results..."
