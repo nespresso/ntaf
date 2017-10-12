@@ -42,20 +42,18 @@ class FormBrowserCommandsPage {
     return browser.getValue(this.pageElements.type);
   }
 
-  getSearchDetails() {
+  async getSearchDetails() {
     const searchDetails = {};
 
-    const addSearchDetailsAttribute = (attribute, element) =>
-      browser
-        .getValue(this.pageElements[element])
-        .then(value => searchDetails[attribute] = value);
+    const addSearchDetailsAttribute = async (attribute, element) =>
+      searchDetails[attribute] = await browser.getValue(this.pageElements[element]);
 
     const promises = [];
     promises.push(addSearchDetailsAttribute('command', 'command'));
     promises.push(addSearchDetailsAttribute('type', 'type'));
+    await Promise.all(promises);
 
-    return Promise.all(promises)
-      .then(() => Promise.resolve(searchDetails));
+    return searchDetails;
   }
 
 }

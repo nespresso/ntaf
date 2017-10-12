@@ -241,7 +241,7 @@ Structure:
  * `Then` steps should only contain assertions (functions starting with `see`)
 
 Example:
-```Javascript
+```JavaScript
 this.Given(/^I am customer (.+)\/(.+)/, function (userName, password) {
     return browser
       .login({ usernameField: userName, passwordField: password })
@@ -271,7 +271,7 @@ this.Then(/^I am customer (.+)\/(.+)$/, function (firstName, lastName) {
 
   
 **<font color="#FF6F6B">Bad</font>**
-```Javascript
+```JavaScript
 this.When(/^I register$/, function (callback) {
     browser
         .setValue('#ta-registration-firstName', 'Hillary')
@@ -282,7 +282,7 @@ this.When(/^I register$/, function (callback) {
 ```
 
 **<font color="#67F86F">Good</font>**
-```Javascript
+```JavaScript
 this.When(/^I register$/, function () {
     const dataObject = require('src/support/data/registration/fr-without-machine-registration-nor-welcome-offer.data');
     return browser.register(dataObject);
@@ -299,7 +299,7 @@ Methods should represent as close as possible Nespresso's business using the com
 Hide complexity of business processes such as registration which differs depending on the market and configuration.
 
 Example of a Business object:
-```Javascript
+```JavaScript
 class Login {
   
     constructor(customerComponent) {
@@ -359,7 +359,7 @@ In order to do this, a log file is generated in `log/functional-logs.log` for ea
 Note that the file is re-created for each execution to not be polluted by previous runs.
 
 The logging is done at the Business Object level, meaning all `browser.addCommand` should include the following logging:
-```javascript
+```JavaScript
 logger.info('Functional explanation of is being executed.', {
     file: __filename, //This never changes
     method: 'browser.methodName',
@@ -367,7 +367,7 @@ logger.info('Functional explanation of is being executed.', {
 ```
 
 Here is an example:
-```javascript
+```JavaScript
 /**
  * @alias Cart.proceedToCheckout
  * @memberOf browser
@@ -383,7 +383,7 @@ browser.addCommand('proceedToCheckoutFromMiniCart', function () {
 ```
 
 To log data (that is used to fill in form for instance), you can use `JSON.stringify`:
-```
+```JavaScript
 /**
  * @alias FastRegistration.fastRegister
  * @memberOf browser
@@ -430,7 +430,7 @@ is always the same:
  * All configuration and helper modules
  * All business objects; however, not all single functions should be tested. It is useless to test functions with no
  logic such as:
- ```
+ ```JavaScript
 seeVisitor() {
     return this.userComponent.isVisitor().should.eventually.be.true;
 }
@@ -441,15 +441,13 @@ seeCustomer() {
 ```
 
 But it is useful to test functions with logic such as:
-```
+```JavaScript
 seeCustomerWithName(firstName, lastName) {
-    return this.userComponent.getLoggedUser()
-        .then(function (user) {
-            return Promise.all([
-                user.firstname.should.equal(firstName),
-                user.lastname.should.equal(lastName),
-            ]);
-        });
+    const user = await this.userComponent.getLoggedUser();
+    return Promise.all([
+        user.firstname.should.equal(firstName),
+        user.lastname.should.equal(lastName),
+    ]);
 }
 ```
 
@@ -464,7 +462,7 @@ with the [Sinon](http://sinonjs.org/) library.
 > * Use Mocks - if you want to both of the above on a single dependency in your test case.
 
 Always use sandbox to set and reset the context through `beforeEach` and `afterEach`:
-```
+```JavaScript
 let sandbox;
 
 beforeEach(function () {
