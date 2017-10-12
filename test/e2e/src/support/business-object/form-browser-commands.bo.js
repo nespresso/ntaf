@@ -11,20 +11,23 @@ class FormBrowserCommands {
   }
 
   seeSearchDetails() {
-    return this.formBrowserCommandsPage.getCommand().should.eventually.equal('command...')
-      .then(() => this.formBrowserCommandsPage.getUseful().should.eventually.equal(true))
-      .then(() => this.formBrowserCommandsPage.getNice().should.eventually.equal(false))
-      .then(() => this.formBrowserCommandsPage.getType().should.eventually.equal('t2'))
-      .then(() => this.formBrowserCommandsPage.getDeprecatedNo().should.eventually.equal(false))
-      .then(() => this.formBrowserCommandsPage.getDeprecatedYes().should.eventually.equal(true));
+
+    return Promise.all([
+      expect(this.formBrowserCommandsPage.getCommand()).to.eventually.equal('command...'),
+      expect(this.formBrowserCommandsPage.getUseful()).to.eventually.equal(true),
+      expect(this.formBrowserCommandsPage.getNice()).to.eventually.equal(false),
+      expect(this.formBrowserCommandsPage.getType()).to.eventually.equal('t2'),
+      expect(this.formBrowserCommandsPage.getDeprecatedNo()).to.eventually.equal(false),
+      expect(this.formBrowserCommandsPage.getDeprecatedYes()).to.eventually.equal(true),
+    ]);
   }
 
-  seeSearchDetailsWithParamater(expectedDetails) {
-    return this.formBrowserCommandsPage.getSearchDetails()
-      .then(actualDetails => Promise.all([
-        actualDetails.command.should.equal(expectedDetails.command),
-        actualDetails.type.should.equal(expectedDetails.type),
-      ]));
+  async seeSearchDetailsWithParamater(expectedDetails) {
+    const actualDetails = await this.formBrowserCommandsPage.getSearchDetails();
+    return Promise.all([
+      actualDetails.command.should.equal(expectedDetails.command),
+      actualDetails.type.should.equal(expectedDetails.type),
+    ]);
   }
 
 }

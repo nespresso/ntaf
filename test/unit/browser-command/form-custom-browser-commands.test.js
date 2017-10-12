@@ -13,7 +13,7 @@ describe('Custom Form Browser Commands', function () {
     sandbox.restore();
   });
 
-  it('should set value', function () {
+  it('should set value', async function () {
     const stubBrowserGetTagName = sandbox.stub(browser, 'getTagName');
     stubBrowserGetTagName.onCall(0).resolves('select');
     stubBrowserGetTagName.onCall(1).resolves('input');
@@ -28,35 +28,33 @@ describe('Custom Form Browser Commands', function () {
     const stubBrowserSetValue = sandbox.stub(browser, 'setValue');
     stubBrowserSetValue.onFirstCall().resolves('value');
 
-    return Promise.all([
+    await Promise.all([
       expect(form.setValueToField('#field', 'value')).to.eventually.equal('value'),
       expect(form.setValueToField('#field', 'value')).to.eventually.equal('value'),
       expect(form.setValueToField('#field', 'value')).to.eventually.equal('value'),
     ]);
   });
 
-  it('should select right radio button', function () {
+  it('should select right radio button', async function () {
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
-    return browser
-      .selectRadioButton('#fieldSelector')
-      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
+    await browser.selectRadioButton('#fieldSelector');
+    await stubBrowserClick.should.have.been.calledWith('#fieldSelector');
   });
 
-  it('should select right radio button from label', function () {
+  it('should select right radio button from label', async function () {
     const stubBrowserGetAttribute = sandbox.stub(browser, 'getAttribute');
     stubBrowserGetAttribute.onFirstCall().resolves('radioButtonID');
 
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
-    return browser
-      .selectRadioButtonFromLabel('#fieldSelector')
-      .then(() => stubBrowserClick.should.have.been.calledWith('label[for="radioButtonID"]'));
+    await browser.selectRadioButtonFromLabel('#fieldSelector');
+    await stubBrowserClick.should.have.been.calledWith('label[for="radioButtonID"]');
   });
 
-  it('should properly tick checkbox', function () {
+  it('should properly tick checkbox', async function () {
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
@@ -64,14 +62,13 @@ describe('Custom Form Browser Commands', function () {
     stubBrowserIsSelected.onFirstCall().resolves(true);
     stubBrowserIsSelected.onSecondCall().resolves(false);
 
-    return browser
-      .tickCheckbox('#fieldSelector')
-      .then(() => stubBrowserClick.should.have.been.callCount(0))
-      .then(() => browser.tickCheckbox('#fieldSelector'))
-      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
+    await browser.tickCheckbox('#fieldSelector');
+    await stubBrowserClick.should.have.been.callCount(0);
+    await browser.tickCheckbox('#fieldSelector');
+    await stubBrowserClick.should.have.been.calledWith('#fieldSelector');
   });
 
-  it('should properly untick checkbox', function () {
+  it('should properly untick checkbox', async function () {
     const stubBrowserClick = sandbox.stub(browser, 'click');
     stubBrowserClick.onFirstCall().resolves(true);
 
@@ -79,14 +76,13 @@ describe('Custom Form Browser Commands', function () {
     stubBrowserIsSelected.onFirstCall().resolves(false);
     stubBrowserIsSelected.onSecondCall().resolves(true);
 
-    return browser
-      .untickCheckbox('#fieldSelector')
-      .then(() => stubBrowserClick.should.have.been.callCount(0))
-      .then(() => browser.untickCheckbox('#fieldSelector'))
-      .then(() => stubBrowserClick.should.have.been.calledWith('#fieldSelector'));
+    await browser.untickCheckbox('#fieldSelector');
+    await stubBrowserClick.should.have.been.callCount(0)
+    await browser.untickCheckbox('#fieldSelector');
+    await stubBrowserClick.should.have.been.calledWith('#fieldSelector');
   });
 
-  it('should fill in form with given data', function () {
+  it('should fill in form with given data', async function () {
     const stubData = {
       firstname: 'Hillary',
       lastname: 'Trump',
@@ -100,9 +96,8 @@ describe('Custom Form Browser Commands', function () {
     const stubSetValue = sandbox.stub(form, 'setValueToField');
     stubSetValue.onFirstCall().resolves('setValue');
 
-    return browser
-      .fillInForm(stubFieldsToID, stubData)
-      .then(() => stubSetValue.should.have.been.calledTwice);
+    await browser.fillInForm(stubFieldsToID, stubData);
+    await stubSetValue.should.have.been.calledTwice;
   });
 
 });

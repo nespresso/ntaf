@@ -2,12 +2,9 @@
 'use strict';
 
 const fs = require('fs-extra');
-const merge = require('merge');
-const logger = require('../lib/helper/logger');
 const gulp = require('gulp');
 const gulpDel = require('del');
 const gulpMocha = require('gulp-mocha');
-const debug = require('gulp-debug');
 const webdriver = require('gulp-webdriver');
 const yargs = require('yargs');
 const wdioOptions = { cucumberOpts: {} };
@@ -83,7 +80,14 @@ const runProject = config => {
  * Create project structure tree.
  * @return {Promise}
  */
-const installProject = () => {
+const installProject = async () => {
+  console.log('Creating test project structure...');
+
+  const allPromises = [
+    fs.copy('node_modules/ntaf/template/', '.'),
+    fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
+  ];
+
   const emptyDirectories = [
     'src/features',
     'src/step-definitions',
@@ -95,34 +99,22 @@ const installProject = () => {
     'conf/realm',
   ];
 
-  const onError = function (err) {
-    console.error(err);
-    process.exit(1);
-  };
-
-  console.log('Creating test project structure...');
-
-  const allPromises = [
-    fs.copy('node_modules/ntaf/template/', '.'),
-    fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
-  ];
-
   emptyDirectories.forEach(directory => {
     allPromises.push(fs.mkdirs(directory));
   });
 
-  return Promise.all(allPromises)
-    .then(
-      () => fs.move('gitignore', '.gitignore'),
-      err => onError(err)
-    )
-    .then(
-      () => console.log('Test project structure successfully created.'),
-      err => onError(err)
-    );
+  try {
+    await Promise.all(allPromises);
+    await fs.move('gitignore', '.gitignore');
+    console.log('Test project structure successfully created.');
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 };
 
-yargs.command({
+yargs
+  .command({
     command: 'install',
     desc: 'Create project structure tree',
     handler: () => installProject(),
