@@ -1,6 +1,6 @@
 'use strict';
 
-const merge = require('merge');
+const merge = require('ntaf/node_modules/merge');
 
 const config = {
   debug: true,
