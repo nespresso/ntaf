@@ -115,6 +115,11 @@ const installProject = async () => {
 
 yargs
   .command({
+    command: 'clean',
+    desc: 'Clean project',
+    handler: () => gulp.task('clean')(),
+  })
+  .command({
     command: 'install',
     desc: 'Create project structure tree',
     handler: () => installProject(),

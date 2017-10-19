@@ -21,7 +21,7 @@ Note that it requires good development skills as well as good knowledge and unde
 ## Integrating NTAF to Your Project
 
 ### Prerequisites
-* Install Node.js v8.6.0 or greater.
+* Install Node.js v8.7.0 or greater.
 
 ### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
@@ -37,18 +37,20 @@ https-proxy=http://localhost:3128
 ```
 
 
-## Running Tests
-Run `npx ntaf run` to launch the tests as they would be played remotely.
+## Running Functional Tests
+* Run `npx run` to launch the tests as they would be played remotely.
+* Run `npx run wdio.local.conf.js` to run the tests with local configuration.
+* Run `npx run wdio.debug.conf.js` to run the tests with debug configuration (see Running Tests in Debug Mode section
+for mode details).
 
-Run command line `npx ntaf run WDIO_CONFIG_FILE` to run the tests with a different configuration.
-
-To run functional tests using your local configuration: `npx ntaf run wdio.local.conf.js`
-Note that the local configuration has to be generated first (see Configuration section).
+Note that the local and debug configurations have to be generated first (see Configuration section).
 
 ### Configuration
-The global configuration is set in the `wdio.conf.js` file in the root folder of your project.
-
-The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running `npx ntaf generate-local-conf`.
+* The global configuration is set in the `wdio.conf.js` file, in the root folder of your project.
+* The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running
+`npm run generate-local-conf`.
+* The debug configuration is set in the `wdio.debug.conf.js`. This debug configuration can be reset by running
+`npm run generate-local-conf`.
 
 ### Parameters
 To pass parameters to the command, add `--`: `npx ntaf run --parameter1=value1`
@@ -74,14 +76,13 @@ Usually realms define at least the following properties:
 * `specs`: list of features to run
 
 Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/real` without the `.js` extension.
- 
- 
+
 For example:
 * To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
 * To run NRT tests on realm `us_dev`: `npx ntaf run --realm="us_dev" --tags='@nrt'`
 
 
-## Running Tests in Debug Mode
+## Running Functional Tests in Debug Mode
 
 ### Initial Configuration
 
@@ -102,6 +103,11 @@ For example:
 1. In IntelliJ, add breakpoints to your code
 1. In a terminal, run `npx ntaf run wdio.debug.conf.js` (usually targeting a single test: `npx ntaf run wdio.debug.conf.js --tags='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
 1. Once the first breakpoint is reached, use standard IntelliJ Debug window to move forward and debug.
+
+
+## Running Unit Tests
+* Run `npx ntaf test-unit` to run unit tests
+* Run `npx ntaf test-unit-with-coverage` to run unit tests with code coverage computation
 
 
 ## Writing Automated Tests
