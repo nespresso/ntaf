@@ -18,7 +18,7 @@
     "racodond <david.racodon@gmail.com>"
   ],
   "license": "MIT",
-  "main": "lib/world.js",
+  "main": "lib/index.js",
   "bin": {
     "ntaf": "bin/ntaf.js"
   },
