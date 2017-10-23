@@ -1,3 +1,3 @@
 'use strict';
 
-require('ntaf');
+require('ntaf/lib/world');

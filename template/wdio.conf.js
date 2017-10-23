@@ -1,6 +1,6 @@
-require('ntaf/node_modules/app-module-path').addPath(__dirname + '/');
+require('ntaf').appModulePath.addPath(__dirname + '/');
 
-const merge = require('ntaf/node_modules/merge');
+const merge = require('ntaf').merge;
 
 const config = {
   maxInstances: 1,
