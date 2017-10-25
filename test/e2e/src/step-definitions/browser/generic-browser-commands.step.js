@@ -2,9 +2,10 @@
 
 require('src/support/business-object/generic-browser-commands.bo');
 
-module.exports = function () {
+const { defineSupportCode } = require('cucumber');
 
-  this.When(/^I go to the (first|last|second) command$/, function (command) {
+defineSupportCode(function ({ When, Then }) {
+  When(/^I go to the (first|last|second) command$/, function (command) {
     switch (command) {
       case 'first':
         return browser.goToFirstCommand();
@@ -20,24 +21,23 @@ module.exports = function () {
     }
   });
 
-  this.Then(/^I fill in the command$/, function () {
+  Then(/^I fill in the command$/, function () {
     return browser.fillInCommand();
   });
 
-  this.Then(/^I save the command$/, function () {
+  Then(/^I save the command$/, function () {
     return browser.saveCommand();
   });
 
-  this.Then(/^I should see (\d+) command(s)$/, function (expectedNumberOfCommands) {
+  Then(/^I should see (\d+) command(s)$/, function (expectedNumberOfCommands, optionalS) {
     return browser.seeNumberOfCommands(expectedNumberOfCommands);
   });
 
-  this.Then(/^I should see "(.+)" command title$/, function (commandTitle) {
+  Then(/^I should see "(.+)" command title$/, function (commandTitle) {
     return browser.seeCommandTitle(commandTitle);
   });
 
-  this.Then(/^I should see all sections$/, function () {
+  Then(/^I should see all sections$/, function () {
     return browser.seeAllCommandDetails();
   });
-
-};
+});
