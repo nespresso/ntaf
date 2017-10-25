@@ -63,8 +63,13 @@ Add command line parameter `--locale="en"` or update the wdio configuration file
  
 #### Running a Subset of Tests Using Tags
 Add command line parameter `--tags='@tag'`.
-You can add several tags separated by commas such as `--tags='@tag1,@tag2'`. It will run tests with tags `@tag1` and `@tag2`.
-You can also add negation with `~` such as`--tags='@tag1,~@tag2'`. It will tests with tag `@tag1` but not `@tag2`.
+
+Tags can be combined:
+* `--tags='@tag1 or @tag2'` runs test tagged with `@tag1` or `@tag2`
+* `--tags='@tag1 and @tag2'` runs test tagged with both `@tag1` and `@tag2`
+* `--tags='not @tag1'` runs tests not tagged with `@tag1`
+
+See [Cucumber Tag Expressions documentation](https://docs.cucumber.io/tag-expressions/) for more details.
 
 #### Realm (market, brand, environment, ...)
 A realm is a configuration file that defines some wdio properties specific to a realm. A realm can be seen as a market, 
@@ -78,7 +83,7 @@ Usually realms define at least the following properties:
 Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/real` without the `.js` extension.
 
 For example:
-* To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tags='@nrt,@catalog'`
+* To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tags='@nrt and @catalog'`
 * To run NRT tests on realm `us_dev`: `npx ntaf run --realm="us_dev" --tags='@nrt'`
 
 
