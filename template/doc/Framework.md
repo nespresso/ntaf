@@ -1,70 +1,68 @@
 # Nestle Test Automation Framework
 
-## Project structure
+## Test Project Structure
 
-The structure mainly follow [Cucumber.js](https://github.com/cucumber/cucumber-js) structure.
+This structure is generated when intializing a new test project running the `npx ntaf install` command. See the
+[technical documentation](https://github.com/nespresso/ntaf#adding-ntaf-package-and-configuration-to-your-project) for
+more details.
 
-**<font color="#6A76FC">conf/</font>** Configuration  
+**conf/** Configuration  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **realm/** Realm configuration files  
-**<font color="#6A76FC">doc/</font>** Documentation  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **Framework.md** this documentation  
-**<font color="#6A76FC">src/</font>** all source code  
-+-- **<font color="#6A76FC">features/</font>** Scenarios written in Gherkin  
-+-- **<font color="#6A76FC">step-definitions/</font>** code matching feature definitions  
-+-- **<font color="#6A76FC">support/</font>** all source code supporting feature definitions, basically: the framework  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">browser-command/</font>** Definition of the custom commands added to the browser (`fillInForm`, `selectRadioButton`, etc.)
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">business-object/</font>** framework objects matching business flows  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">component-object/</font>** framework objects transverse to the tested application (such as cart)  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">configuration/</font>** configuration  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">market/</font>** market specific configurations  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **configuration.js** configuration object  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">data/</font>** data objects used by the scenarios  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">helper/</font>** helper objects  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">lib/</font>** external libraries used by the framework and not managed by npm  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">page-object/</font>** page objects (see [design pattern](http://www.assertselenium.com/automation-design-practices/page-object-pattern/))  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **env.js** environment specific configuration for Cucumber.js  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **hooks.js** set hooks on Cucumber.js  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **nespresso.js** transverse object containing Nespresso specifics such as configuration  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **world.js** module called before each scenario by Cucumber.js  
-**<font color="#6A76FC">log/</font>** log files (Selenium, browser)  
-**<font color="#6A76FC">node_modules/</font>** all node modules installed via `npm install`  
-**<font color="#6A76FC">output/</font>** outputs of test execution such as junit or other reports results + error screenshots  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **<font color="#6A76FC">errorShots/</font>** error screenshots  
-**<font color="#6A76FC">test/</font>** unit tests  
+**doc/** Documentation  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **Framework.md** This documentation  
+**log/** Log files (Selenium, browser, etc.)  
+**node_modules/** All dependencies (node modules) installed via `npm install`  
+**output/** Test execution reports such as JUnit, Allure, etc. reports  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **errorShots/** Error screenshots taken when scenarios have failed  
+**src/** All source code  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **features/** Scenarios written in Gherkin  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **step-definitions/** Translation of the Gherkin scenarios  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **support/** Source code implementing step definitions  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **business-object/** Implementing business flows  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **component-object/** Parts of the page objects that are reused on several pages  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **data/** Containing data objects that are data sets for each scenario  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **helper/** Any other pieces of code that help make the code more readable  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **page-object/** Page objects (see [design pattern](http://www.assertselenium.com/automation-design-practices/page-object-pattern/))  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **hooks.js** Cucumber.js [hooks](https://github.com/cucumber/cucumber-js/blob/master/docs/support_files/hooks.md)  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **world.js** Global libs and helpers available for each scenario execution  
+**test/** Unit tests  
+**.gitignore** Files to be ignored by Git (logs, node_modules, etc.)  
+**.jscsrcs** Configuration of the [JSCS linter](http://jscs.info/overview)  
 **.npmrc** npm configuration specific to this project  
 **package.json** npm configuration for the project, including dependencies. Used by npm on `npm install`  
-**Readme.md** getting started documentation  
+**Readme.md** Getting started documentation  
 **wdio.conf.js** webdriver.io configuration. Used by `npx ntaf run`  
-**wdio.local.conf.js** webdriver.io configuration (inherit from wdio.conf.js) to run test locally. Used by `npx ntaf run wdio.local.conf.js`  
-**wdio.debug.conf.js** webdriver.io configuration (inherit from wdio.local.conf.js) for debugging purposes. Used by `npx ntaf run wdio.debug.conf.js`
+**wdio.local.conf.js** webdriver.io configuration (inherits from wdio.conf.js) to run test locally. Used by `npx ntaf run wdio.local.conf.js`  
+**wdio.debug.conf.js** webdriver.io configuration (inherits from wdio.local.conf.js) for debugging purposes. Used by `npx ntaf run wdio.debug.conf.js`
 
 ## Code structure
 
-The framework follow the [Push how down](https://markoh.co.uk/posts/cucumber-best-practices-push-how-down) good practice which consists in pushing the complexity as down as possible in the stack.
+The framework follows the [Push how down](https://markoh.co.uk/posts/cucumber-best-practices-push-how-down) good practice
+which consists in pushing the complexity as down as possible in the stack. A good example on how the complexity should
+be pushed down can be found [here](http://www.spritecloud.com/2015/01/complex-workflows-with-cucumber/).
 
-The stack of the framework is the following (from top to bottom):
+The different layers are the following (from top to bottom):
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gherkin scenarios  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gherkin Scenarios  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step definitions  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Definitions  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business objects  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business Objects  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  
-&nbsp;&nbsp;&nbsp;Page/Component objects    
+&nbsp;&nbsp;&nbsp;Page/Component Objects    
 
-Complexity of a child **must** be hidden by its parent. Meaning Step definitions **must not** directly interact with page objects.
+Each layer can only interact with the layer right below it:
+* Step definitions can only interact with Business objects
+* Business objects can only interact with Page/Component objects
 
-A good example on how the complexity should be pushed down: http://www.spritecloud.com/2015/01/complex-workflows-with-cucumber/.
+Details of each layer are described below.
 
-### Layers
+### Gherkin Scenarios
 
-Roles and scope of each layer are presented below.
+> Gherkin is a Business Readable, Domain Specific Language that lets you describe software’s behaviour without detailing
+how that behaviour is implemented.
 
-#### Gherkin
-
-> Gherkin is a Business Readable, Domain Specific Language that lets you describe software’s behaviour without detailing how that behaviour is implemented.
-
-Example of the syntax:
+Example:
 ```Gherkin
 Feature: Some terse yet descriptive text of what is desired
   Textual description of the business value of this feature
@@ -84,132 +82,106 @@ Feature: Some terse yet descriptive text of what is desired
 Please read the [Gherkin documentation](https://github.com/cucumber/cucumber/wiki/Gherkin) to learn the syntax.
 It is fairly simple to understand and get started.
 
-##### Must do
+#### Best practices
 
-* Scenario must be unitary and therefore must not rely on previous scenario to be successful.
-* Feature must have tags. Tags must be alphabetically sorted.
-* Scenario must be intelligible
+1. Each scenario should be unitary and therefore should not rely on previously executed scenario(s) to pass.
+2. Scenario should remain at a functional/business level, they should not make any reference to the web page: 
 
-###### Scenario should remain at a functional level
-**<font color="#FF6F6B">Bad</font>**
-```Gherkin
-When I open the login menu
-  And I set #ta-header-username to john.doe@email.com
-  And I set #ta-header-password to mypassword
-  And I click on #ta-header-login-submit
-```
+    **Bad, using CSS selectors**
+    ```Gherkin
+    When I open the login menu
+      And I set #ta-header-username to john.doe@email.com
+      And I set #ta-header-password to mypassword
+      And I click on #ta-header-login-submit
+    ```
 
-**<font color="#67F86F">Good</font>**
-```Gherkin
-When I login as john.doe@email.com/mypassword
-```
+    **Good**
+    ```Gherkin
+    When I login as john.doe@email.com/mypassword
+    ```
+    
+    **Bad, describing web page layout**
+    ```Gherkin
+    Then I should see an error message on top of the page stating that the login/password is invalid
+    ```
+    
+    **Good**
+    ```Gherkin
+    Then I should be told that I have provided wrong credentials
+    ```
 
-**<font color="#FF6F6B">Bad</font>**
-```Gherkin
-Then I should see an error message on top of the page stating that the login or password is invalid
-```
+3. Make sure to target the feature that you want to test. The `When` steps should only describe the tested
+feature/action. In the example below, we want to test the logout, not the login. The fact that the user is logged in
+should be part of the test requirements (`Given` step), not part of the tested feature (`When` step). Thus, there should
+be only one single `Ẁhen` step per scenario.
 
-**<font color="#67F86F">Good</font>**
-```Gherkin
-Then I should be told that I have provided wrong credentials
-```
+    **Bad**
+    ```Gherkin
+    Scenario Successful logout 
+      Given I am on the homepage
+      When I log in as john.doe@email.com/mypassword
+      And I log out
+      Then I should be a visitor
+    ```
+    
+    **Good**
+    ```Gherkin
+    Scenario Successful logout 
+      Given I am a customer
+      When I log out
+      Then I should be a visitor
+    ```
 
-Scenarios should not make reference to the web page: ~~I set #ta-header-username field~~ / ~~I fill in the form~~ / ~~I click on the login button~~
+4. Each step should be written with the tense related to the step type. Read this interesting [blog post](https://lizkeogh.com/2014/09/02/a-little-tense/).
+    1. `Given` sentences should use the present or past (present perfect) tense to state the context.
+    1. `When` sentences should use the present tense with an action verb to describe the actions.
+    1. `Then` sentences should use the conditional tense to list assertions. They should start with `I should`.
 
+        Examples:
+        ```Gherkin
+        Scenario: Unsuccessful login with invalid username
+          Given I am a visitor
+          When I log in as customer toto@email.com/password
+          Then I should be a visitor
+          And I should be told that I have provided wrong credentials
+        ```
 
-###### Make sure to target the feature that you want to test
+5. Each step should start with `I ...`
 
-**<font color="#FF6F6B">Bad</font>**
-```Gherkin
-Scenario Successful logout 
-  Given I am on the homepage
-  When I log in as john.doe@email.com/mypassword
-  And I log out
-  Then I should be a visitor
-```
-
-**<font color="#67F86F">Good</font>**
-```Gherkin
-Scenario Successful logout 
-  Given I am a customer
-  When I log out
-  Then I should be a visitor
-```
-
-The `When` step(s) should only describe the tested feature/action. In this case, we want to test the logout, not the
-login. The fact that the user is logged in must be part of the test requirements (`Given` step), not part of the tested
-feature (`When` step).
-
-
-##### The tense to be used
-
-Read this interesting [blog post](https://lizkeogh.com/2014/09/02/a-little-tense/).
-
-1. All the sentences must start with `I ...`
-1. `Given` sentences must use the present or past (present perfect) tense to state the context.
-1. `When` sentences must use the present tense with an action verb to describe the actions.
-1. `Then` sentences must use the conditional tense to list assertions. They must start with `I should`.
-
-Examples:
-```Gherkin
-Scenario: Unsuccessful login with invalid username
-  Given I am a visitor
-  When I log in from menu as customer blabla@blabla.com/password
-  Then I should be a visitor
-  And I should be told that I have provided wrong credentials blabla@blabla.com
-  
-Scenario: Successfully change my password and check re-login
-  Given I have changed my password from password to newpassword
-  When I log out
-  And I log in from menu as customer john.doe@email.com/newpassword
-  Then I should be customer John/Doe
-```
-
-
-##### Tags
-
-Features and scenarios must be tagged. Tagging provides the ability to only run a subset of features and/or scenarios.
+6. Features and scenarios should be tagged. Tagging provides the ability to only run a subset of features and/or scenarios.
 Tags can be set to features and scenarios by adding `@tagname` on the line prior to `Feature` or `Scenario` keywords.
 
-The following tags are allowed:
+    The following tags are allowed:
+    
+    * `@smoke` (on scenarios only): To tag scenarios that are the most important from a business point of view. The
+    objective is to run those scenarios before pushing any code to Stash and blocking the merge if some tests fail.
+    * `@nrt` (on features and/or scenarios): To tag features/scenarios that should be run every night to guarantee that 
+    developments from the previous day do not break any existing features.
+    * `@feature` (on features only): To tag features related to the same functional area. For example: `@registration`,
+    `@login`, etc. The objective is for the developer to be able to run tests related to the features he/she is updating to
+    guarantee that he/she does not break anything.
+    
+    
+    ```Gherkin
+    @nrt @login
+    Feature: Login / Logout from the user menu
+    
+      @smoke
+      Scenario: Successful login with valid credentials
+        Given I ...
+    ```
 
-* `@smoke` (on scenarios only): To tag scenarios that are the most important from a business point of view. The
-objective is to run those scenarios before pushing any code to Stash and blocking the merge if some tests fail.
-* `@nrt` (on features and/or scenarios): To tag features/scenarios that must be run every night to guarantee that 
-developments from the previous day do not break any existing features.
-* `@feature` (on features only): To tag features related to the same functional area. For example: `@registration`,
-`@login`, etc. The objective is for the developer to be able to run tests related to the features he/she is updating to
-guarantee that he/she does not break anything.
+#### Gherkin structure and useful sentences
 
-```Gherkin
-@nrt @login
-Feature: Login / Logout from the user menu
+##### Given
 
-  @smoke
-  Scenario: Successful login with valid credentials
-    Given I am on the homepage
-    And I am a visitor
-    When I log in from menu as customer john.doe@email.com/password
-    Then I should be customer John/Doe
-
-  Scenario: Unsuccessful login with invalid username
-    Given I am on the homepage
-    And I am a visitor
-    When I log in from menu as customer blabla@blabla.com/password
-    Then I should be a visitor
-    And I should be told that I have provided wrong credentials blabla@blabla.com
-```
-
-##### Gherkin structure and useful sentences
-
-###### Given
 Always set the context in the following order:
- * Set the page from where to start the test case (mandatory).
+ * Set the page from where to start the test case
    * `I am on the homepage`
    * `I am on the registration page`
    * `I am on the my account addresses page`
    * ...
- * Set the user (mandatory).
+ * Set the user
    * `I am a visitor` => When I should be a visitor, meaning not logged in.
    * `I am a customer` => When I should be a customer, meaning logged in, with no specific configuration.
    * `I am a customer who xxx` => When I should be a customer with specific configuration.
@@ -218,136 +190,140 @@ Always set the context in the following order:
      * ...
  * Set other specific pieces of context   
 
-###### When
+##### When
  * `I go to the xxx page`
    * `I go to the homepage`
    * `I go to the registration page`
-   * `I go to the my account addresses page`
    * ...
 
-###### Then
+##### Then
  * `I should be a visitor` => To assert that I should not be logged in.
  * `I should be a customer` => To assert that I should be logged in.
+ * ...
 
 
-#### Step definitions
+### Step Definitions
 
-Cucumber.js code which matches Gherkin syntax with executable code.
+Translation of each Gherkin sentence into executable JavaScript code.
 
 Structure:
- * `Given` steps should contain actions to reach the required state for the test (functions that are action verbs) and
-  assertions of those actions (functions starting with `see`)
+ * `Given` steps should contain actions to reach the required state for the test (functions that are action verbs)
+   followed by assertions of those actions (functions starting with `see`)
  * `When` steps should only contain actions (functions that are action verbs)
  * `Then` steps should only contain assertions (functions starting with `see`)
 
 Example:
 ```JavaScript
-this.Given(/^I am customer (.+)\/(.+)/, function (userName, password) {
-    return browser
-      .login({ usernameField: userName, passwordField: password })
-      .seeCustomer();
-  });
+let customer = { firstName: 'John', lastName: 'Doe', email: 'john.doe@email.com' };
+
+Given(/^I am customer (.+)\/(.+)/, function () {
+  return browser
+    .loginAs(customer.email, 'password')
+    .seeCustomer();
+});
       
-this.When(/^I log in as (.*)\/(.*)$/, function (userName, password) {
-    return browser.login({ usernameField: userName, passwordField: password });
-  });
+When(/^I log in from (login page|menu) with valid credentials$/, function (location) {
+  return login(location, { usernameField: 'login@email.com', passwordField: 'password' });
+});
   
-this.Then(/^I am customer (.+)\/(.+)$/, function (firstName, lastName) {
-    return browser.seeCustomerWithName(firstName, lastName);
-  });
+Then(/^I should be a visitor$/, function () {
+  return browser.seeVisitor();
+});
 ```
 
-##### Must do
+#### Best practices
 
-* Step definitions must only interact with business objects, not with page/component objects.
-* Code must be intelligible, meaning readable by anybody. Thus, it should contain as few logic as possible. Most logic
- should be hidden as much as possible in business objects.
-* Data must not be hard coded (use data files instead).
-* Step definition should be asynchronous and return promises
-  * More information about step definition and promises [here](https://github.com/cucumber/cucumber-js#promises).
-  * Avoid using callback() as much as possible to keep consistency and better readability.
-* Step definition must not contain any technical assertions (such as `.should.eventually.be...`, 
+1. Code should be understandable by anybody (not only developers). Thus, it should contain as few logic as possible.
+Most of the logic should be hidden in business objects.
+2. Step definitions should only interact with business objects, not with page/component objects.
+3. Data set of scenarios should not be hard coded (use data files to be stored in the `src/support/data` folder instead).
+4. Step definitions should not contain any technical assertions (such as `.should.eventually.be...`, 
  `.should.eventually.equal...`), the business objects should.
-
   
-**<font color="#FF6F6B">Bad</font>**
+**Bad**
 ```JavaScript
-this.When(/^I register$/, function (callback) {
-    browser
-        .setValue('#ta-registration-firstName', 'Hillary')
-        .setValue('#ta-registration-lastName', 'Trump')
-        .click('#ta-continue-bottom');
-    callback();
+When(/^I register without a machine$/, function () {
+  browser
+    .setValue('#ta-registration-firstName', 'Hillary')
+    .setValue('#ta-registration-lastName', 'Trump')
+    .click('#ta-continue-bottom');
 });
 ```
 
-**<font color="#67F86F">Good</font>**
+**Good**
 ```JavaScript
-this.When(/^I register$/, function () {
-    const dataObject = require('src/support/data/registration/fr-without-machine-registration-nor-welcome-offer.data');
-    return browser.register(dataObject);
+When(/^I register without a machine$/, function () {
+  const dataObject = require('src/support/data/registration/without-machine/us.data');
+  return browser.register(dataObject);
 });
 ```
 
-Second piece of code is intelligible, data are not hard coded, it interacts only with a Business object and returns a Promise.
+Second piece of code is intelligible, data are not hard coded, it interacts only with a Business object and returns a
+Promise.
 
-#### Business objects
+### Business Objects
 
-Objects that represent Nespresso core business.  
-Methods should represent as close as possible Nespresso's business using the commonly used vocabulary.
+Objects that represent the core business. Methods should be as close as possible to the business, using the commonly
+shared vocabulary.
 
-Hide complexity of business processes such as registration which differs depending on the market and configuration.
-
-Example of a Business object:
+Example:
 ```JavaScript
-class Login {
+class User {
   
-    constructor(customerComponent) {
-      ...  
-    }
-  
-    // Action function
-    login(data) {
-      ...
-    }
+  constructor(userComponent, loginPage) {
+    this.userComponent = userComponent;
+    this.loginPage = loginPage;
+  }
 
-    // Assertion function
-    seeCustomerWithName(firstName, lastName) {
-      ...
-    }
-    ...
+  // Action function
+  login(data) {
+    return this.userComponent.login(data);
+  }
+
+  // Assertion function
+  async seeCustomerWithName(firstName, lastName) {
+    const customer = await this.userComponent.getLoggedUser();
+    return Promise.all([
+      customer.firstname.should.equal(firstName),
+      customer.lastname.should.equal(lastName),
+    ]);
+  }
+  
+  ...
 }
 ```
 
-##### Must do
+#### Best practices
 
-* Action function must be an action verb
-* Assertion function must start with `see`
-* Add commands to the `browser` via `addCommand` API to be able to easily chain promises in step definitions. More 
-  information [here](http://webdriver.io/api/utility/addCommand.html).
-* All technical assertions (such as `.should.eventually.be...`, `.should.eventually.equal...`) must be used in business
-  objects only.
-* Data must come from external parameter(s).
-* Handle functional logging (See Logging section)
+1. Action function should be an action verb
+2. Assertion function should start with `see`
+3. Add commands to the `browser` via `addCommand` [API](http://webdriver.io/api/utility/addCommand.html) to be able to
+   easily chain promises in step definitions.
+4. All technical assertions (such as `.should.eventually.be...`, `.should.eventually.equal...`) should be used in
+   business objects only.
+5. Handle [functional logging)(#logging)
 
-#### Page/Component objects
 
-A page object represents a page and define elements to interact with (e.g. fields, buttons...) and possible actions
-(e.g. submit form). A component object is similar to a page object but for transverse component such as login and cart
-blocks available on most of pages.
+### Page/Component objects
 
-##### Must do
+A page object represents a web page and define elements to interact with (e.g. fields, buttons...) and possible actions
+(e.g. submit form).
 
-* Page/Component objects must not contain any technical assertions (such as `.should.eventually.be...`,
+A component object is similar to a page object but for parts of web page that are reused in several pages.
+
+#### Best practices
+
+1. Page/Component objects should not contain any technical assertions (such as `.should.eventually.be...`,
  `.should.eventually.equal...`), the business objects should.
-* Each page/component object must define a `pageElements` getter listing all the HTML elements that will be interacted
-  with. Then, a change in the web interface (id field change for instance) will only require a change in the 
-  `pageElements` getter. All the HTML elements must be accessed through `pageElements`.
-* Functions returning the value of a page element must comply to the following naming convention: `getXXX`
-* Functions returning whether an object is visible or not must comply to the following naming convention: `isXXXVisible`
-* Functions just performing a single browser interaction must comply to the following naming convention:
+2. Each page/component object should define a `pageElements` getter listing all the HTML elements that will be
+  interacted with. Thus, a change in the web interface (id field change for instance) will only require a change in the 
+  `pageElements` getter. All the HTML elements should be accessed through `pageElements`.
+3. Functions returning the value of a page element should comply to the following naming convention: `getXXX`
+4. Functions returning whether an object is visible or not should comply to the following naming convention:
+   `isXXXVisible`
+5. Functions just performing a single browser interaction should comply to the following naming convention:
   `clickXXXButton`, `clickXXXLink`, etc.
-* Functions performing several browser interactions must start with an action verb: `deleteSecondaryAddress`, 
+6. Functions performing several browser interactions should start with an action verb: `deleteSecondaryAddress`, 
   `addAddress`, etc.
 
 ## Logging
@@ -360,10 +336,10 @@ Note that the file is re-created for each execution to not be polluted by previo
 
 The logging is done at the Business Object level, meaning all `browser.addCommand` should include the following logging:
 ```JavaScript
-logger.info('Functional explanation of is being executed.', {
-    file: __filename, //This never changes
-    method: 'browser.methodName',
-  });
+logger.info('Functional explanation of what is being executed.', {
+  file: __filename, // This never changes
+  method: 'browser.methodName',
+});
 ```
 
 Here is an example:
@@ -399,30 +375,37 @@ browser.addCommand('fastRegister', function (data) {
 ```
 
 
-## Helpers
+## Technical Guidelines
 
 ### Additional browser commands
 
-On top of browser commands provided by WebdriverIO, additional commands are available in
-`src/support/browser-commands`. For instance: `fillInForm` to automatically fill a form from a data object,
-`selectRadioButton`, etc.
+On top of the browser commands provided by WebdriverIO, additional commands are made available through the framework
+such as `fillInForm` to automatically fill a form from a data object, `selectRadioButton`, etc. See
+[documentation](https://nespresso.github.io/ntaf/) for more details.
 
 ### Faker
 
-Faker library can be used to generate random and properly formatted data to fill in forms (see examples in
-`src/support/data`).
+The [faker module](https://www.npmjs.com/package/faker) can be used to generate random and properly formatted data to
+fill in forms.
 
-
-## Technical Guidelines
+The faker library can be accessed through the global `faker` object.
+```JavaScript
+const firstName = faker.name.firstName();
+const lastName = faker.name.lastName();
+```
 
 ### How to include modules
 
-Thanks to the [app-module-path module](https://www.npmjs.com/package/app-module-path), all the paths are relative to
-`functionalTests/`. For instance to include `functionalTests/src/support/helper/helper.js`from any other file, the syntax
-is always the same:
+The [app-module-path module](https://www.npmjs.com/package/app-module-path) can be used to make all the path relative to the
+root directory of your test project.
 
-`const helper = require('src/support/helper/helper');`
+For instance to include `src/support/helper/helper.js`from any other file whatever its location, the syntax will always
+be the same: `const helper = require('src/support/helper/helper');`
 
+### Extensively use async / await
+
+Extensively use [async / await](https://blog.risingstack.com/mastering-async-await-in-nodejs/) to make your code more
+readable and maintainable.
 
 ### Unit Tests
 
@@ -432,22 +415,22 @@ is always the same:
  logic such as:
  ```JavaScript
 seeVisitor() {
-    return this.userComponent.isVisitor().should.eventually.be.true;
+  return this.userComponent.isVisitor().should.eventually.be.true;
 }
 
 seeCustomer() {
-    return this.userComponent.getLoggedUser().should.be.fulfilled;
+  return this.userComponent.getLoggedUser().should.be.fulfilled;
 }
 ```
 
 But it is useful to test functions with logic such as:
 ```JavaScript
 seeCustomerWithName(firstName, lastName) {
-    const user = await this.userComponent.getLoggedUser();
-    return Promise.all([
-        user.firstname.should.equal(firstName),
-        user.lastname.should.equal(lastName),
-    ]);
+  const user = await this.userComponent.getLoggedUser();
+  return Promise.all([
+      user.firstname.should.equal(firstName),
+      user.lastname.should.equal(lastName),
+  ]);
 }
 ```
 
@@ -466,11 +449,11 @@ Always use sandbox to set and reset the context through `beforeEach` and `afterE
 let sandbox;
 
 beforeEach(function () {
-    sandbox = sinon.sandbox.create();
+  sandbox = sinon.sandbox.create();
 });
 
 afterEach(function () {
-    sandbox.restore();
+  sandbox.restore();
 });
 ```
 
