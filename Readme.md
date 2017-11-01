@@ -62,12 +62,12 @@ Add command line parameter `--baseUrl="https://base.url"` or update the wdio con
 Add command line parameter `--locale="en"` or update the wdio configuration file accordingly.
  
 #### Running a Subset of Tests Using Tags
-Add command line parameter `--tags='@tag'`.
+Add command line parameter `--tagExpression='@tag'`.
 
 Tags can be combined:
-* `--tags='@tag1 or @tag2'` runs test tagged with `@tag1` or `@tag2`
-* `--tags='@tag1 and @tag2'` runs test tagged with both `@tag1` and `@tag2`
-* `--tags='not @tag1'` runs tests not tagged with `@tag1`
+* `--tagExpression='@tag1 or @tag2'` runs test tagged with `@tag1` or `@tag2`
+* `--tagExpression='@tag1 and @tag2'` runs test tagged with both `@tag1` and `@tag2`
+* `--tagExpression='not @tag1'` runs tests not tagged with `@tag1`
 
 See [Cucumber Tag Expressions documentation](https://docs.cucumber.io/tag-expressions/) for more details.
 
@@ -83,8 +83,8 @@ Usually realms define at least the following properties:
 Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/real` without the `.js` extension.
 
 For example:
-* To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tags='@nrt and @catalog'`
-* To run NRT tests on realm `us_dev`: `npx ntaf run --realm="us_dev" --tags='@nrt'`
+* To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tagExpression='@nrt and @catalog'`
+* To run NRT tests on realm `us_dev`: `npx ntaf run --realm="us_dev" --tagExpression='@nrt'`
 
 
 ## Running Functional Tests in Debug Mode
@@ -106,7 +106,7 @@ For example:
 `
 1. In IntelliJ, Run > Debug 'My Node.js Remote Debug'
 1. In IntelliJ, add breakpoints to your code
-1. In a terminal, run `npx ntaf run wdio.debug.conf.js` (usually targeting a single test: `npx ntaf run wdio.debug.conf.js --tags='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
+1. In a terminal, run `npx ntaf run wdio.debug.conf.js` (usually targeting a single test: `npx ntaf run wdio.debug.conf.js --tagExpression='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
 1. Once the first breakpoint is reached, use standard IntelliJ Debug window to move forward and debug.
 
 
