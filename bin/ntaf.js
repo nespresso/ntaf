@@ -53,12 +53,8 @@ const runProject = config => {
     configFile = config.config_file;
   }
 
-  if (config.tags.length) {
-    if (Array.isArray(config.tags)) {
-      wdioOptions.cucumberOpts.tags = config.tags;
-    } else {
-      wdioOptions.cucumberOpts.tags = config.tags.split(',');
-    }
+  if (config.tagExpression.length) {
+    wdioOptions.cucumberOpts.tagExpression = config.tagExpression;
   }
 
   if (config.baseUrl.length) {
@@ -138,8 +134,8 @@ yargs
         describe: 'Base url to override wdio.conf.js',
         default: '',
       });
-      yargsObj.option('tags', {
-        describe: 'Tags to override wdio.conf.js',
+      yargsObj.option('tagExpression', {
+        describe: 'Tag expression to override wdio.conf.js',
         default: '',
       });
       yargsObj.option('timeout', {
