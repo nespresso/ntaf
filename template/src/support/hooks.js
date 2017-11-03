@@ -11,14 +11,6 @@ defineSupportCode(function ({ Before, After }) {
   });
 
   After(function (scenario) {
-    // Delete cached data files
-    const regexPathData = /src\/support\/data/;
-    for (const key in require.cache) {
-      if (require.cache[key] && key.match(regexPathData)) {
-        delete require.cache[key];
-      }
-    }
-
     if (scenario.isFailed()) {
       const errorDate = dateFormat(new Date(), 'yyyy-mm-dd-HHMMss');
       return browser.saveScreenshot(`./output/errorShots/screenshot-error-${errorDate}.png`);
