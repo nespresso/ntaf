@@ -97,7 +97,7 @@ It is fairly simple to understand and get started.
 
     **Good**
     ```Gherkin
-    When I login as john.doe@email.com/mypassword
+    When I login as a customer
     ```
     
     **Bad, describing web page layout**
@@ -141,7 +141,7 @@ be only one single `Ẁhen` step per scenario.
         ```Gherkin
         Scenario: Unsuccessful login with invalid username
           Given I am a visitor
-          When I log in as customer toto@email.com/password
+          When I log in as a customer
           Then I should be a visitor
           And I should be told that I have provided wrong credentials
         ```
@@ -154,9 +154,8 @@ Tags can be set to features and scenarios by adding `@tagname` on the line prior
     The following tags are allowed:
     
     * `@smoke` (on scenarios only): To tag scenarios that are the most important from a business point of view. The
-    objective is to run those scenarios before pushing any code to Stash and blocking the merge if some tests fail.
-    * `@nrt` (on features and/or scenarios): To tag features/scenarios that should be run every night to guarantee that 
-    developments from the previous day do not break any existing features.
+    objective is to run those scenarios before merging a new piece of code and blocking the merge if some tests fail (thanks to a CI ideally).
+    * `@nrt` (on features and/or scenarios): To tag features/scenarios that represent all required scenarios to validate to ensure no regression and guarantee that new developments do not break any existing features.
     * `@feature` (on features only): To tag features related to the same functional area. For example: `@registration`,
     `@login`, etc. The objective is for the developer to be able to run tests related to the features he/she is updating to
     guarantee that he/she does not break anything.
@@ -309,7 +308,7 @@ class User {
 A page object represents a web page and define elements to interact with (e.g. fields, buttons...) and possible actions
 (e.g. submit form).
 
-A component object is similar to a page object but for parts of web page that are reused in several pages.
+A component object is similar to a page object but for parts of web page that are reused in several pages, such as login block or cart summary block in header.
 
 #### Best practices
 
