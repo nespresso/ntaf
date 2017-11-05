@@ -15,3 +15,5 @@ nano.save
 npm-debug.log
 
 e2e-test
+
+.sonar
