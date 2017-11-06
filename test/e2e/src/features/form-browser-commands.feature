@@ -1,3 +1,4 @@
+@tag1
 Feature: Form browser commands
 
   Scenario: fillInForm

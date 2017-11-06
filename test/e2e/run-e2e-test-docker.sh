@@ -21,7 +21,7 @@ echo "Test project dependencies installed."
 
 echo "Generating test project canvas..."
 npx ntaf install
-echo "Test project canvas generated..."
+echo "Test project canvas generated."
 
 echo "Copying test scenarios to test project..."
 cp -R ../test/e2e/src/features/* src/features/.
@@ -44,20 +44,36 @@ echo "Unit tests run."
 
 echo "Running end-to-end tests on all-docker-chrome realm..."
 npx ntaf run --realm='all-docker-chrome'
-echo "End-to-end tests run on all-docker-chrome realm".
+echo "End-to-end tests run on all-docker-chrome realm."
 
 echo "Running end-to-end tests on form-docker-chrome realm..."
 npx ntaf run --realm='form-docker-chrome'
-echo "End-to-end tests run on form-docker-chrome realm".
+echo "End-to-end tests run on form-docker-chrome realm."
 
 echo "Running end-to-end tests on all-docker-firefox realm..."
 npx ntaf run --realm='all-docker-firefox'
-echo "End-to-end tests run on all-docker-firefox realm".
+echo "End-to-end tests run on all-docker-firefox realm."
 
 echo "Running end-to-end tests on form-docker-firefox realm..."
 npx ntaf run --realm='form-docker-firefox'
-echo "End-to-end tests run on form-docker-firefox realm".
+echo "End-to-end tests run on form-docker-firefox realm."
+
+echo "Running end-to-end tests on all-docker-chrome-tag realm..."
+npx ntaf run --realm='all-docker-chrome-tag'
+echo "End-to-end tests run on all-docker-chrome-tag realm."
+
+echo "Running end-to-end tests on form-docker-chrome-tag realm..."
+npx ntaf run --realm='form-docker-chrome-tag'
+echo "End-to-end tests run on form-docker-chrome-tag realm."
+
+echo "Running end-to-end tests on all-docker-firefox-tag realm..."
+npx ntaf run --realm='all-docker-firefox-tag'
+echo "End-to-end tests run on all-docker-firefox-tag realm."
+
+echo "Running end-to-end tests on form-docker-firefox-tag realm..."
+npx ntaf run --realm='form-docker-firefox-tag'
+echo "End-to-end tests run on form-docker-firefox-tag realm."
 
 echo "Checking end-to-end test results..."
 node check-test-results-docker
-echo "End-to-end test results checked..."
+echo "End-to-end test results checked."
