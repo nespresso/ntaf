@@ -21,7 +21,7 @@ echo "Test project dependencies installed."
 
 echo "Generating test project canvas..."
 npx ntaf install
-echo "Test project canvas generated..."
+echo "Test project canvas generated."
 
 echo "Copying test scenarios to test project..."
 cp -R ../test/e2e/src/features/* src/features/.
@@ -49,19 +49,35 @@ echo "Web server started."
 
 echo "Running end-to-end tests on all-local-chrome realm..."
 npx ntaf run --realm='all-local-chrome' || ( kill $! && exit 1 )
-echo "End-to-end tests run on all-local-chrome realm".
+echo "End-to-end tests run on all-local-chrome realm."
 
 echo "Running end-to-end tests on form-local-chrome realm..."
 npx ntaf run --realm='form-local-chrome' || ( kill $! && exit 1 )
-echo "End-to-end tests run on form-local-chrome realm".
+echo "End-to-end tests run on form-local-chrome realm."
 
 echo "Running end-to-end tests on all-local-firefox realm..."
 npx ntaf run --realm='all-local-firefox' || ( kill $! && exit 1 )
-echo "End-to-end tests run on all-local-firefox realm".
+echo "End-to-end tests run on all-local-firefox realm."
 
 echo "Running end-to-end tests on form-local-firefox realm..."
 npx ntaf run --realm='form-local-firefox' || ( kill $! && exit 1 )
-echo "End-to-end tests run on form-local-firefox realm".
+echo "End-to-end tests run on form-local-firefox realm."
+
+echo "Running end-to-end tests on all-local-chrome-tag realm..."
+npx ntaf run --realm='all-local-chrome-tag' || ( kill $! && exit 1 )
+echo "End-to-end tests run on all-local-chrome-tag realm."
+
+echo "Running end-to-end tests on form-local-chrome-tag realm..."
+npx ntaf run --realm='form-local-chrome-tag' || ( kill $! && exit 1 )
+echo "End-to-end tests run on form-local-chrome-tag realm."
+
+echo "Running end-to-end tests on all-local-firefox-tag realm..."
+npx ntaf run --realm='all-local-firefox-tag' || ( kill $! && exit 1 )
+echo "End-to-end tests run on all-local-firefox-tag realm."
+
+echo "Running end-to-end tests on form-local-firefox-tag realm..."
+npx ntaf run --realm='form-local-firefox-tag' || ( kill $! && exit 1 )
+echo "End-to-end tests run on form-local-firefox-tag realm."
 
 echo "Checking end-to-end test results..."
 node check-test-results-local || ( kill $! && exit 1 )
@@ -69,4 +85,4 @@ echo "End-to-end test results checked..."
 
 echo "Stopping web server..."
 kill $!
-echo "Web server stopped..."
+echo "Web server stopped."
