@@ -38,9 +38,9 @@ https-proxy=http://localhost:3128
 
 
 ## Running Functional Tests
-* Run `npx run` to launch the tests as they would be played remotely.
-* Run `npx run wdio.local.conf.js` to run the tests with local configuration.
-* Run `npx run wdio.debug.conf.js` to run the tests with debug configuration (see Running Tests in Debug Mode section
+* Run `npx ntaf run` to launch the tests as they would be played remotely.
+* Run `npx ntaf run wdio.local.conf.js` to run the tests with local configuration.
+* Run `npx ntaf run wdio.debug.conf.js` to run the tests with debug configuration (see Running Tests in Debug Mode section
 for mode details).
 
 Note that the local and debug configurations have to be generated first (see Configuration section).
