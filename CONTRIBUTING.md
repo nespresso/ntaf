@@ -31,7 +31,7 @@ npm version <type> -m "Release version %s"
 ```
 It upgrades the version in `package.json` and commit the change with "Release version X.X.X" message.
 
-4. Generate the JSDoc by running `grunt doc`
+4. Generate the JSDoc by running `npm run doc`
 5. Push the changes in `./docs` to GitHub
 6. Publish a new release of the npm package by running `npm publish`
 
