@@ -1,7 +1,7 @@
 version: '3'
 services:
   website:
-    image: nginx:1.13.5-alpine
+    image: nginx:1.13.8-alpine
     container_name: website
     volumes:
       - ./test/e2e/website:/usr/share/nginx/html
@@ -9,19 +9,19 @@ services:
       e2e_test:
         ipv4_address: 172.16.238.10
   chrome:
-    image: selenium/standalone-chrome:3.6.0
+    image: selenium/standalone-chrome:3.8.1
     container_name: chrome
     networks:
       e2e_test:
         ipv4_address: 172.16.238.11
   firefox:
-    image: selenium/standalone-firefox:3.6.0
+    image: selenium/standalone-firefox:3.8.1
     container_name: firefox
     networks:
       e2e_test:
         ipv4_address: 172.16.238.12
   e2e-test:
-    image: node:8.7.0
+    image: node:8.9.3
     container_name: e2e_tests
     command: /data/test/e2e/run-e2e-test-docker.sh
     volumes:
@@ -30,6 +30,7 @@ services:
       - HTTP_PROXY=${DOCKER_PROXY}
       - HTTPS_PROXY=${DOCKER_PROXY}
       - NO_PROXY=website,chrome,firefox
+      - RUN_AS_UID=${RUN_AS_UID}
     depends_on:
       - firefox
       - chrome

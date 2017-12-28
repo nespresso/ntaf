@@ -14,4 +14,7 @@ if [ "$1" != "undefined" ]; then
 
 fi
 
+export RUN_AS_UID=$(id -u)
+
 docker-compose up --build --exit-code-from e2e-test
+docker-compose down
