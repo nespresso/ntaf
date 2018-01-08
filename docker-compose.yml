@@ -11,12 +11,16 @@ services:
   chrome:
     image: selenium/standalone-chrome:3.8.1
     container_name: chrome
+    environment:
+      - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
     networks:
       e2e_test:
         ipv4_address: 172.16.238.11
   firefox:
     image: selenium/standalone-firefox:3.8.1
     container_name: firefox
+    environment:
+      - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
     networks:
       e2e_test:
         ipv4_address: 172.16.238.12
