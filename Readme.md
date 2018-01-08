@@ -84,7 +84,7 @@ Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `con
 
 For example:
 * To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tagExpression='@nrt and @catalog'`
-* To run NRT tests on realm `us_dev`: `npx ntaf run --realm="us_dev" --tagExpression='@nrt'`
+* To run NRT tests on realm `us-dev`: `npx ntaf run --realm="us-dev" --tagExpression='@nrt'`
 
 
 ## Running Functional Tests in Debug Mode
