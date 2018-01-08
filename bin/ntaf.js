@@ -102,6 +102,7 @@ const installProject = async () => {
   try {
     await Promise.all(allPromises);
     await fs.move('gitignore', '.gitignore');
+    await fs.move('npmrc', '.npmrc');
     console.log('Test project structure successfully created.');
   } catch (err) {
     console.error(err);
