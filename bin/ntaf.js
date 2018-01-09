@@ -3,6 +3,7 @@
 
 const fs = require('fs-extra');
 const gulp = require('gulp');
+const shell = require('gulp-shell');
 const gulpDel = require('del');
 const gulpMocha = require('gulp-mocha');
 const webdriver = require('gulp-webdriver');
@@ -22,6 +23,8 @@ gulp.task('prepare', () =>
 gulp.task('webdriver', () => gulp.src(configFile).pipe(webdriver(wdioOptions)));
 
 gulp.task('test-functional', gulp.series('clean', 'prepare', 'webdriver'));
+
+gulp.task('test-in-docker', command => gulp.src('./', { read: false }).pipe(shell([command])));
 
 gulp.task('test-unit', () =>
   gulp.src('./test/**/*.test.js')
@@ -70,6 +73,19 @@ const runProject = config => {
   }
 
   gulp.task('test-functional')();
+};
+
+/**
+ * Run functional tests in Docker container.
+ * @param {String} config
+ */
+const runTestsInDocker = config => {
+  let command = './docker/trigger-docker-compose.sh ' + config.script;
+  if (config.proxyPort) {
+    command += ' ' + config.proxyPort;
+  }
+
+  gulp.task('test-in-docker')(command);
 };
 
 /**
@@ -145,6 +161,17 @@ yargs
       });
       yargsObj.option('realm', {
         describe: 'Realm configuration to be used',
+        default: '',
+      });
+    },
+  })
+  .command({
+    command: 'run-in-docker [script]',
+    desc: 'Run functional tests from given script in Docker container.',
+    handler: argv => runTestsInDocker(argv),
+    builder: yargsObj => {
+      yargsObj.option('proxyPort', {
+        describe: 'Proxy port',
         default: '',
       });
     },

@@ -4,32 +4,38 @@ services:
     image: nginx:1.13.8-alpine
     container_name: website
     volumes:
-      - ./test/e2e/website:/usr/share/nginx/html
+      - ../website:/usr/share/nginx/html
     networks:
-      e2e_test:
+      test:
         ipv4_address: 172.16.238.10
   chrome:
-    image: selenium/standalone-chrome:3.8.1
+    image: selenium/standalone-chrome:3.11.0
     container_name: chrome
     environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=test
       - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
     networks:
-      e2e_test:
+      test:
         ipv4_address: 172.16.238.11
   firefox:
-    image: selenium/standalone-firefox:3.8.1
+    image: selenium/standalone-firefox:3.11.0
     container_name: firefox
     environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=test
       - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
     networks:
-      e2e_test:
+      test:
         ipv4_address: 172.16.238.12
-  e2e-test:
+  test:
     image: node:8.9.3
-    container_name: e2e_tests
-    command: /data/test/e2e/run-e2e-test-docker.sh
+    container_name: test
+    command: /data/e2e-test/docker/trigger-tests.sh ${TESTS_TO_RUN}
     volumes:
-       - .:/data
+       - ../../.:/data
     environment:
       - HTTP_PROXY=${DOCKER_PROXY}
       - HTTPS_PROXY=${DOCKER_PROXY}
@@ -40,11 +46,11 @@ services:
       - chrome
       - website
     networks:
-      e2e_test:
+      test:
         ipv4_address: 172.16.238.13
 
 networks:
-  e2e_test:
+  test:
     driver: bridge
     ipam:
       driver: default

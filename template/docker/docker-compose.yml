@@ -1,0 +1,49 @@
+version: '3'
+services:
+  chrome:
+    image: selenium/standalone-chrome:3.11.0
+    container_name: chrome
+    environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=test
+      - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
+    networks:
+      test:
+        ipv4_address: 172.16.238.11
+  firefox:
+    image: selenium/standalone-firefox:3.11.0
+    container_name: firefox
+    environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=test
+      - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
+    networks:
+      test:
+        ipv4_address: 172.16.238.12
+  test:
+    image: node:8.9.3
+    container_name: test
+    command: /data/docker/trigger-tests.sh ${TESTS_TO_RUN}
+    volumes:
+       - ../.:/data
+    environment:
+      - HTTP_PROXY=${DOCKER_PROXY}
+      - HTTPS_PROXY=${DOCKER_PROXY}
+      - NO_PROXY=website,chrome,firefox
+      - RUN_AS_UID=${RUN_AS_UID}
+    depends_on:
+      - firefox
+      - chrome
+    networks:
+      test:
+        ipv4_address: 172.16.238.13
+
+networks:
+  test:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24

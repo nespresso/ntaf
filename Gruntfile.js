@@ -25,12 +25,21 @@ module.exports = function (grunt) {
       },
     },
 
-    shell: {
-      e2eTest: {
-        command: './test/e2e/run-e2e-test-local.sh',
+    exec: {
+      run_tests_in_docker: {
+        cmd(proxyPort) {
+          let command = './test/e2e/init-test-project.sh && cd ./e2e-test && npx ntaf run-in-docker run-e2e-test-docker.sh';
+          if (proxyPort) {
+            command += ' --proxyPort=' + proxyPort;
+          }
+
+          return command;
+        },
       },
-      e2eTestDocker: {
-        command: proxyPort => './test/e2e/docker-compose-e2e-test.sh ' + proxyPort,
+      run_tests: {
+        cmd() {
+          return './test/e2e/init-test-project.sh && cd ./e2e-test && ./local/run-e2e-test-local.sh';
+        },
       },
     },
 
@@ -47,15 +56,15 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('test', 'Run unit tests', 'mochaTest');
   grunt.registerTask('test-with-coverage', 'Run unit tests with code coverage computation', 'mocha_istanbul');
   grunt.registerTask('doc', 'Generate JSDoc', 'jsdoc');
-  grunt.registerTask('e2e-test', 'Run end-to-end tests', 'shell:e2eTest');
+  grunt.registerTask('e2e-test', 'Run end-to-end tests', 'exec:run_tests');
 
   grunt.registerTask('e2e-test-docker', 'Run end-to-end tests in Docker containers', function () {
-    let command = 'shell:e2eTestDocker';
+    let command = 'exec:run_tests_in_docker';
 
     const proxyPort = grunt.option('proxyPort');
     if (proxyPort) {

@@ -10,4 +10,4 @@ else
   echo "User 'testrunner' created."
 fi
 
-su testrunner -c '/data/test/e2e/run-e2e-test-docker-ft.sh'
+su testrunner -c "/data/docker/$1"
