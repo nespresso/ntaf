@@ -1,7 +1,10 @@
+[![npm version](https://badge.fury.io/js/ntaf.svg)](https://badge.fury.io/js/ntaf)
 [![Build Status](https://travis-ci.org/nespresso/ntaf.svg?branch=master)](https://travis-ci.org/nespresso/ntaf)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/5wsjr8by0lqsngw4/branch/master?svg=true)](https://ci.appveyor.com/project/racodond/ntaf/branch/master)
-[![Quality Gate status](https://sonarcloud.io/api/badges/gate?key=ntaf)](https://sonarcloud.io/dashboard/index/ntaf)
-[![npm version](https://badge.fury.io/js/ntaf.svg)](https://badge.fury.io/js/ntaf)
+
+[![Quality Gate status](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=alert_status)](https://sonarcloud.io/dashboard?id=ntaf)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=ncloc)](https://sonarcloud.io/dashboard?id=ntaf)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=coverage)](https://sonarcloud.io/dashboard?id=ntaf)
 
 # Nestle Test Automation Framework (NTAF)
 
