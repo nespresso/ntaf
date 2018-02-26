@@ -176,7 +176,7 @@ Tags can be set to features and scenarios by adding `@tagname` on the line prior
 
 Always set the context in the following order:
  * Set the page from where to start the test case
-   * `I am on the homepage`
+   * `I am on the home page`
    * `I am on the registration page`
    * `I am on the my account addresses page`
    * ...
@@ -213,21 +213,46 @@ Structure:
 
 Example:
 ```JavaScript
-let customer = { firstName: 'John', lastName: 'Doe', email: 'john.doe@email.com' };
+'use strict';
 
-Given(/^I am customer (.+)\/(.+)/, function () {
-  return browser
-    .loginAs(customer.email, 'password')
-    .seeCustomer();
-});
-      
-When(/^I log in from (login page|menu) with valid credentials$/, function (location) {
-  return login(location, { usernameField: 'login@email.com', passwordField: 'password' });
-});
-  
-Then(/^I should be a visitor$/, function () {
-  return browser.seeVisitor();
-});
+require('src/support/business-object/user.bo');
+
+const { defineSupportCode } = require('cucumber');
+
+defineSupportCode(function ({ Before, Given, When, Then }) {
+
+  let customer = { firstName: 'John', lastName: 'Doe', email: 'john.doe@email.com' };
+
+  Before({ tags: '@data-customer-personal-information-update-name' }, function () {
+    customer = { firstName: 'John2', lastName: 'Doe2', email: 'john.doe2@email.com' };
+  });
+
+  Given(/^I am a customer$/, function () {
+    return browser
+      .loginAs(customer.email, 'password')
+      .seeCustomer();
+  });
+
+  Given(/^I am a visitor$/, function () {
+    return browser
+      .forceLogout()
+      .seeVisitor();
+  });
+
+
+  When(/^I log in from (login page|menu) with valid credentials$/, function (location) {
+    return login(location, { usernameField: 'login@email.com', passwordField: 'password' });
+  });
+
+  When(/^I log out$/, function () {
+    return browser.logout();
+  });
+
+  Then(/^I should be a customer$/, function () {
+    return browser.seeCustomer();
+  });
+
+  ...
 ```
 
 #### Best practices
@@ -267,13 +292,15 @@ shared vocabulary.
 
 Example:
 ```JavaScript
+'use strict';
+
 class User {
-  
+
   constructor(userComponent, loginPage) {
     this.userComponent = userComponent;
     this.loginPage = loginPage;
   }
-
+  
   // Action function
   login(data) {
     return this.userComponent.login(data);
@@ -286,10 +313,27 @@ class User {
       customer.firstname.should.equal(firstName),
       customer.lastname.should.equal(lastName),
     ]);
-  }
-  
+
   ...
+
 }
+
+const user = new User(
+  require('src/support/component-object/user.component'),
+  require('src/support/page-object/login.page')
+);
+
+browser.addCommand('login', function (data) {
+  logger.info('logs in with user: ' + data.usernameField, {
+    file: __filename,
+    method: 'browser.login',
+  });
+  return user.login(data);
+});
+
+...
+
+module.exports = user;
 ```
 
 #### Best practices
@@ -309,6 +353,49 @@ A page object represents a web page and define elements to interact with (e.g. f
 (e.g. submit form).
 
 A component object is similar to a page object but for parts of web page that are reused in several pages, such as login block or cart summary block in header.
+
+Example:
+```JavaScript
+'use strict';
+
+class LoginPage {
+
+  get pageElements() {
+    return {
+      loginButton: '#ta-login-page-login-submit',
+      registerButton: '#registerBtn',
+
+      usernameField: '#emailField',
+      passwordField: '#passwordField',
+
+      emailErrorMessageLabel: '#email-error-message',
+    };
+  }
+
+  clickOnRegisterButton() {
+    return browser.click(this.pageElements.registerButton);
+  }
+
+  async getWrongCredentials() {
+    let credentials = {
+      password: '',
+    };
+
+    credentials.errorMessage = await browser
+      .waitForText(this.pageElements.emailErrorMessageLabel)
+      .getText(this.pageElements.emailErrorMessageLabel);
+
+    credentials.login = await browser.getValue(this.pageElements.usernameField);
+
+    return credentials;
+  }
+
+  ...
+
+}
+
+module.exports = new LoginPage();
+```
 
 #### Best practices
 
