@@ -7,16 +7,16 @@ npm run test-with-coverage
 npm run doc
 npm run e2e-test-docker
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.analysis.mode=preview \
-                -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
-                -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
-                -Dsonar.github.oauth=$GITHUB_TOKEN \
-                -Dsonar.login=$SONARQUBE_TOKEN
+mvnCommand='sonar-scanner'
+commonArgs="-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=nespresso -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info"
+githubArgs="-Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG -Dsonar.github.oauth=$GITHUB_TOKEN"
+branchArgs=''
 
-elif [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  sonar-scanner -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.login=$SONARQUBE_TOKEN \
-                -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info
+if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    if [ "$TRAVIS_BRANCH" != "master" ]; then
+       branchArgs="-Dsonar.branch.name=$TRAVIS_BRANCH -Dsonar.branch.target=master"
+    fi
+    eval $mvnCommand $commonArgs $branchArgs
+else
+    eval $mvnCommand $commonArgs $githubArgs
 fi
