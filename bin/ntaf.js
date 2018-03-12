@@ -86,7 +86,7 @@ const installProject = async () => {
 
   const emptyDirectories = [
     'src/features',
-    'src/step-definitions',
+    'src/step_definitions',
     'src/support/business-object',
     'src/support/component-object',
     'src/support/data',
