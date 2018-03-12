@@ -2,13 +2,15 @@
 
 set -euo pipefail
 
+git fetch --unshallow
+
 npm run test
 npm run test-with-coverage
 npm run doc
 npm run e2e-test-docker
 
 mvnCommand='sonar-scanner'
-commonArgs="-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=nespresso -Dsonar.javascript.lcov.reportPaths=output/coverage/lcov.info"
+commonArgs="-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=nespresso"
 githubArgs="-Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG -Dsonar.github.oauth=$GITHUB_TOKEN"
 branchArgs=''
 
