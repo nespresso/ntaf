@@ -56,7 +56,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('e2e-test-docker', 'Run end-to-end tests in Docker containers', function () {
     let command = 'shell:e2eTestDocker';
-
+    console.log("issue");
     const proxyPort = grunt.option('proxyPort');
     if (proxyPort) {
       command += ':' + proxyPort;
