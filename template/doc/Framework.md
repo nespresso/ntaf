@@ -16,7 +16,7 @@ more details.
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **errorShots/** Error screenshots taken when scenarios have failed  
 **src/** All source code  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **features/** Scenarios written in Gherkin  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **step-definitions/** Translation of the Gherkin scenarios  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **step_definitions/** Translation of the Gherkin scenarios  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **support/** Source code implementing step definitions  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **business-object/** Implementing business flows  
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- **component-object/** Parts of the page objects that are reused on several pages  
