@@ -51,9 +51,9 @@ Note that the local and debug configurations have to be generated first (see Con
 ### Configuration
 * The global configuration is set in the `wdio.conf.js` file, in the root folder of your project.
 * The local configuration is set in the `wdio.local.conf.js`. This local configuration can be reset by running
-`npm run generate-local-conf`.
+`npx ntaf generate-local-conf`.
 * The debug configuration is set in the `wdio.debug.conf.js`. This debug configuration can be reset by running
-`npm run generate-local-conf`.
+`npm ntaf generate-local-conf`.
 
 ### Parameters
 To pass parameters to the command, add `--`: `npx ntaf run --parameter1=value1`
