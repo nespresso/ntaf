@@ -32,7 +32,7 @@ npm version <type> -m "Release version %s"
 It upgrades the version in `package.json` and commit the change with "Release version X.X.X" message.
 
 4. Generate the JSDoc by running `npm run doc`
-5. Push the changes in `./docs` to GitHub
+5. Push the changes in `./docs` to GitHub: `git add docs && git commit -m "Generate documentation for version 2.5.0" && git push origin master`
 6. Publish a new release of the npm package by running `npm publish`
 
 From your browser:
