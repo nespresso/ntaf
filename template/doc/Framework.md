@@ -30,7 +30,7 @@ more details.
 **.jscsrcs** Configuration of the [JSCS linter](http://jscs.info/overview)  
 **.npmrc** npm configuration specific to this project  
 **package.json** npm configuration for the project, including dependencies. Used by npm on `npm install`  
-**Readme.md** Getting started documentation  
+**README.md** Getting started documentation  
 **wdio.conf.js** webdriver.io configuration. Used by `npx ntaf run`  
 **wdio.local.conf.js** webdriver.io configuration (inherits from wdio.conf.js) to run test locally. Used by `npx ntaf run wdio.local.conf.js`  
 **wdio.debug.conf.js** webdriver.io configuration (inherits from wdio.local.conf.js) for debugging purposes. Used by `npx ntaf run wdio.debug.conf.js`
