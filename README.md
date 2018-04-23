@@ -91,26 +91,8 @@ For example:
 
 
 ## Running Functional Tests in Debug Mode
-
-### Initial Configuration
-
-#### Installing node-inspector
-1. Install `node-inspector`: `npm install -g node-inspector`
-
-#### Setting Configuration in IntelliJ
-1. Go to Run > Edit Configurations...
-1. Add New Configuration > Node.js Remote Debug and fill in details as follows:
-![alt text](https://raw.githubusercontent.com/nespresso/ntaf/master/template/doc/resources/intellij-debug-configuration.png "Name: My Node.js Remote Debug / Host: 127.0.0.1 / Port: 5859")
-
-### Running Tests
-1. In a terminal, run `node-inspector`. The following should be printed:
-`Node Inspector v0.12.8
- Visit http://127.0.0.1:8080/?port=5858 to start debugging.
-`
-1. In IntelliJ, Run > Debug 'My Node.js Remote Debug'
-1. In IntelliJ, add breakpoints to your code
-1. In a terminal, run `npx ntaf run wdio.debug.conf.js` (usually targeting a single test: `npx ntaf run wdio.debug.conf.js --tagExpression='@mytest'`). Note that the local debug configuration has to be generated first (see Configuration section).
-1. Once the first breakpoint is reached, use standard IntelliJ Debug window to move forward and debug.
+For IntelliJ, follow instructions at [Debug with Chrome Debugging Protocol](https://www.jetbrains.com/help/idea/running-and-debugging-node-js.html#ws_node_debug_remote_chrome).
+At step #4, run `npx ntaf run wdio.debug.conf.js`
 
 
 ## Running Unit Tests

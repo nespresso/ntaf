@@ -81,7 +81,7 @@ const installProject = async () => {
 
   const allPromises = [
     fs.copy('node_modules/ntaf/template/', '.'),
-    fs.copy('node_modules/ntaf/Readme.md', 'Readme.md'),
+    fs.copy('node_modules/ntaf/README.md', 'README.md'),
   ];
 
   const emptyDirectories = [
