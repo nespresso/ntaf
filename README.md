@@ -30,7 +30,7 @@ Note that it requires good development skills as well as good knowledge and unde
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
 2. Create a new NPM project by executing `npm init`. More information about the different options [here](https://docs.npmjs.com/getting-started/using-a-package.json).
 3. Install NTAF package by running the following command from <AUTOMATED_TESTS>: `npm install --save ntaf`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
-4. From <AUTOMATED_TESTS>, run `npx ntaf install --no-optional` to generate the skeleton of your test project.
+4. From <AUTOMATED_TESTS>, run `npx ntaf install` to generate the skeleton of your test project.
 
 ### Behind a Proxy
 Set the configuration of your proxy by editing the `.npmrc` file in your home directory:
