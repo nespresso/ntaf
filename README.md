@@ -30,7 +30,7 @@ Note that it requires good development skills as well as good knowledge and unde
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
 2. Create a new NPM project by executing `npm init`. More information about the different options [here](https://docs.npmjs.com/getting-started/using-a-package.json).
 3. Install NTAF package by running the following command from <AUTOMATED_TESTS>: `npm install --save ntaf`. It creates a `node_modules` directory containing all the dependencies needed to run the project.
-4. From <AUTOMATED_TESTS>, run `npx ntaf install` to generate the skeleton of your test project.
+4. From <AUTOMATED_TESTS>, run `npx ntaf install` to generate the skeleton of your test project. If you'd like to fill your skeleton with demo files, run `npx ntaf install -demo` instead.
 
 ### Behind a Proxy
 Set the configuration of your proxy by editing the `.npmrc` file in your home directory:
@@ -83,7 +83,7 @@ Usually realms define at least the following properties:
 * `baseUrl`: website to test
 * `specs`: list of features to run
 
-Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/real` without the `.js` extension.
+Add command line parameter `--realm="xxx"`. Where `xxx` is the file name in `conf/realm` without the `.js` extension.
 
 For example:
 * To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tagExpression='@nrt and @catalog'`

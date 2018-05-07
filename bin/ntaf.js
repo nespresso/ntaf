@@ -8,6 +8,7 @@ const gulpMocha = require('gulp-mocha');
 const webdriver = require('gulp-webdriver');
 const yargs = require('yargs');
 const wdioOptions = { cucumberOpts: {} };
+const flag = process.argv[3];
 let configFile;
 
 gulp.task('clean', () => gulpDel(['output', 'log']));
@@ -89,9 +90,9 @@ const installProject = async () => {
     'src/step_definitions',
     'src/support/business-object',
     'src/support/component-object',
+    'src/support/page-object',
     'src/support/data',
     'src/support/helper',
-    'src/support/page-object',
     'conf/realm',
   ];
 
@@ -108,6 +109,11 @@ const installProject = async () => {
     console.error(err);
     process.exit(1);
   }
+
+  if (flag === '-demo') {
+    await fs.copy('node_modules/ntaf/demo-template/', '.');
+  }
+
 };
 
 yargs
