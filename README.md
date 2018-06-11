@@ -72,7 +72,7 @@ Tags can be combined:
 * `--tagExpression='@tag1 and @tag2'` runs test tagged with both `@tag1` and `@tag2`
 * `--tagExpression='not @tag1'` runs tests not tagged with `@tag1`
 
-See [Cucumber Tag Expressions documentation](https://docs.cucumber.io/tag-expressions/) for more details.
+See [Cucumber Tag Expressions documentation](https://docs.cucumber.io/cucumber/api/#tag-expressions) for more details.
 
 #### Realm (market, brand, environment, ...)
 A realm is a configuration file that defines some wdio properties specific to a realm. A realm can be seen as a market, 
