@@ -24,7 +24,7 @@ Note that it requires good development skills as well as good knowledge and unde
 ## Integrating NTAF to Your Project
 
 ### Prerequisites
-* Install Node.js: lastest available 8.X.X version
+* Install Node.js: latest available 8.X.X version
 
 ### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
