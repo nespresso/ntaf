@@ -76,7 +76,7 @@ const runProject = config => {
  * Create project structure tree.
  * @return {Promise}
  */
-const installProject = async () => {
+const installProject = config => {
   console.log('Creating test project structure...');
 
   const allPromises = [
@@ -93,6 +93,37 @@ const installProject = async () => {
   emptyDirectories.forEach(directory => {
     allPromises.push(fs.mkdirs(directory));
   });
+
+  if (!config.with_examples) {
+    //console.log("Creating test project estructure with examples");
+    //we already copy the example files from template
+    //we update the url to run the examples
+    wdioOptions.baseUrl = "https://racodond.github.io/test-automation-website/";
+
+    var generalConfigFile = require('wdio.conf.js');
+    var debugConfigFile = require('wdio.debug.conf.js');
+    var localConfigFile = require('wdio.local.conf.js');
+
+    var generalConfig = require(generalConfigFile);
+    var debugConfig = require(debugConfigFile);
+    var localConfig = require(localConfigFile);
+
+    generalConfig.baseUrl = wdioOptions.baseUrl;
+    debugConfig.baseUrl = wdioOptions.baseUrl;
+    localConfig.baseUrl = wdioOptions.baseUrl;
+
+    fs.writeFileSync(generalConfigFile, JSON.stringify(generalConfig, null, 2));
+    fs.writeFileSync(debugConfigFile, JSON.stringify(debugConfig, null, 2));
+    fs.writeFileSync(localConfigFile, JSON.stringify(localConfigFile, null, 2));
+  } else {
+    //delete example files
+    console.log("Creating test project empty estructure");
+    allPromises.push(fs.emptyDirSync('src/features'));
+    allPromises.push(fs.emptyDirSync('src/step_definitions'));
+    allPromises.push(fs.emptyDirSync('src/support/business-object'));
+    allPromises.push(fs.emptyDirSync('src/support/data'));
+    allPromises.push(fs.emptyDirSync('src/support/page-object'));
+  }
 
   try {
     await Promise.all(allPromises);
@@ -112,9 +143,14 @@ yargs
     handler: () => gulp.task('clean')(),
   })
   .command({
-    command: 'install',
+    command: 'install [with_examples]',
     desc: 'Create project structure tree',
-    handler: () => installProject(),
+    handler: argv => installProject(argv),
+    builder: yargsObj => {
+      yargsObj.option('withExamples', {
+        describe: 'including this parameter sets the project to work with examples',
+        default: '',
+      });
   })
   .command({
     command: 'generate-local-conf',
