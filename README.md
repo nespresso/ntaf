@@ -92,6 +92,16 @@ For example:
 * To run NRT tests on realm `us-dev`: `npx ntaf run --realm="us-dev" --tagExpression='@nrt'`
 
 
+## Running Functional Tests in Docker container
+To execute tests in Docker container, run `npx ntaf run-in-docker [script]`.
+
+This command takes two parameters:
+* (Mandatory) `script`: Bash script to run. The script must be located in the `docker` directory.
+* (Optional) `proxyPort`: port of your proxy if you are behind a proxy
+  
+For instance: `npx ntaf run-in-docker run-my-tests-on-chrome.sh --proxyPort=3128` to run my tests in a Chrome Docker container, behind a proxy on port 3128. 
+
+
 ## Running Functional Tests in Debug Mode
 For IntelliJ, follow instructions at [Debug with Chrome Debugging Protocol](https://www.jetbrains.com/help/idea/running-and-debugging-node-js.html#ws_node_debug_remote_chrome).
 At step #4, run `npx ntaf run wdio.debug.conf.js`
