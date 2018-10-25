@@ -34,19 +34,11 @@
     "e2e-test-docker": "grunt e2e-test-docker"
   },
   "dependencies": {
-    "app-module-path": "2.2.0",
     "bluebird": "3.5.2",
-    "chai": "4.2.0",
-    "chai-as-promised": "7.1.1",
     "dateformat": "3.0.3",
     "del": "3.0.0",
     "faker": "4.1.0",
     "fs-extra": "7.0.0",
-    "grunt": "1.0.3",
-    "grunt-jsdoc": "2.3.0",
-    "grunt-mocha-istanbul": "5.0.2",
-    "grunt-mocha-test": "0.13.3",
-    "grunt-shell": "2.1.0",
     "gulp": "4.0.0",
     "gulp-mocha": "6.0.0",
     "gulp-webdriver": "2.0.3",
@@ -55,8 +47,6 @@
     "merge": "1.2.0",
     "mocha": "5.2.0",
     "path": "0.12.7",
-    "sinon": "7.0.0",
-    "sinon-chai": "3.2.0",
     "wdio-allure-reporter": "0.8.2",
     "wdio-cucumber-framework": "2.2.7",
     "wdio-cucumber-reporter": "0.0.2",
@@ -65,13 +55,23 @@
     "wdio-mocha-framework": "0.6.3",
     "wdio-selenium-standalone-service": "0.0.10",
     "wdio-spec-reporter": "0.1.5",
-    "webdriverio": "4.14.0",
     "winston": "3.1.0",
     "yargs": "12.0.2"
   },
   "devDependencies": {
+    "app-module-path": "2.2.0",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "grunt": "1.0.3",
+    "grunt-jsdoc": "2.3.0",
+    "grunt-mocha-istanbul": "5.0.2",
+    "grunt-mocha-test": "0.13.3",
+    "grunt-shell": "2.1.0",
     "gulp-debug": "4.0.0",
-    "gulp-debug-streams": "3.0.0"
+    "gulp-debug-streams": "3.0.0",
+    "sinon": "7.0.0",
+    "sinon-chai": "3.2.0",
+    "webdriverio": "4.14.0"
   },
   "engines": {
     "node": ">= 8.7.0"
