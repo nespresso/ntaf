@@ -55,7 +55,6 @@
     "wdio-mocha-framework": "0.6.3",
     "wdio-selenium-standalone-service": "0.0.10",
     "wdio-spec-reporter": "0.1.5",
-    "winston": "3.1.0",
     "yargs": "12.0.2"
   },
   "devDependencies": {
@@ -71,7 +70,8 @@
     "gulp-debug-streams": "3.0.0",
     "sinon": "7.0.0",
     "sinon-chai": "3.2.0",
-    "webdriverio": "4.14.0"
+    "webdriverio": "4.14.0",
+    "winston": "2.4.0"
   },
   "engines": {
     "node": ">= 8.7.0"
