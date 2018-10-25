@@ -47,7 +47,7 @@
     "grunt-mocha-istanbul": "5.0.2",
     "grunt-mocha-test": "0.13.3",
     "grunt-shell": "2.1.0",
-    "gulp": "https://github.com/gulpjs/gulp#4.0",
+    "gulp": "4.0.0",
     "gulp-mocha": "6.0.0",
     "gulp-webdriver": "2.0.3",
     "istanbul": "0.4.5",
