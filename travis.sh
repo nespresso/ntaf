@@ -10,7 +10,7 @@ npm run doc
 npm run e2e-test-docker
 
 command='sonar-scanner'
-commonArgs="-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=nespresso"
+commonArgs="-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=a5f56f165037f29897f6d14377a98919a04e8a79 -Dsonar.organization=nespresso"
 githubArgs="-Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG -Dsonar.github.oauth=$GITHUB_TOKEN"
 branchArgs=''
 
