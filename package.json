@@ -52,7 +52,7 @@
     "gulp-webdriver": "2.0.3",
     "istanbul": "0.4.5",
     "jscs": "3.0.7",
-    "merge": "1.2.0",
+    "merge": "1.2.1",
     "mocha": "4.1.0",
     "path": "0.12.7",
     "sinon": "4.1.3",

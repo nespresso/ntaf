@@ -2,7 +2,7 @@
 
 1. Open a [new issue](https://github.com/nespresso/ntaf/issues/new) or pick up an [existing one](https://github.com/nespresso/ntaf/issues)
 1. Code, unit tests, document, etc.
-1. Commit your changes with message "Fix #X Issue title" 
+1. Commit your changes with message "Fix #X Issue title"
 1. Create a PR
 1. Check that the builds are green
 1. Fix any SonarQube issues that would have pop up during the builds
@@ -20,12 +20,12 @@
 Requirements:
 
 1. Check that the [latest build on master](https://travis-ci.org/nespresso/ntaf) is green
-2. Check that the [SonarQube quality gate](https://sonarcloud.io/dashboard?id=natf) is green
+2. Check that the [SonarQube quality gate](https://sonarcloud.io/dashboard?id=ntaf) is green
 
 From your IDE:
 
 2. Checkout a clean `master` branch
-3. Update the package version by running the following command replacing `<type>` with either `major`, `minor` or `patch`: 
+3. Update the package version by running the following command replacing `<type>` with either `major`, `minor` or `patch`:
 ```
 npm version <type> -m "Release version %s"
 ```
