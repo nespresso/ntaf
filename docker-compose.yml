@@ -1,7 +1,7 @@
 version: '3'
 services:
   website:
-    image: nginx:1.14.1-alpine
+    image: nginx:1.15.6-alpine
     container_name: website
     volumes:
       - ./test/e2e/website:/usr/share/nginx/html
@@ -9,7 +9,7 @@ services:
       e2e_test:
         ipv4_address: 172.16.238.10
   chrome:
-    image: selenium/standalone-chrome:latest
+    image: selenium/standalone-chrome:3.14.0
     container_name: chrome
     environment:
       - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
@@ -17,7 +17,7 @@ services:
       e2e_test:
         ipv4_address: 172.16.238.11
   firefox:
-    image: selenium/standalone-firefox:latest
+    image: selenium/standalone-firefox:3.14.0
     container_name: firefox
     environment:
       - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING

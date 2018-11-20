@@ -6,7 +6,7 @@
 1. Create a PR
 1. Check that the builds are green
 1. Fix any SonarQube issues that would have pop up during the builds
-1. Assign racodond (David RACODON) as reviewers of the PR
+1. Assign  () as reviewers of the PR
 1. Once approved, merge the PR (prefer Squash and merge)
 
 ## Building and Testing
