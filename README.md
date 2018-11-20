@@ -26,7 +26,7 @@ Note that it requires good development skills as well as good knowledge and unde
 ### Prerequisites
 * Install [npm](https://www.npmjs.com/) and [Node.js](https://nodejs.org) (latest available 8.X.X version)
 * Install [npx](https://www.npmjs.com/package/npx): `npm install -g npx`
-* Install [Java JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (version 8 or greater)
+* Install [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (version 8 or greater)
 
 ### Adding NTAF Package and Configuration to Your Project
 1. Create a new folder <AUTOMATED_TESTS> in your project to host your automated tests.
@@ -40,7 +40,6 @@ Set the configuration of your proxy by editing the `.npmrc` file in your home di
 proxy=http://localhost:3128
 https-proxy=http://localhost:3128
 ```
-
 
 ## Running Functional Tests
 * Run `npx ntaf run` to launch the tests as they would be played remotely.
@@ -65,7 +64,7 @@ Add command line parameter `--baseUrl="https://base.url"` or update the wdio con
 
 #### Locale
 Add command line parameter `--locale="en"` or update the wdio configuration file accordingly.
- 
+
 #### Running a Subset of Tests Using Tags
 Add command line parameter `--tagExpression='@tag'`.
 
@@ -77,7 +76,7 @@ Tags can be combined:
 See [Cucumber Tag Expressions documentation](https://docs.cucumber.io/cucumber/api/#tag-expressions) for more details.
 
 #### Realm (market, brand, environment, ...)
-A realm is a configuration file that defines some wdio properties specific to a realm. A realm can be seen as a market, 
+A realm is a configuration file that defines some wdio properties specific to a realm. A realm can be seen as a market,
 a brand, an environment (such as dev or staging), etc. or a combination of them. Realm files are stored in the
 `conf/realm` directory.
 
@@ -91,16 +90,13 @@ For example:
 * To run NRT tests from the catalog domain on mywebsite.com: `npx ntaf run --baseUrl="https://mywebsite.com" --tagExpression='@nrt and @catalog'`
 * To run NRT tests on realm `us-dev`: `npx ntaf run --realm="us-dev" --tagExpression='@nrt'`
 
-
 ## Running Functional Tests in Debug Mode
 For IntelliJ, follow instructions at [Debug with Chrome Debugging Protocol](https://www.jetbrains.com/help/idea/running-and-debugging-node-js.html#ws_node_debug_remote_chrome).
 At step #4, run `npx ntaf run wdio.debug.conf.js`
 
-
 ## Running Unit Tests
 * Run `npx ntaf test-unit` to run unit tests
 * Run `npx ntaf test-unit-with-coverage` to run unit tests with code coverage computation
-
 
 ## Writing Automated Tests
 Read detailed explanations in [Framework.md](https://github.com/nespresso/ntaf/blob/master/template/doc/Framework.md).

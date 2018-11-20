@@ -16,4 +16,5 @@ npm-debug.log
 
 e2e-test
 
+# SonarQube
 .sonar
