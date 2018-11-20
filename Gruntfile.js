@@ -27,10 +27,10 @@ module.exports = function (grunt) {
 
     shell: {
       e2eTest: {
-        command: './test/e2e/run-e2e-test-local.sh',
+        command: 'test/e2e/run-e2e-test-local.sh',
       },
       e2eTestDocker: {
-        command: proxyPort => './test/e2e/docker-compose-e2e-test.sh' + proxyPort,
+        command: proxyPort => 'test/e2e/docker-compose-e2e-test.sh' + proxyPort,
       },
     },
 
