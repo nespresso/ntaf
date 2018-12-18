@@ -74,7 +74,7 @@
     "gulp-debug-streams": "3.0.0"
   },
   "engines": {
-    "node": ">= 8.12.0"
+    "node": ">= 10.14"
   },
   "directories": {
     "doc": "docs",
