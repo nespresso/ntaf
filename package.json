@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:nespresso/ntaf.git"
+    "url": "git+ssh://git@github.com/nespresso/ntaf.git"
   },
   "scripts": {
     "test": "grunt test",
@@ -51,21 +51,21 @@
     "gulp-mocha": "6.0.0",
     "gulp-webdriver": "2.0.3",
     "istanbul": "0.4.5",
-    "jscs": "3.0.7",
+    "eslint": "5.10.0",
     "merge": "1.2.1",
     "mocha": "5.2.0",
     "path": "0.12.7",
-    "sinon": "7.1.1",
-    "sinon-chai": "3.2.0",
+    "sinon": "7.2.2",
+    "sinon-chai": "3.3.0",
     "wdio-allure-reporter": "0.8.3",
     "wdio-cucumber-framework": "2.2.8",
     "wdio-cucumber-reporter": "0.0.2",
     "wdio-json-reporter": "0.4.0",
     "wdio-junit-reporter": "0.4.4",
     "wdio-mocha-framework": "0.6.4",
-    "wdio-selenium-standalone-service": "0.0.11",
+    "wdio-selenium-standalone-service": "0.0.12",
     "wdio-spec-reporter": "0.1.5",
-    "webdriverio": "4.14.0",
+    "webdriverio": "4.14.1",
     "winston": "3.1.0",
     "yargs": "12.0.5"
   },
@@ -75,5 +75,10 @@
   },
   "engines": {
     "node": ">= 8.12.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
   }
 }
