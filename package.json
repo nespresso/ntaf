@@ -51,7 +51,7 @@
     "gulp-mocha": "6.0.0",
     "gulp-webdriver": "2.0.3",
     "istanbul": "0.4.5",
-    "jscs": "3.0.7",
+    "eslint": "5.10.0",
     "merge": "1.2.1",
     "mocha": "5.2.0",
     "path": "0.12.7",
