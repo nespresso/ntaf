@@ -108,6 +108,16 @@ const installProject = async () => {
     console.error(err);
     process.exit(1);
   }
+
+	// Copy Test_File to /src
+
+	fs.copy('./example', './scr', function (err) {
+		if (err){
+		 console.log('An error occured while copying the folder :(')
+			return console.error(err)
+			}
+	console.log('Copy Completed !! :)')
+	});
 };
 
 yargs
