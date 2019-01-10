@@ -24,8 +24,8 @@ npx ntaf install
 echo "Test project canvas generated."
 
 echo "Copying test scenarios to test project..."
-cp -R ../../test/e2e/src/features/* src/features/.
-cp -R ../../test/e2e/src/step_definitions/* src/step_definitions/.
+cp -R ../test/e2e/src/features/* src/features/.
+cp -R ../test/e2e/src/step_definitions/* src/step_definitions/.
 cp -R ../test/e2e/src/support/business-object/* src/support/business-object/.
 cp -R ../test/e2e/src/support/page-object/* src/support/page-object/.
 cp -R ../test/e2e/src/support/helper/* src/support/helper/.
