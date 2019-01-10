@@ -1,16 +1,12 @@
 [![npm version](https://badge.fury.io/js/ntaf.svg)](https://badge.fury.io/js/ntaf)
 [![Build Status](https://travis-ci.org/nespresso/ntaf.svg?branch=master)](https://travis-ci.org/nespresso/ntaf)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/5wsjr8by0lqsngw4/branch/master?svg=true)](https://ci.appveyor.com/project/racodond/ntaf/branch/master)
-
 [![Quality Gate status](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=alert_status)](https://sonarcloud.io/dashboard?id=ntaf)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=ncloc)](https://sonarcloud.io/dashboard?id=ntaf)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ntaf&metric=coverage)](https://sonarcloud.io/dashboard?id=ntaf)
 
-# Nestle Test Automation Framework (NTAF)
+# Nestlé Test Automation Framework (NTAF)
 
 This framework is designed to help you get quickly started with test automation on any project.
 It is based on [WebdriverIO](http://webdriver.io/) and [cucumber](https://cucumber.io/) ([cucumberJS](https://github.com/cucumber/cucumber-js) to be exact).
-Integrating this module provides a ready-to-go environment to write and execute functional test scenarios.
+Integrating this module provides a ready-to-go environment to write and execute functional test scenarios on Google Chrome and Mozilla Firefox.
 It includes:
 * A template to generate your test automation project so that you don't start from a blank page
 * The necessary packages pre-configured to be able to run your scenarios without requiring any other setup. The only requirement is to have a browser on the machine running the tests: either Chrome or Firefox.
@@ -24,7 +20,7 @@ Note that it requires good development skills as well as good knowledge and unde
 ## Integrating NTAF to Your Project
 
 ### Prerequisites
-* Install [npm](https://www.npmjs.com/) and [Node.js](https://nodejs.org) (latest available 8.X.X version)
+* Install [npm](https://www.npmjs.com/) and [Node.js](https://nodejs.org) (latest LTS available 10.X.X version)
 * Install [npx](https://www.npmjs.com/package/npx): `npm install -g npx`
 * Install [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (version 8 or greater)
 
