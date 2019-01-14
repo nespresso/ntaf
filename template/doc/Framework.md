@@ -2,7 +2,7 @@
 
 ## Test Project Structure
 
-This structure is generated when intializing a new test project running the `npx ntaf install` command. See the
+This structure is generated when initializing a new test project running the `npx ntaf install` command. See the
 [technical documentation](https://github.com/nespresso/ntaf#adding-ntaf-package-and-configuration-to-your-project) for
 more details.
 
