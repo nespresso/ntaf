@@ -85,13 +85,6 @@ const installProject = async () => {
   ];
 
   const emptyDirectories = [
-    'src/features',
-    'src/step_definitions',
-    'src/support/business-object',
-    'src/support/component-object',
-    'src/support/data',
-    'src/support/helper',
-    'src/support/page-object',
     'conf/realm',
     'logs',
   ];
@@ -104,6 +97,7 @@ const installProject = async () => {
     await Promise.all(allPromises);
     await fs.move('gitignore', '.gitignore');
     await fs.move('npmrc', '.npmrc');
+    await fs.move('./examples', './src');
     console.log('Test project structure successfully created.');
   } catch (err) {
     console.error(err);
@@ -112,13 +106,13 @@ const installProject = async () => {
 
 	// Copy Test_File to /src
 
-	fs.copy('./examples', './src', function (err) {
-		if (err){
-		 console.log('An error occured while copying the folder :(')
-			return console.error(err)
+//	fs.copy('./examples', './src', function (err) {
+//		if (err){
+//		 console.log('An error occured while copying the folder :(')
+//			return console.error(err)
 			}
-	console.log('Copy Completed !! :)')
-	});
+//	console.log('Copy Completed !! :)')
+//	});
 };
 
 yargs
