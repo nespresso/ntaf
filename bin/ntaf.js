@@ -93,6 +93,7 @@ const installProject = async () => {
     'src/support/helper',
     'src/support/page-object',
     'conf/realm',
+    'logs',
   ];
 
   emptyDirectories.forEach(directory => {
@@ -111,7 +112,7 @@ const installProject = async () => {
 
 	// Copy Test_File to /src
 
-	fs.copy('./example', './scr', function (err) {
+	fs.copy('./example', './src', function (err) {
 		if (err){
 		 console.log('An error occured while copying the folder :(')
 			return console.error(err)
