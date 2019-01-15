@@ -85,6 +85,8 @@ const installProject = async () => {
   ];
 
   const emptyDirectories = [
+    'src/support/data',
+    'src/support/helper',
     'conf/realm',
     'logs',
   ];
