@@ -85,6 +85,12 @@ const installProject = async () => {
   ];
 
   const emptyDirectories = [
+    'src/features',
+    'src/step_definitions',
+    'src/support/business-object',
+    'src/support/page-object',
+    'src/support/helper',
+    'src/support/data',
     'conf/realm',
     'logs',
   ];
@@ -97,7 +103,6 @@ const installProject = async () => {
     await Promise.all(allPromises);
     await fs.move('gitignore', '.gitignore');
     await fs.move('npmrc', '.npmrc');
-    await fs.move('./examples', './src');
     console.log('Test project structure successfully created.');
   } catch (err) {
     console.error(err);
