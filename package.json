@@ -1,6 +1,6 @@
 {
   "name": "ntaf",
-  "version": "2.7.2",
+  "version": "3.0.0",
   "description": "Nestlé Test Automation Framework",
   "keywords": [
     "test-automation",
@@ -46,12 +46,12 @@
     "grunt-jsdoc": "2.3.0",
     "grunt-mocha-istanbul": "5.0.2",
     "grunt-mocha-test": "0.13.3",
-    "grunt-shell": "2.1.0",
+    "grunt-shell": "3.0.1",
     "gulp": "4.0.0",
     "gulp-mocha": "6.0.0",
     "gulp-webdriver": "2.0.3",
     "istanbul": "0.4.5",
-    "eslint": "5.10.0",
+    "eslint": "5.12.0",
     "merge": "1.2.1",
     "mocha": "5.2.0",
     "path": "0.12.7",
@@ -74,7 +74,7 @@
     "gulp-debug-streams": "3.0.0"
   },
   "engines": {
-    "node": ">= 8.12.0"
+    "node": ">= 10.15.0"
   },
   "directories": {
     "doc": "docs",
