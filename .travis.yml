@@ -12,7 +12,7 @@ env:
 
 language: node_js
 node_js:
-  - '10.14.2'
+  - '10.15.0'
 
 jdk:
   - oraclejdk8

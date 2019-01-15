@@ -2,7 +2,7 @@
 
 ## Test Project Structure
 
-This structure is generated when intializing a new test project running the `npx ntaf install` command. See the
+This structure is generated when initializing a new test project running the `npx ntaf install` command. See the
 [technical documentation](https://github.com/nespresso/ntaf#adding-ntaf-package-and-configuration-to-your-project) for
 more details.
 
@@ -85,7 +85,7 @@ It is fairly simple to understand and get started.
 #### Best practices
 
 1. Each scenario should be unitary and therefore should not rely on previously executed scenario(s) to pass.
-2. Scenario should remain at a functional/business level, they should not make any reference to the web page: 
+2. Scenario should remain at a functional/business level, they should not make any reference to the web page:
 
     **Bad, using CSS selectors**
     ```Gherkin
@@ -99,12 +99,12 @@ It is fairly simple to understand and get started.
     ```Gherkin
     When I login as a customer
     ```
-    
+
     **Bad, describing web page layout**
     ```Gherkin
     Then I should see an error message on top of the page stating that the login/password is invalid
     ```
-    
+
     **Good**
     ```Gherkin
     Then I should be told that I have provided wrong credentials
@@ -117,16 +117,16 @@ be only one single `Ẁhen` step per scenario.
 
     **Bad**
     ```Gherkin
-    Scenario Successful logout 
+    Scenario Successful logout
       Given I am on the homepage
       When I log in as john.doe@email.com/mypassword
       And I log out
       Then I should be a visitor
     ```
-    
+
     **Good**
     ```Gherkin
-    Scenario Successful logout 
+    Scenario Successful logout
       Given I am a customer
       When I log out
       Then I should be a visitor
@@ -152,19 +152,19 @@ be only one single `Ẁhen` step per scenario.
 Tags can be set to features and scenarios by adding `@tagname` on the line prior to `Feature` or `Scenario` keywords.
 
     The following tags are allowed:
-    
+
     * `@smoke` (on scenarios only): To tag scenarios that are the most important from a business point of view. The
     objective is to run those scenarios before merging a new piece of code and blocking the merge if some tests fail (thanks to a CI ideally).
     * `@nrt` (on features and/or scenarios): To tag features/scenarios that represent all required scenarios to validate to ensure no regression and guarantee that new developments do not break any existing features.
     * `@feature` (on features only): To tag features related to the same functional area. For example: `@registration`,
     `@login`, etc. The objective is for the developer to be able to run tests related to the features he/she is updating to
     guarantee that he/she does not break anything.
-    
-    
+
+
     ```Gherkin
     @nrt @login
     Feature: Login / Logout from the user menu
-    
+
       @smoke
       Scenario: Successful login with valid credentials
         Given I ...
@@ -261,9 +261,9 @@ defineSupportCode(function ({ Before, Given, When, Then }) {
 Most of the logic should be hidden in business objects.
 2. Step definitions should only interact with business objects, not with page/component objects.
 3. Data set of scenarios should not be hard coded (use data files to be stored in the `src/support/data` folder instead).
-4. Step definitions should not contain any technical assertions (such as `.should.eventually.be...`, 
+4. Step definitions should not contain any technical assertions (such as `.should.eventually.be...`,
  `.should.eventually.equal...`), the business objects should.
-  
+
 **Bad**
 ```JavaScript
 When(/^I register without a machine$/, function () {
@@ -300,7 +300,7 @@ class User {
     this.userComponent = userComponent;
     this.loginPage = loginPage;
   }
-  
+
   // Action function
   login(data) {
     return this.userComponent.login(data);
@@ -402,14 +402,14 @@ module.exports = new LoginPage();
 1. Page/Component objects should not contain any technical assertions (such as `.should.eventually.be...`,
  `.should.eventually.equal...`), the business objects should.
 2. Each page/component object should define a `pageElements` getter listing all the HTML elements that will be
-  interacted with. Thus, a change in the web interface (id field change for instance) will only require a change in the 
+  interacted with. Thus, a change in the web interface (id field change for instance) will only require a change in the
   `pageElements` getter. All the HTML elements should be accessed through `pageElements`.
 3. Functions returning the value of a page element should comply to the following naming convention: `getXXX`
 4. Functions returning whether an object is visible or not should comply to the following naming convention:
    `isXXXVisible`
 5. Functions just performing a single browser interaction should comply to the following naming convention:
   `clickXXXButton`, `clickXXXLink`, etc.
-6. Functions performing several browser interactions should start with an action verb: `deleteSecondaryAddress`, 
+6. Functions performing several browser interactions should start with an action verb: `deleteSecondaryAddress`,
   `addAddress`, etc.
 
 ## Logging
