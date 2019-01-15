@@ -112,8 +112,7 @@ const installProject = async () => {
 
 	// Copy Test_File to /src
 
-bugfix/minorissue
-	fs.copy('./examples', './src', function (err) {
+  fs.copy('./examples', './src', function (err) {
 		if (err){
 		 console.log('An error occured while copying the folder :(')
 			return console.error(err)
