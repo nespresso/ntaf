@@ -85,10 +85,15 @@ const installProject = async () => {
   ];
 
   const emptyDirectories = [
-    'src/support/data',
-    'src/support/helper',
-    'conf/realm',
-    'logs',
+	'src/features',
+    	'src/step_definitions',
+	'src/support/business-object',
+	'src/support/component-object',
+	'src/support/data',
+	'src/support/helper',
+	'src/support/page-object',
+	'conf/realm',
+	'logs',
   ];
 
   emptyDirectories.forEach(directory => {
@@ -105,12 +110,6 @@ const installProject = async () => {
     process.exit(1);
   }
 
-	// Copy Test_File to /src
-
-	fs.move('./examples', './src', err => {
-		if (err) return console.error(err);
-	        console.log('Move Completed !!');
-	});
 };
 
 yargs
