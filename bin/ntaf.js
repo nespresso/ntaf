@@ -33,7 +33,7 @@ gulp.task('test-unit', () =>
 
 gulp.task('test-unit-with-coverage', () => {
   //Does not work with version of gulp-mocha 4.x.x
-  //To follow coming updates
+  //To follow coming updates review
 });
 
 gulp.task('generate-local-conf', () => {
