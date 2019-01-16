@@ -33,7 +33,7 @@ gulp.task('test-unit', () =>
 
 gulp.task('test-unit-with-coverage', () => {
   //Does not work with version of gulp-mocha 4.x.x
-  //To follow coming updates
+  //To follow coming updates review
 });
 
 gulp.task('generate-local-conf', () => {
@@ -85,8 +85,15 @@ const installProject = async () => {
   ];
 
   const emptyDirectories = [
-    'conf/realm',
-    'logs',
+	'src/features',
+    	'src/step_definitions',
+	'src/support/business-object',
+	'src/support/component-object',
+	'src/support/data',
+	'src/support/helper',
+	'src/support/page-object',
+	'conf/realm',
+	'logs',
   ];
 
   emptyDirectories.forEach(directory => {
@@ -97,22 +104,12 @@ const installProject = async () => {
     await Promise.all(allPromises);
     await fs.move('gitignore', '.gitignore');
     await fs.move('npmrc', '.npmrc');
-    await fs.move('./examples', './src');
     console.log('Test project structure successfully created.');
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 
-	// Copy Test_File to /src
-
-//	fs.copy('./examples', './src', function (err) {
-//		if (err){
-//		 console.log('An error occured while copying the folder :(')
-//			return console.error(err)
-			}
-//	console.log('Copy Completed !! :)')
-//	});
 };
 
 yargs
